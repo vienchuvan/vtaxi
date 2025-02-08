@@ -1,0 +1,203 @@
+@(title: String)(content: Html)
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>@title</title>
+
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/style-tu.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/jquery-ui.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/jquery.lightbox.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/home.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/header-menu.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/Cropper/main.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/Cropper/cropper.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/Cropper/modal.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/swiper.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/menu.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main/bootstrap.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main/carousel.css")">
+        <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/logo_icon/vtaxi/logo_vtaxi2.svg")">
+        <script src="@routes.Assets.at("javascripts/jquery-1.9.0.min.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.at("javascripts/jquery/jquery.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.at("javascripts/js-bootstrap/bootstrap.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.at("javascripts/js-bootstrap/bootstrap.bundle.min.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.at("javascripts/home/swiper.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.at("javascripts/jquery-ui.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.at("javascripts/jquery.validate.min.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.at("javascripts/jquery.canvasResize.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.at("javascripts/canvasResize.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.at("javascripts/jquery.exif.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.at("javascripts/Crop/main.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.at("javascripts/Crop/cropper.js")" type="text/javascript"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
+        <script src="@routes.Assets.at("javascripts/html2canvas.js")" type="text/javascript"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+
+</html>
+<script>
+$(document ).ready(function(){
+$("#header" ).load("/header");
+});
+</script>
+
+<body>
+    <header id="header"></header>
+    @content
+    <div class="container-fluid  bg-footer p-0">
+
+        <div class="container-lg pt-5" style="font-size: 15px">
+            <div class="row">
+                <div class="col-12 col-sm-5 col-md-5 ">
+                @if(session().get("lang")==null||session().get("lang")=="vi"){
+                    <h5 class="mt-1 color-white"><strong style="font-size:  large;"> HỢP TÁC XÃ VẬN TẢI  <img style="height: 25px; width : 60px ; margin-top: -7px" src="@routes.Assets.at("images/logo_icon/Logo_Vtaxi.svg")" ></strong></h5>
+                }else{
+                    <h5 class="mt-1 color-white"><strong style="font-size: large;"> <img style="height: 25px; width : 60px ; margin-top: -7px " src="@routes.Assets.at("images/logo_icon/Logo_Vtaxi.svg")" >  TRANSPORT COOPERATIVES</strong></h5>
+                }
+                    <ul class="list-group">
+                    @if(session().get("lang")==null||session().get("lang")=="vi"){
+                        <li class="list-group-item border-0 ps-0" >
+                            <span class="color-white">Tầng 9, số 4 Liễu Giai, Q. Ba Đình, Hà Nội </span>
+                        </li>
+                        <li class="list-group-item border-0 ps-0">
+                            <span class="color-white">Điện thoại: 0243.2013252 </span>
+                        </li>
+                    }else{
+                        <li class="list-group-item border-0 ps-0" >
+                            <span class="color-white">Floor 9, No. 4 Lieu Giai, Ba Dinh District, Hanoi </span>
+                        </li>
+                        <li class="list-group-item border-0 ps-0">
+                            <span class="color-white">Phone: 0243.2013252 </span>
+                        </li>
+                    }
+                        <li class="list-group-item border-0 ps-0">
+                            <div class="row">
+                                <div class="d-flex justify-content-start align-items-center">
+                                @if(session().get("lang")==null||session().get("lang")=="vi"){
+                                    <strong class="pe-1 color-white">Kết nối với chúng tôi:</strong>
+                                }else{
+                                    <strong class="pe-1 color-white">Connect with us:</strong>
+                                }
+                                    <a href="#">
+                                        <img class="pe-1" style="width : 25px ;" src="@routes.Assets.at("images/logo_icon/face.svg")">
+                                    </a>
+                                    <a href="#">
+                                        <img class="pe-1" style="width : 25px ;" src="@routes.Assets.at("images/img-icon/youtube.png")">
+                                    </a>
+
+
+                                </div>
+                            </div>
+                        </li>
+
+                    </ul>
+
+                </div>
+                <div class="col-12 col-sm-3 col-md-3">
+                    <ul class="list-group">
+                    @if(session().get("lang")==null||session().get("lang")=="vi"){
+                        <li class="list-group-item border-0 ps-0">
+                            <a href="#">
+                                <i class="fa fa-caret-right color-white"></i><span class="ps-1 color-white">Hợp tác xã </span>
+                            </a>
+                        </li>
+                        <li class="list-group-item border-0 ps-0">
+                            <a href="#" >
+                                <i class="fa fa-caret-right color-white"></i><span class="ps-1 color-white">Danh sách cổ đông góp vốn</span>
+                            </a>
+                        </li>
+                        <li class="list-group-item border-0 ps-0" >
+                            <a href="/dangkykinhdoanh">
+                                <i class="fa fa-caret-right color-white"></i><span class="ps-1 color-white">Đăng ký kinh doanh </span>
+                            </a>
+
+                        </li>
+
+
+                        <li class="list-group-item border-0 ps-0">
+                            <a href="#">
+                                <i class="fa fa-caret-right color-white"></i><span class="ps-1 color-white">Liên hệ</span>
+                            </a>
+                        </li>
+                    }else{
+                        <li class="list-group-item border-0 ps-0">
+                            <a href="#">
+                                <i class="fa fa-caret-right color-white"></i><span class="ps-1 color-white">Cooperative </span>
+                            </a>
+                        </li>
+                        <li class="list-group-item border-0 ps-0">
+                            <a href="#" >
+                                <i class="fa fa-caret-right color-white"></i><span class="ps-1 color-white">List of shareholders contributing capital</span>
+                            </a>
+                        </li>
+                        <li class="list-group-item border-0 ps-0" >
+                            <a href="/dangkybusiness">
+                                <i class="fa fa-caret-right color-white"></i><span class="ps-1 color-white">Business Registration </span>
+                            </a>
+
+                        </li>
+
+
+                        <li class="list-group-item border-0 ps-0">
+                            <a href="#">
+                                <i class="fa fa-caret-right color-white"></i><span class="ps-1 color-white">Contact</span>
+                            </a>
+                        </li>
+                    }
+                    </ul>
+                </div>
+                <div class="col-12 col-sm-4 col-md-4">
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <h5 class="mt-1 text-white " style="text-align: right">
+                            @if(session().get("lang")==null||session().get("lang")=="vi"){
+                                <strong>Tải ứng dụng VTaxi </strong>
+                            }else{
+                                <strong>Download VTaxi App </strong>
+                            }
+                            </h5>
+                        </div>
+
+                        <div class="col-12 col-md-12 text-center text-md-end align-items-end pt-3 pt-md-0"  >
+                            <div class="row pt-1">
+                                <div class="col-6 col-md-8 d-flex justify-content-center align-content-center flex-column">
+                                    <div>
+                                        <a href="https://play.google.com/store/apps/details?id=com.qr.vtaxi" target="_blank">
+                                            <img class="me-1" src="@routes.Assets.at("images/logo_icon/ggplay.png")" style="width : 100px ;">
+                                        </a>
+                                    </div>
+
+                                    <div>
+                                        <a href="https://apps.apple.com/app/vtaxi-g%E1%BB%8Di-xe-vi%E1%BB%87t/id6443469036" target="_blank">
+                                            <img class="me-1 pt-2" src="@routes.Assets.at("images/logo_icon/appstore.png")" style="width : 100px ;">
+                                        </a>
+
+                                    </div>
+                                </div>
+                                <div class="col-6 col-md-4">
+                                    <img class="w-100 img-thumbnail" src="@routes.Assets.at("images/logo_icon/qr_download_vtaxi.png")" >
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row " style="border-top: 1.5px solid; margin-top: 10px; color: #ffffff;">
+                <div class="d-flex justify-content-center">
+                    @if(session().get("lang")==null||session().get("lang")=="vi"){
+                    <p class="p-3" style="margin: auto; color: #ffffff">©2022 vtaxi.com.vn - Sản phẩm của công ty cổ phần QR Việt Nam</p>
+                    }else{
+                        <p class="p-3" style="margin: auto; color: #ffffff">©2022 vtaxi.com.vn - Product of QR Vietnam Joint Stock Company</p>
+                    }
+                </div>
+            </div>
+
+         </div>
+    </div>
+
+</body>

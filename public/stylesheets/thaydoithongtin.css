@@ -1,0 +1,36 @@
+.table_header_lap{
+    text-align: center;
+    line-height: 3;
+    background: antiquewhite;
+}
+.waplog_title9{
+    font-family: svn-gilroy;
+}
+.waplog_title9>table{
+    width: 100%;
+    margin-bottom: 0;
+
+}
+.table_header{
+    line-height: 3;
+    background: #00abe7;
+    color: white;
+}
+#tbUser,#tbViewReport,#tbQuyenUser{
+    line-height: 2;
+}
+#tbUser>tbody>tr>td>input,#tbQuyenUser>tbody>tr>td>input,#tbViewReport>tbody>tr>td>input{
+    height: auto ;
+    font-size: 18px;
+    margin-top: 1px;
+    line-height: inherit;
+}
+.txtQuyenLap,.txtQuyenDuyet{
+    height: 25px !important;
+    margin-top: 4px !important;
+}
+.iconXoaDuyet{
+    width: 34% !important;
+    cursor: pointer;
+    margin-top: 7px !important;
+}

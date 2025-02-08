@@ -1,0 +1,33 @@
+
+@media only screen and (max-width: 1023px) {
+    .backGroundAudio {
+        height : 1000px;
+        position: relative;
+        background-size: cover;
+        display: block;
+        margin-top: 40%;
+    }
+    .width-Audio{
+        width : 300px;
+    }
+    .backGroundAudioPC{
+        display: none;
+    }
+
+}
+@media only screen and (min-width: 1024px) {
+    .backGroundAudioPC {
+        margin: 0;
+        height : 900px;
+        position: relative;
+        background-size: cover;
+        display: block;
+    }
+    .width-Audio{
+        width : 500px;
+    }
+
+    .backGroundAudio{
+        display: none;
+    }
+}

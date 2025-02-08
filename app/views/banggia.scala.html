@@ -1,0 +1,852 @@
+@(message: String)
+
+@main(message) {
+    <main style="margin-top: 55px" class="main-top p-0"  >
+        <div id="carouselExampleCaptions" class="carousel slide carousel-fade" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active" style="background-image: url('@routes.Assets.at("images/Banner/BG_Banner_01.svg")')">
+                    <div class="container">
+                        <div class="carousel-caption text-start card_frame_1">
+                              <div>
+                            <h2 ><strong style="font-size: smaller"> DỊCH VỤ GỌI XE CÔNG NGHỆ </strong></h2>
+                            <h3><strong style="font-size: large">Vi vu muôn nơi, thảnh thơi về giá</strong></h3>
+
+                              </div>
+                            <p><a class="btn btn-lg buttbn" href="#">Gọi xe ngay</a></p>
+                           @* <div class="col-12 col-sm-4 col-md-4">
+                                <div class="row">
+
+
+                                    <div class="col-12 col-md-12 text-center text-md-end align-items-end pt-3 pt-md-0"  >
+                                        <div class="row pt-1">
+                                            <div class="col-6 col-md-6">
+                                            <img width="111px" class=" img-thumbnail" src="@routes.Assets.at("images/logo_icon/qr_download_vtaxi.png")" >
+                                           </div>
+                                            <div class="col-6 col-md-6 d-flex justify-content-center align-content-center flex-column">
+
+                                                <h5 class="mt-1 text-white text-lg-start" >
+                                                    <strong style="font-size: large ; ">Tải ứng dụng VTaxi </strong>
+                                                </h5>
+                                                <div class="d-flex">
+                                                    <a href="https://play.google.com/store/apps/details?id=com.qr.vtaxi" target="_blank">
+                                                        <img class="me-1" src="@routes.Assets.at("images/logo_icon/ggplay.png")" style="width : 100px ;">
+                                                    </a>
+                                                </div>
+
+                                                <div class="d-flex">
+                                                    <a href="https://apps.apple.com/app/vtaxi-g%E1%BB%8Di-xe-vi%E1%BB%87t/id6443469036" target="_blank">
+                                                        <img class="me-1 pt-2" src="@routes.Assets.at("images/logo_icon/appstore.png")" style="width : 100px ;">
+                                                    </a>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>*@
+                        </div>
+                        <div class="picbanner">
+
+                            <img  src="@routes.Assets.at("images/logo_icon/icon_banner/icon_city.svg")" />
+                            <img class="icon_banner2" src="@routes.Assets.at("images/logo_icon/icon_banner/phone_map.svg")" />
+                            <img class="icon_banner3" src="@routes.Assets.at("images/logo_icon/icon_banner/car.svg")" />
+
+                        </div>
+
+                    </div>
+                    <div class="w-100 m-auto">
+                        <img class="icon_road" src="@routes.Assets.at("images/logo_icon/icon_banner/road.svg")" />
+                        <img class="icon_road2"src="@routes.Assets.at("images/logo_icon/icon_banner/road2.svg")" />
+                    </div>
+                </div>
+
+              @*  <div class="carousel-item" style="background-image: url('@routes.Assets.at("images/Banner/BG_Banner_01.svg")')">
+                    <div class="container">
+                        <div class="carousel-caption text-start">
+                            <h1>Nhận thanh toán qua <span class="redt">QR</span></h1>
+                            <p>Tất cả các ứng dụng ngân hàng, ví điện tử (ZaloPay, MoMo,…), Mobile Money </p>
+
+                            <a href="#">
+                                <p class="bgblue">Phí thấp nhất thị trường</p>
+                            </a>
+
+                        </div>
+                        <div class="picbanner"> <img src="@routes.Assets.at("images/phonescan.png")" />
+
+                        </div>
+                    </div>
+                </div>*@
+
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+        <div id="myCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+
+
+        </div>
+
+        @*---------------------------------------------------------content 1 ------------------------------------------------------------*@
+        <div class="container-lg pt-5 pb-5">
+            <section id="hero">
+                <img style=" filter : blur(9px);position: absolute;z-index: -1;
+                right: 0;
+                -webkit-filter : blur(8px);
+                " src="@routes.Assets.at("images/logo_icon/vtaxi/IC_bg_vtaxi.svg")" id="heroVideoBg">
+
+            </section>
+            <div class="row">
+                <div class="col-12 col-md-6 order-2 order-md-1">
+                    <div class="row ">
+                        <div class="col-12 col-md-12 " >
+                            <h3 class="t-c_blue "><strong>Di chuyển tiện lợi - Không lo về giá </strong> </h3>
+                        </div>
+                        <ul class="list-group " style="font-size: small;">
+                            <li class="list-group-item border-0 d-flex flex-column  ">
+                                <span >VTaxi luôn đảm bảo khách hàng đặt xe với giá cước rẻ nhất thị trường. Với hệ thống đối tác tài xế khắp Việt Nam, VTaxi giúp bạn di chuyển mọi lúc, mọi nơi một cách dễ dàng và nhanh chóng.</span>
+                            </li>
+                                <div class="d-flex w-100 justify-content-between">
+                                    <div class="d-flex flex-column  text-center">
+                                    <img  src="@routes.Assets.at("images/logo_icon/icon/4cho.svg")" width="100px" >
+                                     <strong> Xe 4 chỗ</strong>
+                                    </div>
+                                    <div class="d-flex flex-column  text-center">
+                                        <img  src="@routes.Assets.at("images/logo_icon/icon/taxi.svg")" width="100px">
+                                        <strong> Xe taxi</strong>
+                                    </div>
+                                    <div class="d-flex flex-column  text-center">
+                                        <img  src="@routes.Assets.at("images/logo_icon/icon/7cho.svg")" width="100px">
+                                        <strong> Xe 7 chỗ</strong>
+                                    </div>
+                                    <div class="d-flex flex-column text-center justify-content-lg-between">
+                                        <img  src="@routes.Assets.at("images/logo_icon/icon/xemay.svg")" width="100px">
+                                        <strong> Xe máy</strong>
+                                    </div>
+                                </div>
+                        </ul>
+
+
+                        <div class="col-12 col-md-12 " style="margin-top: 10%" >
+                            <h3 class="t-c_blue "><strong>Trờ thành đối tác tài xế cùng VTaxi</strong> </h3>
+                        </div>
+                        <ul class="list-group " style="font-size: small;">
+                            <li class="list-group-item border-0 d-flex flex-column  ">
+                                <span >Tăng cơ hội, tăng thu nhập cùng VTaxi, đảm bảo quyền lợi của tài xế luôn tốt nhất trong các hãng gọi xe công nghệ. Chúng tôi luôn lắng nghe và thay đổi nhanh chóng để song hành cùng tài xế phục vụ khách hàng tốt nhất.</span>
+                            </li>
+                            <div class="d-flex w-100 " >
+                                <div class="d-flex flex-column  text-center justify-content-lg-between">
+                                    <img  src="@routes.Assets.at("images/logo_icon/icon/icon_car.svg")" width="70px" >
+                                    <strong> Tài xế ô tô</strong>
+                                </div>
+                                <div class="d-flex flex-column  text-center justify-content-lg-between" style="margin-left: 15%">
+                                    <img  src="@routes.Assets.at("images/logo_icon/icon/xemay.svg")" width="100px">
+                                    <strong> Tài xế xe máy</strong>
+                                </div>
+
+                            </div>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 order-1 order-md-2">
+                    <div class="w-100 d-flex justify-content-center">
+                        <img style="width : 42% ;" src="@routes.Assets.at("images/logo_icon/phone/man1.png")" id="heroVideoBg">
+
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+        @*---------------------------------------------------------content 2------------------------------------------------------------*@
+        <div class="container-fluid pt-5  background_home" >
+
+            <div class="container">
+
+                        <div class="sub-title" >
+                            Cước phí dịch vụ vận chuyển
+                        </div>
+                <div class="note-title my-3 text-align-left" >
+                    VTaxi đã triển khai dịch vụ gọi xe tại các tỉnh thành cả nước
+                </div>
+                <div class="tab">
+                    <button class="tablinks active" id="defaultOpen" onclick="openCity(event, 'hanoi') ">Hà Nội</button>
+                    <button class="tablinks" onclick="openCity(event, 'hcm')">Tp. Hồ Chí Minh </button>
+                    <button class="tablinks" onclick="openCity(event, 'dannang')">Thanh Hóa</button>
+                    <button class="tablinks" onclick="openCity(event, 'dannang')">Nghệ An</button>
+                    <button class="tablinks" onclick="openCity(event, 'dannang')">Huế</button>
+                    <button class="tablinks" onclick="openCity(event, 'dannang')">Hải Phòng</button>
+                    <button class="tablinks" onclick="openCity(event, 'dannang')">Quảng Ninh</button>
+
+                    <button class="tablinks" onclick="openCity(event, 'dannang')">Đà Nẵng</button>
+
+                    <button class="tablinks" onclick="openCity(event, 'dannang')">Cần Thơ</button>
+                    <button class="tablinks" onclick="openCity(event, 'dannang')">Bình Định</button>
+
+               @*     <button class="tablinks" onclick="openCity(event, 'dannang')">Đồng Nai</button>
+                    <button class="tablinks" onclick="openCity(event, 'dannang')">Nam Định</button>*@
+                </div>
+
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            <div id="hanoi" class="tabcontent  active">
+
+                <div class="tab tab_xe card_tab-choose_car">
+                    <button class="tablinks_xe tablinks active" id="defaultOpen_Xe" onclick="openXe(event, '4cho') ">
+                        <div class="d-flex flex-column  text-center">
+                              <img  src="@routes.Assets.at("images/logo_icon/icon/4cho.svg")" width="100px" >
+                              <strong > Xe 4 chỗ</strong>
+                         </div>
+                    </button>
+                    <button class="tablinks_xe tablinks" onclick="openXe(event, 'taxi')">
+                               <div class="d-flex flex-column  text-center">
+                              <img  src="@routes.Assets.at("images/logo_icon/icon/taxi.svg")" width="100px">
+                             <strong> Xe taxi</strong>
+                    </div> </button>
+                    <button class="tablinks_xe tablinks" onclick="openXe(event, '7cho')">
+                        <div class="d-flex flex-column  text-center">
+                        <img  src="@routes.Assets.at("images/logo_icon/icon/7cho.svg")" width="100px">
+                        <strong> Xe 7 chỗ</strong>
+                    </div></button>
+                    <button class="tablinks_xe tablinks" onclick="openXe(event, 'xemay')">
+                        <div class="d-flex flex-column text-center justify-content-lg-between">
+                        <img  src="@routes.Assets.at("images/logo_icon/icon/xemay.svg")" width="100px">
+                        <strong> Xe máy</strong>
+                    </div></button>
+
+                </div>
+                    <div class="container ">
+                <div id="4cho" class=" tabcontent_xe  active">
+
+                    <div class="d-flex w-100 m-auto" style="font-size: small">
+                        <div class="container-fluid text-center">
+                            <div class="row">
+                                <h2> <strong style="font-family: system-ui" class="t-c_blue"> VTaxi - xe 4 chỗ </strong></h2>
+                                <span style="    min-height: 100px;  margin-top: 15px;">Nhanh chóng - Thuận tiện - An toàn trên mọi cung đường</span>
+                                <div class="col-12 col-md-6 ">
+                                    <div class="container-fluid p-0">
+                                        <div class="row">
+                                        <div class="col-12 col-md-3 ">
+                                            <div class="d-flex flex-column card_banggia justify-content-between">
+                                                <div class="d-flex flex-column">
+                                                    <strong> Giá mở cửa </strong>
+                                                    <span>2km đầu tiên</span>
+                                                    <span>7 phút đâu tiên</span>
+                                                </div>
+                                                <h2><strong class="t-c_blue" style="font-size: smaller"> 29.000đ </strong></h2>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-3">
+                                            <div class="d-flex flex-column card_banggia justify-content-between">
+                                                <div class="d-flex flex-column">
+                                                    <strong> Giá km tiếp theo </strong>
+                                                    <span>Dưới 12km</span>
+                                                    <span>23 phút tiếp theo</span>
+                                                </div>
+                                                <h2><strong class="t-c_blue" style="font-size: smaller"> 11.500đ </strong></h2>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-3 ">
+                                            <div class="d-flex flex-column card_banggia justify-content-between">
+                                                <div class="d-flex flex-column">
+                                                    <strong> Giá km tiếp theo </strong>
+                                                    <span>Trên 12km</span>
+                                                    <span>60 phút tiếp theo</span>
+                                                </div>
+                                                <h2><strong class="t-c_blue" style="font-size: smaller"> 10.500đ </strong></h2>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-3">
+                                            <div class="d-flex flex-column card_banggia justify-content-between">
+                                                <div class="d-flex flex-column">
+                                                    <strong> Phí thời gian</strong>
+
+                                                </div>
+                                                <h2><strong class="t-c_blue" style="font-size: smaller"> 500đ </strong></h2>
+
+                                            </div>
+                                        </div>
+                                            </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-12 col-md-6 ">
+                                    <div class="container-fluid p-0">
+                                        <div class="row">
+                                        <div class="col-12 col-md-3">
+                                            <div class="d-flex flex-column card_banggia justify-content-between">
+                                                <div class="d-flex flex-column">
+                                                    <strong> Phụ phí đêm</strong>
+                                                    <span>Từ 22:00 - 5:59</span>
+                                                </div>
+                                                <h2><strong class="t-c_blue" style="font-size: smaller"> 20.000đ </strong></h2>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-3">
+                                            <div class="d-flex flex-column card_banggia justify-content-between">
+                                                <div class="d-flex flex-column">
+                                                    <strong>Đổi điểm đến </strong>
+                                                </div>
+                                                <h2><strong class="t-c_blue" style="font-size: smaller"> 10.000đ </strong></h2>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-3">
+                                            <div class="d-flex flex-column card_banggia justify-content-between">
+                                                <div class="d-flex flex-column">
+                                                    <strong> Nhiều điểm đến</strong>
+                                                    <span>Hơn 1 điểm đến</span>
+                                                </div>
+                                                <h2><strong class="t-c_blue" style="font-size: smaller"> 10.000đ </strong></h2>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-3">
+                                            <div class="d-flex flex-column card_banggia justify-content-between">
+                                                <div class="d-flex flex-column">
+                                                    <strong>Phí hẹn giờ</strong>
+                                                    <span>Hẹn giờ đón</span>
+                                                </div>
+                                                <h2><strong class="t-c_blue" style="font-size: smaller"> 10.000đ </strong></h2>
+
+                                            </div>
+                                        </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                 <div class="container p-4">
+                                     <div class="row">
+
+                                         <span > Lưu ý:  </span>
+                                         <span> -Phụ phí ban đêm áp dụng từ 22:00 đến 05:59 mỗi ngày. </span>
+                                         <span> -Phí thời gian sẽ được tính 500đ cho mỗi phút tiếp theo. </span>
+                                         <span> -Gía đã bao gồm các loại thuế theo quy định của pháp luật hiện hành. </span>
+                                     </div>
+
+                                 </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    </div>
+                <div id="taxi" class=" tabcontent_xe ">
+                    <div class="d-flex w-100 m-auto" style="font-size: small">
+                        <div class="container-fluid text-center">
+                            <div class="row">
+                                <h2> <strong style="font-family: system-ui" class="t-c_blue"> VTaxi - xe Taxi </strong></h2>
+                                <span style="    min-height: 100px;  margin-top: 15px;">Đặt xe nhanh chóng - Thuận tiện - An toàn trên mọi cung đường</span>
+                                <div class="col-12 col-md-6 ">
+                                    <div class="container-fluid p-0">
+                                        <div class="row">
+                                            <div class="col-12 col-md-3">
+                                                <div class="d-flex flex-column card_banggia justify-content-between">
+                                                    <div class="d-flex flex-column">
+                                                        <strong> Giá mở cửa </strong>
+                                                        <span>2km đầu tiên</span>
+                                                        <span>7 phút đâu tiên</span>
+                                                    </div>
+                                                    <h2><strong class="t-c_blue" style="font-size: smaller"> 29.000đ </strong></h2>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-3">
+                                                <div class="d-flex flex-column card_banggia justify-content-between">
+                                                    <div class="d-flex flex-column">
+                                                        <strong> Giá km tiếp theo </strong>
+                                                        <span>Dưới 12km</span>
+                                                        <span>23 phút tiếp theo</span>
+                                                    </div>
+                                                    <h2><strong class="t-c_blue" style="font-size: smaller"> 11.500đ </strong></h2>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-3">
+                                                <div class="d-flex flex-column card_banggia justify-content-between">
+                                                    <div class="d-flex flex-column">
+                                                        <strong> Giá km tiếp theo </strong>
+                                                        <span>Trên 12km</span>
+                                                        <span>60 phút tiếp theo</span>
+                                                    </div>
+                                                    <h2><strong class="t-c_blue" style="font-size: smaller"> 10.500đ </strong></h2>
+
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-3">
+                                                <div class="d-flex flex-column card_banggia justify-content-between">
+                                                    <div class="d-flex flex-column">
+                                                        <strong> Phí thời gian</strong>
+
+                                                    </div>
+                                                    <h2><strong class="t-c_blue" style="font-size: smaller"> 500đ </strong></h2>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-12 col-md-6 ">
+                                    <div class="container-fluid p-0">
+                                        <div class="row">
+                                            <div class="col-12 col-md-3">
+                                                <div class="d-flex flex-column card_banggia justify-content-between">
+                                                    <div class="d-flex flex-column">
+                                                        <strong> Phụ phí đêm</strong>
+                                                        <span>Từ 22:00 - 5:59</span>
+                                                    </div>
+                                                    <h2><strong class="t-c_blue" style="font-size: smaller"> 20.000đ </strong></h2>
+
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-3">
+                                                <div class="d-flex flex-column card_banggia justify-content-between">
+                                                    <div class="d-flex flex-column">
+                                                        <strong>Đổi điểm đến </strong>
+                                                    </div>
+                                                    <h2><strong class="t-c_blue" style="font-size: smaller"> 10.000đ </strong></h2>
+
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-3">
+                                                <div class="d-flex flex-column card_banggia justify-content-between">
+                                                    <div class="d-flex flex-column">
+                                                        <strong> Nhiều điểm đến</strong>
+                                                        <span>Hơn 1 điểm đến</span>
+                                                    </div>
+                                                    <h2><strong class="t-c_blue" style="font-size: smaller"> 10.000đ </strong></h2>
+
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-3">
+                                                <div class="d-flex flex-column card_banggia justify-content-between">
+                                                    <div class="d-flex flex-column">
+                                                        <strong>Phí hẹn giờ</strong>
+                                                        <span>Hẹn giờ đón</span>
+                                                    </div>
+                                                    <h2><strong class="t-c_blue" style="font-size: smaller"> 10.000đ </strong></h2>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="container p-4">
+                                    <div class="row">
+
+                                        <span > Lưu ý:  </span>
+                                        <span> -Phụ phí ban đêm áp dụng từ 22:00 đến 05:59 mỗi ngày. </span>
+                                        <span> -Phí thời gian sẽ được tính 500đ cho mỗi phút tiếp theo. </span>
+                                        <span> -Gía đã bao gồm các loại thuế theo quy định của pháp luật hiện hành. </span>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div id="7cho" class=" tabcontent_xe ">
+                    <div class="d-flex w-100 m-auto" style="font-size: small">
+                        <div class="container-fluid text-center">
+                            <div class="row">
+                                <h2> <strong style="font-family: system-ui" class="t-c_blue"> VTaxi - xe 7 chỗ </strong></h2>
+                                <span style="    min-height: 100px;  margin-top: 15px;">Lựa chọn hoàn hảo dành cho gia đình & nhóm đông người</span>
+                                <div class="col-12 col-md-6 ">
+                                    <div class="container-fluid p-0">
+                                        <div class="row">
+                                            <div class="col-12 col-md-3">
+                                                <div class="d-flex flex-column card_banggia justify-content-between">
+                                                    <div class="d-flex flex-column">
+                                                        <strong> Giá mở cửa </strong>
+                                                        <span>2km đầu tiên</span>
+                                                        <span>7 phút đâu tiên</span>
+                                                    </div>
+                                                    <h2><strong class="t-c_blue" style="font-size: smaller"> 34.000đ </strong></h2>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-3">
+                                                <div class="d-flex flex-column card_banggia justify-content-between">
+                                                    <div class="d-flex flex-column">
+                                                        <strong> Giá km tiếp theo </strong>
+                                                        <span>Dưới 12km</span>
+                                                        <span>23 phút tiếp theo</span>
+                                                    </div>
+                                                    <h2><strong class="t-c_blue" style="font-size: smaller"> 12.000đ </strong></h2>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-3">
+                                                <div class="d-flex flex-column card_banggia justify-content-between">
+                                                    <div class="d-flex flex-column">
+                                                        <strong> Giá km tiếp theo </strong>
+                                                        <span>Trên 12km</span>
+                                                        <span>60 phút tiếp theo</span>
+                                                    </div>
+                                                    <h2><strong class="t-c_blue" style="font-size: smaller"> 11.000đ </strong></h2>
+
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-3">
+                                                <div class="d-flex flex-column card_banggia justify-content-between">
+                                                    <div class="d-flex flex-column">
+                                                        <strong> Phí thời gian</strong>
+
+                                                    </div>
+                                                    <h2><strong class="t-c_blue" style="font-size: smaller"> 500đ </strong></h2>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-12 col-md-6 ">
+                                    <div class="container-fluid p-0">
+                                        <div class="row">
+                                            <div class="col-12 col-md-3">
+                                                <div class="d-flex flex-column card_banggia justify-content-between">
+                                                    <div class="d-flex flex-column">
+                                                        <strong> Phụ phí đêm</strong>
+                                                        <span>Từ 22:00 - 5:59</span>
+                                                    </div>
+                                                    <h2><strong class="t-c_blue" style="font-size: smaller"> 20.000đ </strong></h2>
+
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-3">
+                                                <div class="d-flex flex-column card_banggia justify-content-between">
+                                                    <div class="d-flex flex-column">
+                                                        <strong>Đổi điểm đến </strong>
+                                                    </div>
+                                                    <h2><strong class="t-c_blue" style="font-size: smaller"> 10.000đ </strong></h2>
+
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-3">
+                                                <div class="d-flex flex-column card_banggia justify-content-between">
+                                                    <div class="d-flex flex-column">
+                                                        <strong> Nhiều điểm đến</strong>
+                                                        <span>Hơn 1 điểm đến</span>
+                                                    </div>
+                                                    <h2><strong class="t-c_blue" style="font-size: smaller"> 10.000đ </strong></h2>
+
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-3">
+                                                <div class="d-flex flex-column card_banggia justify-content-between">
+                                                    <div class="d-flex flex-column">
+                                                        <strong>Phí hẹn giờ</strong>
+                                                        <span>Hẹn giờ đón</span>
+                                                    </div>
+                                                    <h2><strong class="t-c_blue" style="font-size: smaller"> 10.000đ </strong></h2>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="container p-4">
+                                    <div class="row">
+
+                                        <span > Lưu ý:  </span>
+                                        <span> -Phụ phí ban đêm áp dụng từ 22:00 đến 05:59 mỗi ngày. </span>
+                                        <span> -Phí thời gian sẽ được tính 550đ cho mỗi phút tiếp theo. </span>
+                                        <span> -Gía đã bao gồm các loại thuế theo quy định của pháp luật hiện hành. </span>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div id="xemay" class=" tabcontent_xe ">
+                    <div class="d-flex w-100 m-auto" style="font-size: small">
+                        <div class="container-fluid text-center">
+                            <div class="row">
+                                <h2> <strong style="font-family: system-ui" class="t-c_blue"> VTaxi - xe máy </strong></h2>
+                                <span style="    min-height: 100px;  margin-top: 15px;">Di chuyển thuận tiện - Đưa bạn đến bất cứ nơi đâu</span>
+                                <div class="col-12 col-md-6 ">
+                                    <div class="container-fluid p-0">
+                                        <div class="row">
+                                            <div class="col-12 col-md-3">
+                                                <div class="d-flex flex-column card_banggia justify-content-between">
+                                                    <div class="d-flex flex-column">
+                                                        <strong> Giá mở cửa </strong>
+                                                        <span>2km đầu tiên</span>
+                                                        <span>7 phút đâu tiên</span>
+                                                    </div>
+                                                    <h2><strong class="t-c_blue" style="font-size: smaller"> 13.050đ </strong></h2>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-3">
+                                                <div class="d-flex flex-column card_banggia justify-content-between">
+                                                    <div class="d-flex flex-column">
+                                                        <strong> Giá km tiếp theo </strong>
+                                                        <span>Dưới 12km</span>
+                                                        <span>23 phút tiếp theo</span>
+                                                    </div>
+                                                    <h2><strong class="t-c_blue" style="font-size: smaller"> 5.175đ </strong></h2>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-3">
+                                                <div class="d-flex flex-column card_banggia justify-content-between">
+                                                    <div class="d-flex flex-column">
+                                                        <strong> Giá km tiếp theo </strong>
+                                                        <span>Trên 12km</span>
+                                                        <span>60 phút tiếp theo</span>
+                                                    </div>
+                                                    <h2><strong class="t-c_blue" style="font-size: smaller"> 4.725đ </strong></h2>
+
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-3">
+                                                <div class="d-flex flex-column card_banggia justify-content-between">
+                                                    <div class="d-flex flex-column">
+                                                        <strong> Phí thời gian</strong>
+
+                                                    </div>
+                                                    <h2><strong class="t-c_blue" style="font-size: smaller"> 500đ </strong></h2>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-12 col-md-6 ">
+                                    <div class="container-fluid p-0">
+                                        <div class="row">
+                                            <div class="col-12 col-md-3">
+                                                <div class="d-flex flex-column card_banggia justify-content-between">
+                                                    <div class="d-flex flex-column">
+                                                        <strong> Phụ phí đêm</strong>
+                                                        <span>Từ 22:00 - 5:59</span>
+                                                    </div>
+                                                    <h2><strong class="t-c_blue" style="font-size: smaller"> 20.000đ </strong></h2>
+
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-3">
+                                                <div class="d-flex flex-column card_banggia justify-content-between">
+                                                    <div class="d-flex flex-column">
+                                                        <strong>Đổi điểm đến </strong>
+                                                    </div>
+                                                    <h2><strong class="t-c_blue" style="font-size: smaller"> 10.000đ </strong></h2>
+
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-3">
+                                                <div class="d-flex flex-column card_banggia justify-content-between">
+                                                    <div class="d-flex flex-column">
+                                                        <strong> Nhiều điểm đến</strong>
+                                                        <span>Hơn 1 điểm đến</span>
+                                                    </div>
+                                                    <h2><strong class="t-c_blue" style="font-size: smaller"> 10.000đ </strong></h2>
+
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-3">
+                                                <div class="d-flex flex-column card_banggia justify-content-between">
+                                                    <div class="d-flex flex-column">
+                                                        <strong>Phí hẹn giờ</strong>
+                                                        <span>Hẹn giờ đón</span>
+                                                    </div>
+                                                    <h2><strong class="t-c_blue" style="font-size: smaller"> 10.000đ </strong></h2>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="container p-4">
+                                    <div class="row">
+                                        <span > Lưu ý:  </span>
+                                        <span> -Phụ phí ban đêm áp dụng từ 22:00 đến 05:59 mỗi ngày. </span>
+                                        <span> -Phí thời gian sẽ được tính 500đ cho mỗi phút tiếp theo. </span>
+                                        <span> -Gía đã bao gồm các loại thuế theo quy định của pháp luật hiện hành. </span>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                    </div>
+                @*<div class="swiper-container two">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide w-50">
+                            <div class="slider-image img-thumbnail d-flex flex-column ">
+                                <div class=" m-auto">
+                                <img width="100px" class="img-thumbnail" src="@routes.Assets.at("images/logo_icon/icon/4cho.svg")" alt="slide 1">
+                                </div>
+                                <div class="m-auto  text-center">
+                                <h2>VTaxi 4 Chỗ</h2>
+                                    <span> Thuận tiện di chuyển - Giá tốt nhất - Vi vu muôn nơi   </span>
+
+                                </div>
+                                <div class="d-flex w-100 m-auto">
+                                    <div class="container-fluid text-center">
+                                          <div class="row">
+                                            <div class="col-12 col-md-2">
+                                                <div class="d-flex flex-column card_banggia justify-content-between">
+                                                    <div class="d-flex flex-column">
+                                                       <strong> Giá mở cửa (2km đầu tiên)</strong>
+                                                        <strong>5 phút đâu tiên(*)</strong>
+                                                    </div>
+                                                       <h2> 29.000đ</h2>
+                                                   </div>
+                                            </div>
+                                              <div class="col-12 col-md-2">
+                                                  <div class="d-flex flex-column card_banggia justify-content-between">
+                                                      <div class="d-flex flex-column">
+                                                          <strong> Giá km tiếp theo dưới 12km</strong>
+                                                          <strong>23 phút tiếp theo </strong>
+                                                      </div>
+                                                      <h2> 11.500đ</h2>
+                                                  </div>
+                                              </div>
+                                              <div class="col-12 col-md-2">
+                                                  <div class="d-flex flex-column card_banggia justify-content-between">
+                                                      <div class="d-flex flex-column">
+                                                          <strong> Giá km tiếp theo trên 12km</strong>
+                                                          <strong>60 phút tiếp theo </strong>
+                                                      </div>
+                                                      <h2> 10.500đ</h2>
+                                                  </div>
+                                              </div>
+                                              <div class="col-12 col-md-2">
+                                                  <div class="d-flex flex-column card_banggia justify-content-between">
+                                                      <div class="d-flex flex-column">
+                                                          <strong> Phụ phí ban đêm</strong>
+                                                      </div>
+                                                      <h2> 20.000đ</h2>
+                                                  </div>
+                                              </div>
+                                              <div class="col-12 col-md-2">
+                                                  <div class="d-flex flex-column card_banggia justify-content-between">
+                                                      <div class="d-flex flex-column">
+                                                          <strong>Thay đổi điểm đến </strong>
+                                                      </div>
+                                                      <h2> 10.000đ</h2>
+                                                  </div>
+                                              </div>
+                                              <div class="col-12 col-md-2">
+                                                  <div class="d-flex flex-column card_banggia justify-content-between">
+                                                      <div class="d-flex flex-column">
+                                                          <strong> Chuyến đi nhiều điểm đến</strong>
+                                                      </div>
+                                                      <h2> 10.000đ</h2>
+                                                  </div>
+                                              </div>
+                                              <div class="col-12 col-md-2">
+                                                  <div class="d-flex flex-column card_banggia justify-content-between">
+                                                      <div class="d-flex flex-column">
+                                                          <strong>Phí hẹn giờ</strong>
+                                                      </div>
+                                                      <h2> 10.000đ</h2>
+                                                  </div>
+                                              </div>
+
+                                           </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="slider-image">
+                                <img class="img-thumbnail" src="@routes.Assets.at("images/logo_icon/icon/taxi.svg")" alt="slide 2">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="slider-image">
+                                <img class="img-thumbnail" src="@routes.Assets.at("images/logo_icon/icon/7cho.svg")"alt="slide 3">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="slider-image">
+                                <img class="img-thumbnail" src="@routes.Assets.at("images/logo_icon/icon/xemay.svg")" alt="slide 4">
+                            </div>
+                        </div>
+
+                            <!-- Add Pagination -->
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>*@
+            </div>
+
+            <div id="hcm" class="tabcontent">
+                <h3>Tp HCM</h3>
+                <p></p>
+            </div>
+
+            <div id="dannang" class="tabcontent">
+                <h3>Đà nẵng</h3>
+                <p></p>
+            </div>
+        </div>
+    </main>
+       @*<script>*@
+
+           @*$(".list-group-item" ).on('click',function(){*@
+                @*$('.choose_huongdan' ).removeClass("active_choose-add") ;*@
+                 @*$(this).addClass( "active_choose-add" ) ;*@
+
+
+           @*});*@
+       @*</script>*@
+    <script>
+    function openCity(evt, cityName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active";
+    }
+    document.getElementById("defaultOpen").click();
+
+    function openXe(evt, Xe) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent_xe");
+    for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks_xe");
+    for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(Xe).style.display = "block";
+    evt.currentTarget.className += " active";
+    }
+    document.getElementById("defaultOpen_Xe").click();
+    </script>
+}

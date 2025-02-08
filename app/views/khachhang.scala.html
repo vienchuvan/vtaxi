@@ -1,0 +1,150 @@
+@(message: String)
+
+@main(message) {
+    <main class="main-top p-0" style="margin-top: 50px">
+
+     @*   <div id="carouselExampleCaptions" class="carousel slide carousel-fade" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active" style="background-image: url('@routes.Assets.at("images/Banner/BG_Banner_01.svg")')">
+                    <div class="container">
+                        <div class="carousel-caption text-start">
+
+                            <h1 style="  font-family: auto">Ứng dụng gọi xe<span style="font-family: auto; font-size: smaller" class="redt">  Siêu tiết kiệm</span></h1>
+
+                            <p><a class="btn btn-lg buttbn" href="#">Đặt ngay</a></p>
+
+                        </div>
+                        <div class="picbanner"> <img src="@routes.Assets.at("images/Banner/IC_bg_vtaxi.svg")" />
+
+                        </div>
+                    </div>
+                </div>
+              *@@*  <div class="carousel-item" style="background-image: url('@routes.Assets.at("images/Banner/BG_Banner_01.svg")')">
+                    <div class="container">
+                        <div class="carousel-caption text-start">
+                            <h1>Nhận thanh toán qua <span class="redt">QR</span></h1>
+                            <p>Tất cả các ứng dụng ngân hàng, ví điện tử (ZaloPay, MoMo,…), Mobile Money </p>
+
+                            <a href="#">
+                                <p class="bgblue">Phí thấp nhất thị trường</p>
+                            </a>
+
+                        </div>
+                        <div class="picbanner"> <img src="@routes.Assets.at("images/phonescan.png")" />
+
+                        </div>
+                    </div>
+                </div>*@@*
+
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+        <div id="myCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+
+
+        </div>*@
+
+        @*---------------------------------------------------------content 1 ------------------------------------------------------------*@
+        <div class="container-lg pt-5 pb-5">
+            <section id="hero">
+                <img style=" filter : blur(9px);position: absolute;z-index: -1;
+                right: 0;
+                -webkit-filter : blur(8px);
+                " src="@routes.Assets.at("images/logo_icon/vtaxi/IC_bg_vtaxi.svg")" id="heroVideoBg">
+
+            </section>
+            <div class="row">
+                <div class="col-12 col-md-6 order-2 order-md-1">
+                    <div class="row ">
+                        <div class="col-12 col-md-12 " >
+                            <h3 class="t-c_blue">Hướng dẫn sử dụng ứng dụng  <img style="width : 70px ;" src="@routes.Assets.at("images/logo_icon/vtaxi/logo_vtaxi2.svg")" id="heroVideoBg"> </h3>
+                        </div>
+                        <ul class="list-group frame_home-huongdan" style="font-size: larger;">
+                            <li class="list-group-item border-0 d-flex flex-column choose_huongdan active_choose-add ">
+                                <strong class="t-c_blue click-text">Bước 1:</strong>
+                                <span >Nhập điểm đến</span>
+                            </li>
+                            <li class="list-group-item border-0 d-flex flex-column choose_huongdan ">
+                                <strong style="color: #279CEB">Bước 2:</strong>
+                                <span >Chọn loại xe <strong style="color: #279CEB">4 chỗ/ Taxi/ 7 chỗ/ Xe máy</strong></span>
+                            </li>
+                            <li class="list-group-item border-0 d-flex flex-column choose_huongdan ">
+                                <strong style="color: #279CEB">Bước 3:</strong>
+                                <span >Chọn hình thức thanh toán(Tiền mặt, QR hoặc thẻ đa năng)</span>
+                            </li>
+                            <li class="list-group-item border-0 d-flex flex-column choose_huongdan ">
+                                <strong style="color: #279CEB">Bước 4:</strong>
+                                <span >Nhấp <strong style="color: #279CEB; cursor: pointer">Đặt xe</strong> để được hệ thống tìm kiếm tài xế gần nhất</span>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 order-1 order-md-2">
+                    <div class="w-100 d-flex justify-content-center">
+                        <img style=" z-index: 5; position: absolute;" src="@routes.Assets.at("images/logo_icon/bg_phone.png")" id="heroVideoBg">
+
+                    </div>
+                    <div class="w-100 d-flex justify-content-center">
+                        <img class="img_huongdan" src="@routes.Assets.at("images/logo_icon/vtaxi/home_vtaxi.svg")" id="heroVideoBg">
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        @*---------------------------------------------------------content 2------------------------------------------------------------*@
+
+    </main>
+
+    <script>
+        $(document ).ready(function(){
+           $('body').on('click', '.list-group-menu', function() {
+           $('.choose_menu' ).removeClass("active_choose-menu") ;
+           $(this).addClass("active_choose-menu") ;
+           });
+        })
+    </script>
+       <script>
+           $(".list-group-item" ).on('click',function(){
+                $('.choose_huongdan' ).removeClass("active_choose-add") ;
+                 $(this).addClass( "active_choose-add" ) ;
+           });
+       </script>
+    <script>
+    function openCity(evt, cityName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active";
+    }
+    document.getElementById("defaultOpen").click();
+
+
+    </script>
+}

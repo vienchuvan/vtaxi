@@ -1,0 +1,125 @@
+@(message: String)
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="renderer" content="webkit">
+        <title>EZOPEN</title>
+
+        <style>
+        body {
+        margin: 0;
+        }
+        .hint {
+        font-size: 14px;
+        line-height: 3em;
+        color: gray;
+        }
+
+        #url {
+        width: 100%;
+        }
+
+        .btn-container {
+        margin: 10px;
+        }
+
+        #myPlayer {
+        max-width: 600px;
+        width: 100%;
+        }
+        </style>
+
+        <script src="@routes.Assets.at("javascripts/jquery-1.9.0.min.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.at("javascripts/jquery/jquery.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.at("javascripts/html2canvas.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.at("javascripts/ezuikit.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.at("javascripts/js/TestCamera.js")" type="text/javascript"></script>
+
+
+    </head>
+<body>
+
+
+
+   <!-- UIkit CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@@3.15.13/dist/css/uikit.min.css" />
+
+    <!-- UIkit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@@3.15.13/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@@3.15.13/dist/js/uikit-icons.min.js"></script>
+   <div style="width : 100% ; display: none">
+
+@*
+       <textarea id="url2" placeholder="Please input Ezopen url">ezopen://open.ezviz.com/K22834441/1.hd.live,ezopen://open.ezviz.com/K22834441/1.hd.live,ezopen://open.ezviz.com/K22834441/1.hd.live,ezopen://open.ezviz.com/K22834441/1.hd.live</textarea>
+*@
+
+
+    <textarea id="accessToken" placeholder="Please input AccessToken, It is recommended use restricted permission token in production environments">at.bq3zzc7y51sqj96tam7l9h4a10xonzbf-26kqg8iffd-1h0mjjq-jejbve0kp</textarea>
+     </div>
+
+   @* <select id="url">
+        <option value="ezopen://open.ezviz.com/K23079542/1.hd.live,ezopen://open.ezviz.com/K22834430/1.hd.live,ezopen://open.ezviz.com/K22834431/1.hd.live,ezopen://open.ezviz.com/K22834321/1.hd.live"> Tất cả</option>
+        <option value="ezopen://open.ezviz.com/K23079542/1.hd.live"> 162A Hoàng Hoa Thám (cổng ra)</option>
+        <option value="ezopen://open.ezviz.com/K22834430/1.hd.live"> 162A Hoàng Hoa Thám (cổng vào)</option>
+        <option value="ezopen://open.ezviz.com/K22834321/1.hd.live"> 151 Thụy Khuê (cổng ra)</option>
+        <option value="ezopen://open.ezviz.com/K22834431/1.hd.live"> 151 Thụy Khuê (cổng vào)</option>
+
+    </select>*@
+  @* <select id="url2">
+        <option value="ezopen://open.ezviz.com/K22834446/1.hd.live"> 162A Hoàng Hoa Thám (cổng vào)</option>
+        <option value="ezopen://open.ezviz.com/K22834446/1.hd.live"> 151 Thụy Khuê (cổng ra)</option>
+        <option value="ezopen://open.ezviz.com/K22834446/1.hd.live"> 151 Thụy Khuê (cổng vào)</option>
+        <option value="ezopen://open.ezviz.com/K22834446/1.hd.live">test</option>
+        <option value="ezopen://open.ezviz.com/K22834446/1.hd.live,ezopen://GIXSVI@@open.ezviz.com/K22834446/1.hd.live,ezopen://GIXSVI@@open.ezviz.com/K22834446/1.hd.live,ezopen://GIXSVI@@open.ezviz.com/K22834446/1.hd.live"> Tất cả</option>
+    </select>*@
+  @*  <select id="url2">
+        <option value="K22834446"> 162A Hoàng Hoa Thám (cổng vào)</option>
+
+    </select>*@
+    <select id="url2">
+     @*   <option value="K23079542"> 162A Hoàng Hoa Thám (cổng ra)</option>
+        <option value="K22834430"> 162A Hoàng Hoa Thám (cổng vào)</option>
+        <option value="K22834321"> 151 Thụy Khuê (cổng ra)</option>
+        <option value="K22834430"> 151 Thụy Khuê (cổng vào)</option>
+        <option value="ezopen://open.ezviz.com/K22834446/1.hd.live">test</option>*@
+        <option value="ezopen://open.ezviz.com/K22834441/1.hd.live,ezopen://open.ezviz.com/K22834441/1.hd.live,ezopen://open.ezviz.com/K22834441/1.hd.live,ezopen://open.ezviz.com/K22834441/1.hd.live,ezopen://open.ezviz.com/K22834441/1.hd.live,ezopen://open.ezviz.com/K22834441/1.hd.live,ezopen://open.ezviz.com/K22834441/1.hd.live,ezopen://open.ezviz.com/K22834441/1.hd.live,ezopen://open.ezviz.com/K22834441/1.hd.live,ezopen://open.ezviz.com/K22834441/1.hd.live,ezopen://open.ezviz.com/K22834441/1.hd.live,ezopen://open.ezviz.com/K22834441/1.hd.live,ezopen://open.ezviz.com/K22834441/1.hd.live,ezopen://open.ezviz.com/K22834441/1.hd.live,ezopen://open.ezviz.com/K22834441/1.hd.live,ezopen://open.ezviz.com/K22834441/1.hd.live"> Tất cả</option>
+    </select>
+
+    <input type="datetime-local" id="begin" value=""  placeholder="chọn ngày bắt đầu">
+    <input type="text" id="time_begin" value=""  placeholder="chọn thời gian bắt đầu">
+    <input type="datetime-local" id="end" value="" placeholder="chọn thời gian kết thúc">
+    <input type="text" id="time_end" value=""  placeholder="chọn thời gian kết thúc">
+    @*<div style="width : 100% ; display: block" >
+        <textarea id="url" placeholder="Please input Ezopen url">ezopen://open.ezviz.com/K23079542/1.live,ezopen://open.ezviz.com/K22834430/1.live,ezopen://open.ezviz.com/K22834431/1.live,ezopen://open.ezviz.com/K22834321/1.live</textarea>
+        <textarea id="accessToken" placeholder="Please input AccessToken, It is recommended use restricted permission token in production environments">at.0dhdkd2i5vmg2qn9a4i7l8xh7nl7e3n7-2vdz4grmpw-1x1ra6u-xpc9yfjhd</textarea>
+    </div>*@
+    <div class="btn-container">
+        <button id="init">Play</button>
+        <button id="stop">End</button>
+        <button type="button" id="capturePicture">Screenshot</button>
+        <button id="startSave" onclick="startSave();">Start recording</button>
+        <button id="stopSave" onclick="stopSave();">End recording</button>
+        <button id="playback">PlayBack</button>
+    </div>
+      <div id="testcam">
+    <div style="position: absolute; z-index:2; background: beige ">
+        <p> 162A Hoàng Hoa Thám(Cổng Ra)</p>
+    </div>
+    <div id="playWind" style="width: 1200px; height: 800px; z-index:1">
+
+    </div>
+      </div>
+              <div id="preview" >
+
+              </div>
+
+
+
+
+
+</body>
+    </html>

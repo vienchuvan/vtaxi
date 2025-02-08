@@ -1,0 +1,60 @@
+@(message: String)
+
+@main(message) {
+    <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/home.css")">
+    <main class="main-top m-top p-0" >
+
+    <div class="col-12 " style="min-height: 600px">
+               <div class="container">
+                   <div class="row">
+                   @if(session().get("lang")==null||session().get("lang")=="vi"){
+                       <h3 style="text-align: center; color:#279CEB ;"> ĐĂNG KÝ KINH DOANH </h3>
+                       <strong><a href="https://vimass.vn/vmbank/services/media/viewFile?id=22_11_1_Dang_ky_kinh_doanh_HTX_VTaxi.pdf" target="_blank">- ĐĂNG KÝ KINH DOANH HỢP TÁC XÃ VẬN TẢI VTAXI </a> </strong >
+                   }else{
+                       <h3 style="text-align: center; color:#279CEB ;">BUSINESS REGISTRATION</h3>
+                       <strong><a href="https://vimass.vn/vmbank/services/media/viewFile?id=22_11_1_Dang_ky_kinh_doanh_HTX_VTaxi.pdf" target="_blank">- BUSINESS REGISTRATION OF VTAXI TRANSPORT COOPERATION </a> </strong >
+                   }
+                             <ul style="font-size: smaller;   line-height: 3;  font-weight: 600; list-style-type: none;">
+                                 <table id="customers">
+                                     <tr>
+                                     @if(session().get("lang")==null||session().get("lang")=="vi"){
+                                         <th>Thu chi hộ</th>
+                                         <th>Phát triển phần mềm</th>
+                                     }else{
+                                         <th>Revenue and payment</th>
+                                         <th>Software Development</th>
+                                     }
+                                     </tr>
+                                     <tr>
+                                     @if(session().get("lang")==null||session().get("lang")=="vi"){
+                                         <td> <span><a href="https://vimass.vn/vmbank/services/media/viewFile?id=GIAYPHEP-VIMASS.pdf" target="_blank">- GIẤY PHÉP TRUNG GIAN THANH TOÁN CỦA VIMASS </a> </span></td>
+                                     }else{
+                                         <td> <span><a href="https://vimass.vn/vmbank/services/media/viewFile?id=GIAYPHEP-VIMASS.pdf" target="_blank">- VIMASS PAYING INTERmediary LICEN </a> </span></td>
+                                     }
+                                         <td></td>
+                                     </tr>
+                                     <tr>
+                                     @if(session().get("lang")==null||session().get("lang")=="vi"){
+                                         <td><span><a href="https://vimass.vn/vmbank/services/media/viewFile?id=22_10_11_Dang_ky_kinh_doanh_Vimass_22.pdf" target="_blank">- ĐĂNG KÝ KINH DOANH CÔNG TY CỔ PHẦN NỀN DỊCH VỤ NỀN DI ĐỘNG VIỆT NAM </a> </span></td>
+                                         <td><span><a href="https://vimass.vn/vmbank/services/media/viewFile?id=DKKD_QRVN.pdf" target="_blank">- ĐĂNG KÝ KINH DOANH CÔNG TY CỔ PHẦN QR VIỆT NAM </a> </span></td>
+                                     }else{
+                                         <td><span><a href="https://vimass.vn/vmbank/services/media/viewFile?id=22_10_11_Dang_ky_tinh_doanh_Vimass_22.pdf" target="_blank">- BUSINESS REGISTRATION FOR SERVICES CORPORATION VIETNAM MOBILE BACKGROUND </a> </span></td>
+                                         <td><span><a href="https://vimass.vn/vmbank/services/media/viewFile?id=DKKD_QRVN.pdf" target="_blank">- BUSINESS REGISTRATION OF QR VIET CORPORATION NAM </a> </span></td>
+                                     }
+                                     </tr>
+                                 </table>
+                              @*   <li style="margin-left: 5px; border-bottom: 1px solid #f1f1f1;   "> <span><a href="https://vimass.vn/vmbank/services/media/viewFile?id=DKKD_QRVN.pdf" target="_blank">- ĐĂNG KÝ KINH DOANH CÔNG TY CỔ PHẦN QR VIỆT NAM ĐỐI TÁC PHÁT TRIỂN PHẦN MỀM PHÁT TRIỂN ỨNG DỤNG CHO VTAXI </a> </span></li>
+                                 <li style="margin-left: 5px; border-bottom: 1px solid #f1f1f1;   "> <span><a href="https://vimass.vn/vmbank/services/media/viewFile?id=GIAYPHEP-VIMASS.pdf" target="_blank">- GIẤY PHÉP TRUNG GIAN THANH TOÁN CỦA VIMASS - ĐƠN VỊ THU CHI HỘ CHO VTAXI</a> </span></li>
+                                 <li style="margin-left: 5px; border-bottom: 1px solid #f1f1f1;   "> <span><a href="https://vimass.vn/vmbank/services/media/viewFile?id=22_10_11_Dang_ky_kinh_doanh_Vimass_22.pdf" target="_blank">- ĐĂNG KÝ KINH DOANH CÔNG TY CỔ PHẦN NỀN DỊCH VỤ NỀN DI ĐỘNG VIỆT NAM </a> </span></li>*@
+
+                              @*   <li style="margin-left: 5px; border-bottom: 1px solid #f1f1f1;   "> <span><a href="https://vimass.vn/vmbank/services/media/viewFile?id=22110_hop_dong_hop_kinh_doanh_giua_cong_ty_va_hop_tac_xac_van_tai_Vtaxi.pdf" target="_blank">- HỢP ĐỒNG HỢP TÁC KINH DOANH GIỮA CÔNG TY VÀ HỢP TÁC XÃ VẬN TẢI VTAXI</a> </span></li>
+                                 <li style="margin-left: 5px; border-bottom: 1px solid #f1f1f1;   "><span><a href="https://vimass.vn/vmbank/services/media/viewFile?id=221110_hop_dong-hop_tac_giua_hop_tac_xa_van_tai_va_hop_tac_xa_van_tai_VTaxi.pdf" target="_blank">- HỢP ĐỒNG HỢP TÁC KINH DOANH GIỮA HỢP TÁC XÃ VẬN TẢI VÀ HỢP TÁC XÃ VẬN TẢI VTAXI</a> </span></li>*@
+                             </ul>
+                   </div>
+               </div>
+    </div>
+
+
+    </main>
+
+}

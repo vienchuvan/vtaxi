@@ -1,0 +1,30 @@
+@(message: String)
+
+@main(message) {
+
+    <main class="main-top m-top p-0" >
+
+        <div class="col-12 " style="min-height: 600px">
+               <div class="container">
+                   <div class="row">
+                   @if(session().get("lang")==null||session().get("lang")=="vi"){
+                       <h3 style="text-align: center; color:#279CEB ;     "> THÔNG TƯ - PHÁP LÝ</h3>
+                   }else{
+                       <h3 style="text-align: center; color:#279CEB ;     "> NOTICE - LEGAL</h3>
+                   }
+
+                       <ul style="font-size: smaller;   line-height: 3;  font-weight: 600; list-style-type: none;">
+                       @if(session().get("lang")==null||session().get("lang")=="vi"){
+                                 <li style="margin-left: 5px; border-bottom: 1px solid #f1f1f1;"> <span><a href="https://vimass.vn/vmbank/services/media/viewFile?id=40_2021_TT-BTC_477635.pdf" target="_blank">- THÔNG TƯ SỐ 40/2021/TT-BTC: HƯỚNG DẪN THUẾ GIÁ TRỊ GIA TĂNG, THUẾ THU NHẬP CÁ NHÂN VÀ QUẢN LÝ THUẾ ĐỐI VỚI HỘ KINH DOANH, CÁ NHÂN KINH DOANH</a> </span></li>
+                       }else{
+                           <li style="margin-left: 5px; border-bottom: 1px solid #f1f1f1;"> <span><a href="https://vimass.vn/vmbank/services/media/viewFile?id=40_2021_TT-BTC_477635.pdf" target="_blank">- Circular No. 40/2021/TT-BTC: INSTRUCTIONS ON VALUE-added tax, PERSONAL INCOME TAX AND TAX MANAGEMENT FOR BUSINESS HOUSEHOLDS, BUSINESS PERSONS</a> </span></li>
+                       }
+                             </ul>
+                   </div>
+               </div>
+    </div>
+
+
+    </main>
+    
+}

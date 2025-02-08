@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <p id="demo"></p>
+        <script>
+        var str =window.navigator.userAgent;
+        var str1="";
+        if(str.indexOf("Win") != -1){
+        str1 = "https://http://vtaxi.com.vn/";
+        }else if(str.indexOf("Android") != -1){
+        // str1 = "Android";
+        str1 = "https://play.google.com/store/apps/details?id=com.qr.vtaxi";
+        }else if(str.indexOf("iPhone") != -1){
+        str1 = "https://apps.apple.com/app/vtaxi-g%E1%BB%8Di-xe-vi%E1%BB%87t/id6443469036";
+        }
+        location.href =str1;
+        console.log(str);
+        // document.getElementById("demo").innerHTML = "Thiết bị"+ str1;
+        </script>
+
+    </body>
+</html>
+
+

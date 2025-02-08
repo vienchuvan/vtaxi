@@ -1,0 +1,436 @@
+@(message: String,  info:controllers.account.ThongTinCaNhan , listXe: String)
+@main(message) {
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/Toado/Dichuyen.css")">
+    <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/Toado/Toado.css")">
+    <script src="@routes.Assets.at("javascripts/Map/Datxe.js")"></script>
+    <script src="@routes.Assets.at("javascripts/Map/add_home.js")"></script>
+    <script src="@routes.Assets.at("javascripts/Map/add_gannhat.js")"></script>
+    <script src="@routes.Assets.at("javascripts/Map/add_coquan.js")"></script>
+
+   @* <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBlFdnYFlrqq9-2NzLEgzAmyYOGmILp_cU&callback=myMap&libraries=geometry,places&v=weekly"></script>*@
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCj5ljm_ZwVtj7M3MPr7zJSxKO99DQIoV4&libraries=places"></script>
+
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+    <main class="main-top">
+        <section >
+            <div class="container-fluid position-relative" style="background-color: wheat">
+
+
+                <div class="row">
+                    <div class="col-12 col-sm-12 col-md-9 p-0">
+                        <div id="google-map" class="container-fluid min-vh-100">
+
+
+                        </div>
+                    </div>
+                    <div class=" col-12 col-md-3 p-0" style="background: #ffffff">
+                        <div class="form-seach-td m-c" id="click" >
+                            <div class="d-flex justify-content-between">
+
+
+                                <strong> </strong>
+                            </div>
+                            <div class="d-flex flex-column" style=" border-bottom: 1px solid #f1f1f1; margin-top: 20px">
+                                <form  method ="POST" id="Form_Datxe" action="#">
+                                <div class="d-flex">
+                                   @* <div class="m-auto" style="width : 5%; text-align: end ; ">
+
+                                    </div>*@
+                                    <i class="fa fa-male m-auto" style="font-size: larger; color: #1bc3ff" aria-hidden="true"></i>
+                                    @if(session().get("lang")==null||session().get("lang")=="vi"){
+                                    <input class="fr_ip_search" style="border-bottom: 1px solid #b9b9b9" value="" type="text" id="location-1" name="location-1" placeholder="Vị trí của bạn">
+                                    }else{
+                                        <input class="fr_ip_search" style="border-bottom: 1px solid #b9b9b9" value="" type="text" id="location-1" name="location-1" placeholder="Your location" >
+                                    }
+                                    <i class="fa fa-times-circle icon_action" id="clear_di" aria-hidden="true"></i>
+                                    <input value="" id="latDon" type="hidden"name="latDon" style="display: none">
+                                    <input value="" id="lngDon" type="hidden"name="lngDon" style="display: none">
+                                </div>
+                                <div class="d-flex" style="margin-top: 10px">
+                                   @* <div class="m-auto" style="width : 5%; text-align: end ; ">
+
+                                    </div>*@
+                                    <i class="fa fa-map-marker m-auto" style="font-size: larger; color: #ff0000" aria-hidden="true"></i>
+                                    @if(session().get("lang")==null||session().get("lang")=="vi"){
+                                    <input class="fr_ip_search" style="border-bottom: 1px solid #b9b9b9" value="" type="text" id="location-2" name="location-2" placeholder="Nhập điểm đến">
+                                    }else{
+                                        <input class="fr_ip_search" style="border-bottom: 1px solid #b9b9b9" value="" type="text" id="location-2" name="location-2" placeholder="Enter destination">
+                                    }
+                                    <i class="fa fa-times-circle icon_action" style="top: 80px" id="clear_den" aria-hidden="true"></i>
+                                    <input value="" id="latDen" type="hidden" name="latDen">
+                                    <input value="" id="lngDen"type="hidden" name="lngDen" >
+                                    <div id="" title="Results" >
+                                        <ul id="places" style="display: none">
+                                        </ul>
+                                    </div>
+                                </div>
+
+
+                                    <div class="d-flex flex-column fontSmall "  style="margin-top: 25px">
+
+                                <div class="container-fluid" >
+                                    <div class="d-flex justify-content-between">
+                                    <div class="d-flex ">
+                                    @if(session().get("lang")==null||session().get("lang")=="vi"){
+                                        <button class="btn-choose" type="button" id="btn_add_address_home"> + Nhà </button>
+                                        <button class="btn-choose" type="button" style="display: none" id="btn_address_home">  Nhà </button>
+                                        <input value="" id="diachinha" type="hidden" name="diachinha">
+                                        <button class="btn-choose"  type="button" id="btn_add_address_coquan"> + Cơ quan </button>
+                                        <button class="btn-choose" type="button" style="display: none" id="btn_address_coquan">  Cơ quan </button>
+                                        <input value="" id="diachicoquan" type="hidden" name="diachicoquan">
+                                        <button class="btn-choose" type="button" id="btn_address_gannhat"> Gần nhất </button>
+                                    }else{
+                                        <button class="btn-choose" type="button" id="btn_add_address_home"> + Home </button>
+                                        <button class="btn-choose" type="button" style="display: none" id="btn_address_home"> Home </button>
+                                        <input value="" id="diachinha" type="hidden" name="diachinha">
+                                        <button class="btn-choose" type="button" id="btn_add_address_coquan"> + Authority </button>
+                                        <button class="btn-choose" type="button" style="display: none" id="btn_address_coquan"> Authority </button>
+                                        <input value="" id="diachicoquan" type="hidden" name="diachicoquan">
+                                        <button class="btn-choose" type="button" id="btn_address_gannhat"> Nearest </button>
+                                    }
+
+                                    </div>
+                                       <div id="sua">
+                                           <i class="fa fa-pencil-square-o icon" aria-hidden="true"></i>
+                                       </div>
+                                    </div>
+                                    <div class="container-fluid description" id="add_address-home" style="display: none; margin-top: 20px;  padding: 10px">
+                                        <i class="fa fa-times-circle-o img-description" id="close_home" aria-hidden="true"></i>
+                                             <div class="d-flex flex-column">
+                                             @if(session().get("lang")==null||session().get("lang")=="vi"){
+                                        <input class="effect-input-info fr_ip_search w-100" value="" type="text" id="ip_add_home"  placeholder="Nhập địa chỉ muốn lưu">
+                                        <button class="btn_add" id="add_home" type="button" > Thêm địa chỉ </button>
+                                             }else{
+                                                 <input class="effect-input-info fr_ip_search w-100" value="" type="text" id="ip_add_home" placeholder="Enter the address you want to save">
+                                                 <button class="btn_add" id="add_home" type="button" > Add address </button>
+                                             }
+                                             </div>
+                                    </div>
+                                    <div class="container-fluid description" id="add_address-coquan" style="display: none; margin-top: 20px;  padding: 10px">
+                                        <i class="fa fa-times-circle-o img-description" id="close_coquan" aria-hidden="true"></i>
+                                        <div class="d-flex flex-column">
+                                        @if(session().get("lang")==null||session().get("lang")=="vi"){
+                                            <input class="effect-input-info fr_ip_search w-100" value="" type="text" id="ip_add_coquan"  placeholder="Nhập địa chỉ muốn lưu">
+                                            <button class="btn_add" id="add_coquan" type="button" > Thêm địa chỉ </button>
+                                        }else{
+                                            <input class="effect-input-info fr_ip_search w-100" value="" type="text" id="ip_add_coquan" placeholder="Enter the address you want to save">
+                                            <button class="btn_add" id="add_coquan" type="button" > Add address </button>
+                                        }
+                                        </div>
+                                    </div>
+
+                                    <div class="container-fluid description" id="address-gannhat" style="display: none; margin-top: 20px;  padding: 10px">
+                                        <i class="fa fa-times-circle-o img-description" id="close_gannhat" aria-hidden="true"></i>
+
+                                        <div class="d-flex flex-column">
+                                            <div id="btn_add_address_gannhat" style="display: block">
+                                              <i class="fa fa-plus-circle icon" aria-hidden="true" > </i>
+                                            </div>
+                                            <div id="btn_closse_address_gannhat"  style="display: none">
+                                              <i class="fa fa-minus-circle icon" aria-hidden="true"> </i>
+                                            </div>
+
+                                        <div id="frame_add_gannhat" style="display: none">
+                                        <div class="d-flex flex-column" style="margin-top: 5px">
+                                        @if(session().get("lang")==null||session().get("lang")=="vi"){
+                                            @*    <i class="fa fa-pencil icon" aria-hidden="true">*@
+                                            @*   </i>*@
+                                            <input class="fr_ip_search" style="border-bottom: 1px solid #b9b9b9" value="" type="text" id="ip_add_ghichu"  placeholder="Ghi chú">
+
+
+                                            <input class="fr_ip_search" style="border-bottom: 1px solid #b9b9b9" value="" type="text" id="ip_add_gannhat"  placeholder="Nhập địa chỉ muốn lưu">
+                                            <button class="btn_add" id="add_gannhat" type="button" > Thêm địa chỉ </button>
+                                        }else{
+                                            <input class="fr_ip_search" style="border-bottom: 1px solid #b9b9b9" value="" type="text" id="ip_add_ghichu" placeholder="Note">
+
+
+                                            <input class="fr_ip_search" style="border-bottom: 1px solid #b9b9b9" value="" type="text" id="ip_add_gannhat" placeholder="Enter the address you want to save">
+                                            <button class="btn_add" id="add_gannhat" type="button" > Add address </button>
+                                        }
+                                        </div>
+
+                                        </div>
+                                            <div class=" d-flex flex-column">
+
+                                                <div id="listgannhat">
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="container-fluid description" id="listdiachi" style="display: none; margin-top: 20px;  padding: 10px">
+                                        <i class="fa fa-times-circle-o img-description" id="close_listdiachi" aria-hidden="true"></i>
+                                        <div class=" d-flex flex-column">
+                                            <div id="listhome" style="border-bottom: 1px solid #f1f1f1;">
+
+                                            </div>
+
+                                            <div id="listcoquan">
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="w-100 d-flex justify-content-center">
+                                    @if(session().get("lang")==null||session().get("lang")=="vi"){
+                                        <button class="btn_timkiem_xe" id="btn_timkiem_xe" type="button" > Tìm xe  </button>
+                                    }else{
+                                        <button class="btn_timkiem_xe" id="btn_timkiem_xe" type="button" > Find car </button>
+                                    }
+                                    </div>
+                                </div>
+
+                                <div class="container-fluid" id="cuocxe" style="display: none">
+
+                                    <div id="output" style=" border-bottom: 1px solid #f1f1f1; margin-top: 20px">
+
+                                    </div>
+                                     <div class="d-flex justify-content-between" id="render_banggia">
+
+                                     </div>
+
+                                    <div class=" d-flex justify-content-center" style="margin-top: 20px;">
+                                        <button class=" btn-choose-thanhtoan click1"type="button" id="thanhtoan_tienmat">
+
+                                            <div class="car_active " style="display: block">
+                                                <div class="d-flex" style="font-size: x-small">
+                                                    <img style="width: 20px"   src="@routes.Assets.at("images/icon/thanhtoan/money.png")">
+                                                    @if(session().get("lang")==null||session().get("lang")=="vi"){
+                                                    <strong style="margin-left: 10px">Tiền mặt</strong>
+                                                    }else{
+                                                        <strong style="margin-left: 10px">Cash</strong>
+                                                    }
+                                                </div>
+                                            </div>
+                                        </button>
+                                        <button class=" btn-choose-thanhtoan click1"type="button" id="thanhtoan_qr">
+
+                                            <div class="car_active " style="display: block">
+                                                <div class="d-flex" style="font-size: x-small">
+                                                    <img style="width: 20px"   src="@routes.Assets.at("images/icon/thanhtoan/qr.png")">
+                                                    <strong style="margin-left: 10px">QR</strong>
+                                                </div>
+                                            </div>
+                                        </button>
+                                        <button class=" btn-choose-thanhtoan click1" type="button"id="thanhtoan_tdn">
+
+                                            <div class="car_active " style="display: block">
+                                                <div class="d-flex" style="font-size: x-small">
+                                                    <img style="width: 20px"   src="@routes.Assets.at("images/icon/thanhtoan/thedanang.png")">
+                                                    @if(session().get("lang")==null||session().get("lang")=="vi"){
+                                                    <strong style="margin-left: 5px">Thẻ đa năng</strong>
+                                                    }else{
+                                                        <strong style="margin-left: 5px">Versatile card</strong>
+                                                    }
+                                                </div>
+                                            </div>
+                                        </button>
+                                        <button class=" btn-choose-thanhtoan click1" type="button" id="thanhtoan_vimass">
+
+                                            <div class="car_active " style="display: block">
+                                                <div class="d-flex" style="font-size: x-small">
+                                                    <img style="width: 20px"   src="@routes.Assets.at("images/icon/thanhtoan/vivimass.png")">
+                                                    @if(session().get("lang")==null||session().get("lang")=="vi"){
+                                                    <strong style="margin-left: 10px">Ví Vimass</strong>
+                                                    }else{
+                                                        <strong style="margin-left: 10px">Vimass Pay</strong>
+                                                    }
+                                                </div>
+                                            </div>
+                                        </button>
+
+                                    </div>
+                                    @if(session().get("lang")==null||session().get("lang")=="vi"){
+                                    <div class="w-100 d-flex justify-content-center">
+
+                                        <button class="btn_timkiem_xe" id="btn_datxe" type="button" > Đặt xe  </button>
+                                    </div>
+
+                                    <div class="w-100 d-flex justify-content-around">
+
+                                        <button class="btn_back2" id="btn_goilai"  type="button" > Tìm lại  </button>
+                                        <button class="btn_back2" id="btn_goiho" type="button" > Gọi hộ  </button>
+                                    </div>
+
+                                    <div class="toast_warring" style='display:none'>Chức năng đang phát triển !</div>
+                                    }else{
+                                        <div class="w-100 d-flex justify-content-center">
+
+                                            <button class="btn_timkiem_xe" id="btn_datxe" type="button" > Set car </button>
+                                        </div>
+
+                                        <div class="w-100 d-flex justify-content-around">
+
+                                            <button class="btn_back2" id="btn_goilai" type="button" > Find Back </button>
+                                            <button class="btn_back2" id="btn_goiho" type="button" > Call for </button>
+                                        </div>
+
+                                        <div class="toast_warring" style='display:none'>Function in progress !</div>
+                                    }
+                                    @*<div class="d-flex justify-content-between" >
+                                        <button class="btn_dichuyen btn-choose_xe" id="car">
+
+                                            <div class="car_active " style="display: block">
+                                                <div class="d-flex flex-column">
+                                                    <img style="width: 30px"   src="@routes.Assets.at("images/icon/Dichuyen/car_active.svg")">
+
+                                                </div>
+                                            </div>
+                                        </button>
+                                    </div>*@
+                                </div>
+                                </div>
+                                </form>
+
+
+                                <div class="car_active">
+
+                                    <div class="taxi_active" style="display: none">
+                                        <div class="d-flex flex-column fontSmall" >
+                                            <div class="d-flex w-100 justifycenter"   style="padding: 15; border-bottom: 1px solid #f1f1f1;">
+                                                <div class="cart-tt-xe d-flex">
+                                                    <img style="width: 50px" class="img-thumbnail" src="/assets/images/icon/Dichuyen/icon-list-taxi.svg">
+                                                    <input value="165.000đ" disabled class="m-auto" style=" background: none; font-weight: 600">
+                                                </div>
+                                                <div class="cart-tt-chitet">
+                                                    <input  value="Chi tiết" disabled class="cart_btn-tt-chitiet" style=" background: none; font-weight: 600">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="7cho_active" style="display: none">
+                                        <div class="d-flex flex-column fontSmall" >
+                                            <div class="d-flex w-100 justifycenter"   style="padding: 15; border-bottom: 1px solid #f1f1f1;">
+                                                <div class="cart-tt-xe d-flex">
+                                                    <img style="width: 50px" class="img-thumbnail" src="/assets/images/icon/Dichuyen/icon-list-7cho.svg">
+                                                    <input value="200.000đ" disabled class="m-auto" style=" background: none; font-weight: 600">
+                                                </div>
+                                                <div class="cart-tt-chitet">
+                                                    <input  value="Chi tiết" disabled class="cart_btn-tt-chitiet" style=" background: none; font-weight: 600">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="xemay_active" style="display: none">
+                                        <div class="d-flex flex-column fontSmall" >
+                                            <div class="d-flex w-100 justifycenter"   style="padding: 15; border-bottom: 1px solid #f1f1f1;">
+                                                <div class="cart-tt-xe d-flex">
+                                                    <img style="width: 50px" class="img-thumbnail" src="/assets/images/icon/Dichuyen/motor_active.svg">
+                                                    <input value="200.000đ" disabled class="m-auto" style=" background: none; font-weight: 600">
+                                                </div>
+                                                <div class="cart-tt-chitet">
+                                                    <input  value="Chi tiết" disabled class="cart_btn-tt-chitiet" style=" background: none; font-weight: 600">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+                <div class="form-list-td-saoke m-c"  style="display: none">
+
+                    <div class="d-flex  ">
+                        <button class="b-none FontLarger" id="btn-close-saoke" style="margin-left: 10px">
+                            <i class="fa fa-times" style="font-size: larger; " aria-hidden="true"></i>
+                        </button>
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="form-list-td-xe m-c" id="click" style="display: none">
+
+                    <div class="d-flex justify-content-end ">
+                        <button class="b-none FontLarger" id="btn-close">
+                            <i class="fa fa-times" style="font-size: larger; " aria-hidden="true"></i>
+                        </button>
+                    </div>
+                    <div class="d-flex flex-column fontSmall " >
+                        <div class="d-flex w-100 justifycenter"   style="padding: 15; border-bottom: 1px solid #f1f1f1;">
+                            <img style="width: 50px" class="img-thumbnail" src="/assets/images/icon/mailinh.png">
+                            <input value="Taxi Mai Linh" disabled class="m-auto" style=" background: none; font-weight: 600">
+
+
+                        </div>
+                        <div class="d-flex w-100 justifycenter" style="padding: 15; border-bottom: 1px solid #f1f1f1;">
+                            <img style="width: 50px"  class="img-thumbnail" src="/assets/images/icon/taxigroup.png">
+                            <input value="Taxi Group" disabled class="m-auto" style=" background: none; font-weight: 600">
+                        </div>
+                        <div class="d-flex w-100 justifycenter" style="padding: 15; border-bottom: 1px solid #f1f1f1;">
+                            <img style="width: 50px"  class="img-thumbnail" src="/assets/images/icon/vinasun.png">
+                            <input value="Vinasun" disabled class="m-auto" style=" background: none; font-weight: 600">
+
+                        </div>
+                        <div class="d-flex w-100 justifycenter" style="padding: 15; border-bottom: 1px solid #f1f1f1;">
+                            <img style="width: 50px"  class="img-thumbnail"  src="/assets/images/icon/noibai.png">
+                            <input value="Nội Bài Taxi" disabled class="m-auto" style=" background: none; font-weight: 600">
+
+                        </div>
+                        <div class="d-flex w-100 justifycenter" style="padding: 15; border-bottom: 1px solid #f1f1f1;">
+                            <img style="width: 50px"  class="img-thumbnail"  src="/assets/images/icon/binhminh.png">
+                            <input value="HTX Bình Minh" disabled class="m-auto" style=" background: none; font-weight: 600">
+
+                        </div>
+                        <div class="d-flex w-100 justifycenter" style="padding: 15; border-bottom: 1px solid #f1f1f1;">
+                            <img style="width: 50px"  class="img-thumbnail"  src="/assets/images/icon/bee.png">
+                            <input value="Be" disabled class="m-auto" style=" background: none; font-weight: 600">
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+
+
+
+            <div  class="loadding" style="display: none">
+                <div style="display: flex; margin-top:10%; flex-direction: column;">
+                    <div class="frame_themthongtin">
+
+
+                    </div>
+                </div>
+            </div>
+
+                <div id="loadding" class="loadding" style="display: none">
+                    <div style="display: flex; margin-top:10%; flex-direction: column;">
+                        <div style="    margin: auto;    text-align: center;  color: white;">
+                            <img style="width : 200px ;" src="/assets/images/icon/pageloader.gif">
+
+                            <br>
+                            <h4 style="margin-top: 2%"> Quý khách vui lòng chờ trong giây lát... </h4>
+                        </div>
+                    </div>
+                </div>
+        </section>
+    </main>
+
+    <footer id="footer-menu" class="p-0"></footer>
+
+
+
+}

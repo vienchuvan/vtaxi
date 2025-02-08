@@ -1,0 +1,1111 @@
+@(message: String,info:controllers.account.ThongTinCaNhan)
+@main(message) {
+    <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/danh.css")">
+    <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/Laixe/laixe.css")">
+    <script src="@routes.Assets.at("javascripts/Laixe/dangkyxe.js")"></script>
+    <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/thaydoithongtin.css")">
+    <script src="@routes.Assets.at("javascripts/update_info_account/update_info_account.js")" type="text/javascript"></script>
+    <script src="@routes.Assets.at("javascripts/Crop/cropper_account.js")" type="text/javascript"></script>
+    <script src="@routes.Assets.at("javascripts/jquery.lightbox.js")" type="text/javascript"></script>
+    <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/danh.css")">
+    <main class="main-top">
+        <div class="container bg-gradient"  >
+            <div class="d-flex justify-content-center">
+            <button class="btn_dichuyen" id="car">
+                <div class="car_noactive " style="display: none">
+                    <div class="d-flex flex-column">
+                        <img style="width: 80px"   src="@routes.Assets.at("images/icon-dangkyxe/4cho.svg")">
+                        @if(session().get("lang")==null||session().get("lang")=="vi"){
+                        <strong style="font-size: xx-small;  margin: auto; color: #000000"> Ô tô  </strong>
+                        }else{
+                            <strong style="font-size: xx-small;  margin: auto; color: #000000"> Car  </strong>
+                        }
+                    </div>
+                </div>
+                <div class="car_active " style="display: block">
+                    <div class="d-flex flex-column">
+                        <img style="width: 80px"   src="@routes.Assets.at("images/logo_icon/icon/4cho.svg")">
+                        @if(session().get("lang")==null||session().get("lang")=="vi"){
+                        <strong style="font-size: xx-small;  margin: auto; color: #0000ff"> Ô tô  </strong>
+                        }else{
+                            <strong style="font-size: xx-small;  margin: auto; color: #0000ff"> Car </strong>
+                        }
+                    </div>
+                </div>
+            </button>
+            <button class="btn_dichuyen" id="xemay" style="margin-left: 100px">
+                <div class="xemay_noactive " style="display: block">
+                    <div class="d-flex flex-column">
+                        <img style="width: 100px"   src="@routes.Assets.at("images/icon-dangkyxe/xemay.svg")">
+                        @if(session().get("lang")==null||session().get("lang")=="vi"){
+                        <strong style="font-size: xx-small;  margin: auto; color: #000000"> Xe máy </strong>
+                        }else{
+                            <strong style="font-size: xx-small;  margin: auto; color: #000000"> Motorcycle </strong>
+                        }
+                    </div>
+                </div>
+                <div class="xemay_active " style="display: none">
+                    <div class="d-flex flex-column">
+                        <img style="width: 100px"   src="@routes.Assets.at("images/logo_icon/icon/xemay.svg")">
+                        @if(session().get("lang")==null||session().get("lang")=="vi"){
+                        <strong style="font-size: xx-small;  margin: auto; color: #0000ff"> Xe máy </strong>
+                        }else{
+                            <strong style="font-size: xx-small;  margin: auto; color: #0000ff"> Motorcycle </strong>
+                        }
+                    </div>
+                </div>
+            </button>
+                 </div>
+            <form  method ="POST" id="Form_Dangkyxe" style="display: block" action="#">
+                @if(info!=null){
+                    <div>
+                        <div class="row">
+
+                            <div class="col-12 col-md-7">
+                                @*------ Giấy đăng ký xe ------*@
+                                <div class="row">
+                                    @*------ Sdt*@
+                                    @if(session().get("lang")==null||session().get("lang")=="vi"){
+                                        <h2 class="m-auto fw-bold pt-5 pb-3"> Đăng ký xe</h2>
+                                    }else{
+                                        <h2 class="m-auto fw-bold pt-5 pb-3"> Vehicle registration certificate</h2>
+                                    }
+                                   @*Biển số*@
+                                    <div class="col-12 col-md-6">
+                                        <div class="input-group" style="z-index: 2">
+                                            <input type="text" class="effect-input-info" id="bienSoXe" name="bienSoXe"  placeholder=" " value="" />
+                                            @if(session().get("lang")==null||session().get("lang")=="vi"){
+                                                <label>Biển số</label>
+                                            }else{
+                                                <label>License plate</label>
+                                            }
+                                        </div>
+
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <div class="input-group">
+                                            <select type="text" id="banglai" name="banglai" class="effect-input-info sl_choose"style="z-index: 2;" >
+                                                <option value="B1"> B1</option>
+                                                <option value="B2">B2</option>
+                                                <option value="C">C</option>
+                                                <option value="D">D</option>
+                                                <option value="FB2">FB2</option>
+                                                <option value="FC">FC</option>
+                                                <option value="FD">FD</option>
+                                                <option value="FE">FE</option>
+                                            </select>
+                                            @if(session().get("lang")==null||session().get("lang")=="vi"){
+                                                <label>Bằng lái</label>
+                                            }else{
+                                                <label>Driver license</label>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    @*Hãng xe*@
+                                    <div class="col-12 col-md-6">
+                                        <div class="input-group">
+                                            <div class="box_Xe  effect-input-info" id="box_Xe">
+                                                <ul class="by_default_Xe ">
+                                                    <li>
+                                                        <div class="sharing_Xe">
+                                                            <div class="share-icon_Xe">
+                                                                <img style="width: 50px"   src="@routes.Assets.at("images/icon/icon_xe/toyta.png")">
+                                                            </div>
+                                                            <input readonly  name="hangXe" placeholder="Toyota" value="Toyota">
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                                <ul class="options_Xe" id="options_Xe">
+                                                    <li>
+                                                        <div class="sharing_Xe">
+                                                            <div class="share-icon_Xe">
+                                                                <img style="width: 50px"   src="@routes.Assets.at("images/icon/icon_xe/vin.png")">
+                                                            </div>
+                                                            <input readonly name="hangXe" placeholder="Vinfast" value="Vinfast">
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="sharing_Xe">
+                                                            <div class="share-icon_Xe">
+                                                                <img style="width: 50px"   src="@routes.Assets.at("images/icon/icon_xe/ford.png")">                                                                 </div>
+                                                            <input readonly name="hangXe" value="Ford">
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="sharing_Xe">
+                                                            <div class="share-icon_Xe">
+                                                                <img style="width: 50px"   src="@routes.Assets.at("images/icon/icon_xe/honda.png")">                                                                 </div>
+                                                            <input readonly name="hangXe"  value="Honda">
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="sharing_Xe">
+                                                            <div class="share-icon_Xe">
+                                                                <img style="width: 50px"   src="@routes.Assets.at("images/icon/icon_xe/Frame-4.png")">                                                                 </div>
+                                                            <input readonly name="hangXe" value="Huyndai">
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="sharing_Xe">
+                                                            <div class="share-icon_Xe">
+                                                                <img style="width: 50px"   src="@routes.Assets.at("images/icon/icon_xe/isuzu.png")">                                                                 </div>
+                                                            <input readonly  name="hangXe" value="Isuzu">
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="sharing_Xe">
+                                                            <div class="share-icon_Xe">
+                                                                <img style="width: 50px"   src="@routes.Assets.at("images/icon/icon_xe/kia.png")">                                                                 </div>
+                                                            <input readonly name="hangXe" value="KIA">
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="sharing_Xe">
+                                                            <div class="share-icon_Xe">
+                                                                <img style="width: 50px"   src="@routes.Assets.at("images/icon/icon_xe/mitsu.png")">                                                                 </div>
+                                                            <input readonly  name="hangXe" value="Mitsubishi">
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="sharing_Xe">
+                                                            <div class="share-icon_Xe">
+                                                                <img style="width: 50px"   src="@routes.Assets.at("images/icon/icon_xe/matda.png")">                                                                 </div>
+                                                            <input readonly name="hangXe" value="Mazda">
+                                                        </div>
+                                                    </li>
+
+                                                </ul>
+                                            </div>
+                                            @if(session().get("lang")==null||session().get("lang")=="vi"){
+                                                <label>Hãng xe</label>
+                                            }else{
+                                                <label>Car Company</label>
+                                            }
+                                        </div>
+                                    </div>
+                                    @*Biển số*@
+                                    <div class="col-12 col-md-6">
+                                        <div class="input-group">
+                                            <div class="box effect-input-info">
+                                                <ul class="by_default">
+                                                    <li>
+                                                        <div class="sharing">
+                                                            <div class="share-icon">
+                                                                <img style="width: 50px"   src="@routes.Assets.at("images/icon/icon_xe/trang.svg")">                                                            </div>
+                                                            <input readonly placeholder="Màu xanh" value="Màu trắng">
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                                <ul class="options">
+                                                    <li>
+                                                        <div class="sharing">
+                                                            <div class="share-icon">
+                                                                <img style="width: 50px"   src="@routes.Assets.at("images/icon/icon_xe/bac.svg")">
+                                                            </div>
+                                                            <input readonly placeholder="Màu xanh" value="Màu bạc">
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="sharing">
+                                                            <div class="share-icon">
+                                                                <img style="width: 50px"   src="@routes.Assets.at("images/icon/icon_xe/vang.svg")">                                                                 </div>
+                                                            <input readonly placeholder="Màu xanh" value="Màu vàng">
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="sharing">
+                                                            <div class="share-icon">
+                                                                <img style="width: 50px"   src="@routes.Assets.at("images/icon/icon_xe/do.svg")">                                                                 </div>
+                                                            <input readonly placeholder="Màu xanh" value="Màu đỏ">
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="sharing">
+                                                            <div class="share-icon">
+                                                                <img style="width: 50px"   src="@routes.Assets.at("images/icon/icon_xe/cam.svg")">                                                                 </div>
+                                                            <input readonly placeholder="Màu xanh" value="Màu cam">
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="sharing">
+                                                            <div class="share-icon">
+                                                                <img style="width: 50px"   src="@routes.Assets.at("images/icon/icon_xe/den.svg")">                                                                 </div>
+                                                            <input readonly placeholder="Màu xanh" value="Màu đen">
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="sharing">
+                                                            <div class="share-icon">
+                                                                <img style="width: 50px"   src="@routes.Assets.at("images/icon/icon_xe/xam.svg")">                                                                 </div>
+                                                            <input readonly placeholder="Màu xanh" value="Màu xám">
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="sharing">
+                                                            <div class="share-icon">
+                                                                <img style="width: 50px"   src="@routes.Assets.at("images/icon/icon_xe/nau.svg")">                                                                 </div>
+                                                            <input readonly placeholder="Màu xanh" value="Màu nâu đất">
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="sharing">
+                                                            <div class="share-icon">
+                                                                <img style="width: 50px"   src="@routes.Assets.at("images/icon/icon_xe/xanhlam.svg")">                                                                 </div>
+                                                            <input readonly placeholder="Màu xanh" value="Màu xanh lam">
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="sharing">
+                                                            <div class="share-icon">
+                                                                <img style="width: 50px"   src="@routes.Assets.at("images/icon/icon_xe/xanhla.svg")">                                                                 </div>
+                                                            <input readonly placeholder="Màu xanh" value="Màu xanh lục">
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            @if(session().get("lang")==null||session().get("lang")=="vi"){
+                                                <label>Màu sắc</label>
+                                            }else{
+                                                <label>Color</label>
+                                            }
+                                        </div>
+                                    </div>
+
+                                </div>
+                                @*------ loai xe ------*@
+                                <div class="d-flex row">
+                                    <div class="col-12 col-md-6">
+                                        <div class="input-group">
+                                            <select type="text" id="loaixe" name="loaixe" class="effect-input-info sl_choose" >
+                                                <option value="1"> 4 Chỗ</option>
+                                                <option value="5"> 4 Chỗ cho Taxi</option>
+                                                <option value="4">7 Chỗ</option>
+                                                <option value="3">7 Chỗ cho Taxi</option>
+                                            </select>
+                                            @if(session().get("lang")==null||session().get("lang")=="vi"){
+                                                <label>Loại xe</label>
+                                            }else{
+                                                <label>Range of vehicle</label>
+                                            }
+                                        </div>
+                                    </div>
+                                        <div class="col-12 col-md-6">
+                                            <div class="input-group">
+                                                <select type="text" id="soChoNgoi" name="soChoNgoi" class="effect-input-info sl_choose" >
+                                                    <option value="4"> 4 Chỗ</option>
+                                                    <option value="7">7 Chỗ</option>
+                                                </select>
+                                                @if(session().get("lang")==null||session().get("lang")=="vi"){
+                                                    <label>Số chỗ ngồi</label>
+                                                }else{
+                                                    <label>Number of seats</label>
+                                                }
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <div class="input-group" >
+                                                <input type="date" class="effect-input-info" id="dangKyLanDau" name="dangKyLanDau"  placeholder=" " value="" />
+                                                @if(session().get("lang")==null||session().get("lang")=="vi"){
+                                                    <label>Đăng ký lần đầu</label>
+                                                }else{
+                                                    <label>First registration</label>
+                                                }
+                                            </div>
+                                        </div>
+                                    <div class="col-12 col-md-6">
+                                        <div class="input-group" >
+                                            @*<input  class="effect-input-info" id="namSanXuat" name="namSanXuat"  placeholder=" " value="" />*@
+                                            <select type="text" id="namSanXuat" name="namSanXuat" class="effect-input-info sl_choose" ></select>
+                                            @if(session().get("lang")==null||session().get("lang")=="vi"){
+                                                <label>Năm sản xuất</label>
+                                            }else{
+                                                <label></label>
+                                            }
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 col-md-6">
+                                        <div class="input-group">
+                                            <input type="hidden" id="typeAuthenticate" name="typeAuthenticate" value="0">
+                                            <input id="token" name="token" type="text" class="effect-input-info" maxlength="6" placeholder=" "/>
+
+                                            @if(session().get("lang")==null||session().get("lang")=="vi"){
+                                                <label>6 số token</label>
+                                            }else{
+                                                <label> Token</label>
+                                            }
+                                            <i class="fa fa-info-circle icon_thongtin" aria-hidden="true"></i>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <div class="d-flex justify-content-center align-items-end mt-4 ">
+                                        @if(session().get("lang")==null||session().get("lang")=="vi"){
+                                            <button id="btnDangky" value="Đăng ký" type="button" class="btn btn-primary form-control pt-3 pb-2 ">Đăng ký xe</button>
+                                        }else{
+                                            <button id="btnDangky" value="Đăng ký" type="button" class="btn btn-primary form-control pt-3 pb-2 ">
+                                                Vehicle registration</button>
+                                        }
+                                        </div>
+                                    </div>
+                                    <div style="text-align: center">
+                                        <label style="color: #ff0000" id="error_message_edit"></label>
+                                    </div>
+                                </div>
+
+
+                                @*Năm sản xuất*@
+                                <div class="row">
+
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-5 ps-0 ps-md-3 pt-5">
+                                @*Ảnh bằng lái*@
+                                <div class="row">
+                                    <div class=" col-12 col-md-12 d-flex flex-column justify-content-start pt-3 pb-3">
+                                        <div class="align-content-center" style="text-align: center">
+                                        @if(session().get("lang")==null||session().get("lang")=="vi"){
+                                            <span class="fw-bold ms-3" >Ảnh bằng lái</span>
+                                        }else{
+                                            <span class="fw-bold ms-3">Driver's license photo</span>
+                                        }
+                                        </div>
+                                       @* <div class=" m-auto" style="max-width: 171px; max-height: 171px ;background: pink; border: 1px solid black; border-radius: 7px;">
+                                            <a href="#">
+                                            @if(info.getAvatar!=null&& !info.getAvatar.equals("")){
+                                                <img class="anhMSCCCD img-thumbnail myImg"  src="" />
+                                                <input type="hidden" name="imgdata2" id="imgdata2" value=""/>
+                                            }else{
+                                                <img class="anhMSCCCD img-thumbnail myImg" src="@routes.Assets.at("images/icon-camnera.png")" style="max-height: 198px" >
+                                                <input type="hidden" name="imgdata2" id="imgdata2" value=""/>
+                                            }
+
+                                            </a>
+                                        </div>*@
+                                        @if(session().get("lang")==null||session().get("lang")=="vi"){
+                                            <label  for="inputImage_anhMSCCCD" class="docs-tooltip h-input-qr d-flex justify-content-center align-items-center mt-4  m-auto form-control pointer " style="border: none">
+                                                <img class="anhMSCCCD img-thumbnail myImg" src="@routes.Assets.at("images/icon-camnera.png")" style="max-height: 170px;margin-top: 20%;" >
+                                                <input type="hidden" name="imgdata2" id="imgdata2" value=""/>
+                                            </label>
+                                        }else{
+                                            <label  for="inputImage_anhMSCCCD" class="docs-tooltip h-input-qr d-flex justify-content-center align-items-center mt-4 m-auto form-control pointer "style="border: none" >
+                                                <img class="anhMSCCCD img-thumbnail myImg" src="@routes.Assets.at("images/icon-camnera.png")" style="max-height: 170px;margin-top: 20%;" >
+                                                <input type="hidden" name="imgdata2" id="imgdata2" value=""/>
+                                            </label>
+                                        }
+                                        <input type="file" class="form-control d-none" id="inputImage_anhMSCCCD" name="file" accept=".jpg,.jpeg,.png,.gif,.bmp,.tiff">
+                                    </div>
+                                </div>
+                                @*-------- Ảnh mặt trước, sau xe*@
+                                <div class="row" style="margin-top: 25%">
+                                    <div class=" col-12 col-md-6 d-flex flex-column justify-content-start pt-3 pb-3">
+                                        <div class="align-content-center" style="text-align: center">
+                                        @if(session().get("lang")==null||session().get("lang")=="vi"){
+                                            <span class="fw-bold ms-3" >Ảnh phía trước xe</span>
+                                        }else{
+                                            <span class="fw-bold ms-3"> Vehicle registration front</span>
+                                        }
+                                        </div>
+                                       @* <div class=" m-auto" style="max-width: 171px; max-height: 171px ;background: pink; border: 1px solid black; border-radius: 7px;">
+                                            <a href="#">
+                                            @if(info.getAvatar!=null&& !info.getAvatar.equals("")){
+                                                <img class="avartar_account img-thumbnail myImg"  src="" />
+                                                <input type="hidden" name="imgdata3" id="imgdata3" value=""/>
+                                            }else{
+                                                <img class="avartar_account img-thumbnail myImg" src="@routes.Assets.at("images/icon-camnera.png")" style="max-height: 198px" >
+                                                <input type="hidden" name="imgdata3" id="imgdata3" value=""/>
+                                            }
+
+                                            </a>
+                                        </div>*@
+                                        @if(session().get("lang")==null||session().get("lang")=="vi"){
+                                            <label  for="inputImage_avatar-cn" class="docs-tooltip h-input-qr d-flex justify-content-center align-items-center mt-4  m-auto form-control pointer" style="border: none" >
+                                                @*<img class="avartar_account  myImg"  src="" />*@
+                                                <img class="avartar_account img-thumbnail myImg" src="@routes.Assets.at("images/icon-camnera.png")" style="max-height: 170px;margin-top: 40%;" >
+                                                <input type="hidden" name="imgdata3" id="imgdata3" value=""/>
+                                            </label>
+                                        }else{
+                                            <label  for="inputImage_avatar-cn" class="docs-tooltip h-input-qr d-flex justify-content-center align-items-center mt-4 m-auto form-control pointer" style="border: none" >
+                                                @*<img class="avartar_account  myImg"  src="" />*@
+                                                <img class="avartar_account img-thumbnail myImg" src="@routes.Assets.at("images/icon-camnera.png")" style="max-height: 170px;margin-top: 40%;"  >
+                                                <input type="hidden" name="imgdata3" id="imgdata3" value=""/>
+                                            </label>
+                                        }
+                                        <input type="file" class="form-control d-none" id="inputImage_avatar-cn" name="file" accept=".jpg,.jpeg,.png,.gif,.bmp,.tiff">
+                                    </div>
+                                    <div class=" col-12 col-md-6 d-flex flex-column justify-content-start pt-3 pb-3">
+                                        <div class="align-content-center" style="text-align: center">
+                                        @if(session().get("lang")==null||session().get("lang")=="vi"){
+                                            <span class="fw-bold ms-3">Ảnh phía sau xe</span>
+                                        }else{
+                                            <span class="fw-bold ms-3"> The back of the vehicle registration</span>
+                                        }
+                                        </div>
+                                        <div class=" m-auto" style="max-width: 171px; max-height: 171px ;background: pink; border: 1px solid black; border-radius: 7px;">
+                                          @*  <a href="#">
+                                            @if(info.getAvatar!=null&& !info.getAvatar.equals("")){
+                                                <img class="anhMTCCCD  img-thumbnail myImg"  src="" />
+                                                <input type="hidden" name="imgdata1" id="imgdata1" value=""/>
+                                            }else{
+                                                <img class="anhMTCCCD  img-thumbnail myImg" src="@routes.Assets.at("images/icon-camnera.png")" style="max-height: 198px" >
+                                                <input type="hidden" name="imgdata1" id="imgdata1" value=""/>
+                                            }
+
+                                            </a>*@
+                                        </div>
+                                        @if(session().get("lang")==null||session().get("lang")=="vi"){
+                                            <label  for="inputImage_anhMTCCCD" class="docs-tooltip h-input-qr d-flex justify-content-center align-items-center mt-4 m-auto form-control pointer "style="border: none"  >
+                                                <img class="anhMTCCCD  img-thumbnail myImg" src="@routes.Assets.at("images/icon-camnera.png")" style="max-height: 170px;margin-top: 40%;" >
+                                                <input type="hidden" name="imgdata1" id="imgdata1" value=""/>
+                                            </label>
+                                        }else{
+                                            <label  for="inputImage_anhMTCCCD" class="docs-tooltip h-input-qr d-flex justify-content-center align-items-center mt-4 m-auto form-control pointer " style="border: none" >
+                                                <img class="anhMTCCCD  img-thumbnail myImg" src="@routes.Assets.at("images/icon-camnera.png")" style="max-height: 170px;margin-top: 40%;" >
+                                                <input type="hidden" name="imgdata1" id="imgdata1" value=""/>
+                                            </label>
+                                        }
+                                        <input type="file" class="form-control d-none" id="inputImage_anhMTCCCD" name="file" accept=".jpg,.jpeg,.png,.gif,.bmp,.tiff">
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                        @*-------- btn cap nhat lai thong tin-----------*@
+                        <p style="text-align: center">
+                            <label style="color: #ff0000" id="error_message_edit"></label>
+                        </p>
+                        <div class="row pt-3 m-auto justify-content-center ">
+                           @* <div class="col-12 col-md-4">
+                                <div class="input-group">
+                                    <input type="hidden" id="typeAuthenticate" name="typeAuthenticate" value="0">
+                                    <input id="token" name="token" type="text" class="effect-input-info" placeholder=" "/>
+                                    @if(session().get("lang")==null||session().get("lang")=="vi"){
+                                        <label>6 số token</label>
+                                    }else{
+                                        <label> Token</label>
+                                    }
+                                </div>
+
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <div class="d-flex justify-content-center align-items-end mt-4 ">
+                                @if(session().get("lang")==null||session().get("lang")=="vi"){
+                                    <button id="btnDangky" value="Đăng ký" type="button" class="btn btn-primary form-control pt-3 pb-2 ">Đăng ký xe</button>
+                                }else{
+                                    <button id="btnDangky" value="Đăng ký" type="button" class="btn btn-primary form-control pt-3 pb-2 ">
+                                        Vehicle registration</button>
+                                }
+                                </div>
+                            </div>
+                            <div style="text-align: center">
+                                <label style="color: #ff0000" id="error_message_edit"></label>
+                            </div>*@
+                        </div>
+                    </div>
+            } else{
+                    <div>
+                        <p>Vui lòng đăng nhập để thực hiện chức năng này!!!</p>
+                    </div>
+                }
+            </form>
+
+            <form  method ="POST" id="Form_Dangkyxemay" style="display: none" action="#">
+            @if(info!=null){
+                <div>
+                    <div class="row">
+
+                        <div class="col-12 col-md-7">
+                            @*------ Giấy đăng ký xe ------*@
+                            <div class="row">
+                                @*------ Sdt*@
+                                @if(session().get("lang")==null||session().get("lang")=="vi"){
+                                    <h2 class="m-auto fw-bold pt-5 pb-3"> Đăng ký xe</h2>
+                                }else{
+                                    <h2 class="m-auto fw-bold pt-5 pb-3"> Vehicle registration certificate</h2>
+                                }
+                                @*Biển số*@
+                                <div class="col-12 col-md-12">
+                                    <div class="input-group" style="z-index: 2">
+                                        <input type="text" class="effect-input-info" id="bienSoXe" name="bienSoXe"  placeholder=" " value="" />
+                                        @if(session().get("lang")==null||session().get("lang")=="vi"){
+                                            <label>Biển số</label>
+                                        }else{
+                                            <label>License plate</label>
+                                        }
+                                    </div>
+
+                                </div>
+                              @*  <div class="col-12 col-md-6">
+                                    <div class="input-group">
+                                        <select type="text" id="banglai" name="banglai" class="effect-input-info sl_choose"style="z-index: 2;" >
+                                            <option value="B1"> B1</option>
+                                            <option value="B2">B2</option>
+                                            <option value="C">C</option>
+                                            <option value="D">D</option>
+                                            <option value="FB2">FB2</option>
+                                            <option value="FC">FC</option>
+                                            <option value="FD">FD</option>
+                                            <option value="FE">FE</option>
+                                        </select>
+                                        @if(session().get("lang")==null||session().get("lang")=="vi"){
+                                            <label>Bằng lái</label>
+                                        }else{
+                                            <label>Driver license</label>
+                                        }
+                                    </div>
+                                </div>*@
+                            </div>
+                            <div class="row">
+                                @*Hãng xe*@
+                                <div class="col-12 col-md-6">
+                                    <div class="input-group" style="z-index: 2">
+                                       <input type="text" class="effect-input-info" id="hangxe" name="hangxe"  placeholder=" " value="" />
+                                        @if(session().get("lang")==null||session().get("lang")=="vi"){
+                                            <label>Hãng xe</label>
+                                        }else{
+                                            <label>Car Company</label>
+                                        }
+                                    </div>
+                                </div>
+                                @*Biển số*@
+                                <div class="col-12 col-md-6">
+                                    <div class="input-group">
+                                        <div class="box effect-input-info">
+                                            <ul class="by_default">
+                                                <li>
+                                                    <div class="sharing">
+                                                        <div class="share-icon">
+                                                            <img style="width: 50px"   src="@routes.Assets.at("images/icon/icon_xe/xemay/Group.png")">                                                            </div>
+                                                        <input readonly placeholder="Màu xanh" value="Màu trắng">
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                            <ul class="options">
+                                                <li>
+                                                    <div class="sharing">
+                                                        <div class="share-icon">
+                                                            <img style="width: 50px"   src="@routes.Assets.at("images/icon/icon_xe/xemay/Group-1.png")">
+                                                        </div>
+                                                        <input readonly placeholder="Màu xanh" value="Màu đen">
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="sharing">
+                                                        <div class="share-icon">
+                                                            <img style="width: 50px"   src="@routes.Assets.at("images/icon/icon_xe/xemay/Group-2.png")">                                                                 </div>
+                                                        <input readonly placeholder="Màu xanh" value="Màu bạc">
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="sharing">
+                                                        <div class="share-icon">
+                                                            <img style="width: 50px"   src="@routes.Assets.at("images/icon/icon_xe/xemay/Group-3.png")">                                                                 </div>
+                                                        <input readonly placeholder="Màu xanh" value="Màu xám">
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="sharing">
+                                                        <div class="share-icon">
+                                                            <img style="width: 50px"   src="@routes.Assets.at("images/icon/icon_xe/xemay/Group-4.png")">                                                                 </div>
+                                                        <input readonly placeholder="Màu xanh" value="Màu vàng">
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="sharing">
+                                                        <div class="share-icon">
+                                                            <img style="width: 50px"   src="@routes.Assets.at("images/icon/icon_xe/xemay/Group-5.png")">                                                                 </div>
+                                                        <input readonly placeholder="Màu xanh" value="Màu nâu đất">
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="sharing">
+                                                        <div class="share-icon">
+                                                            <img style="width: 50px"   src="@routes.Assets.at("images/icon/icon_xe/xemay/Group-6.png")">                                                                 </div>
+                                                        <input readonly placeholder="Màu xanh" value="Màu đỏ">
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="sharing">
+                                                        <div class="share-icon">
+                                                            <img style="width: 50px"   src="@routes.Assets.at("images/icon/icon_xe/xemay/Group-7.png")">                                                                 </div>
+                                                        <input readonly placeholder="Màu xanh" value="Màu xanh lam">
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="sharing">
+                                                        <div class="share-icon">
+                                                            <img style="width: 50px"   src="@routes.Assets.at("images/icon/icon_xe/xemay/Group-8.png")">                                                                 </div>
+                                                        <input readonly placeholder="Màu xanh" value="Màu cam">
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="sharing">
+                                                        <div class="share-icon">
+                                                            <img style="width: 50px"   src="@routes.Assets.at("images/icon/icon_xe/xemay/Group-9.png")">                                                                 </div>
+                                                        <input readonly placeholder="Màu xanh" value="Màu xanh lục">
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        @if(session().get("lang")==null||session().get("lang")=="vi"){
+                                            <label>Màu sắc</label>
+                                        }else{
+                                            <label>Color</label>
+                                        }
+                                    </div>
+                                </div>
+
+                            </div>
+                            @*------ loai xe ------*@
+                            <div class="d-flex row">
+
+                                <div class="col-12 col-md-6">
+                                    <div class="input-group" >
+                                        <input type="date" class="effect-input-info" id="dangKyLanDau" name="dangKyLanDau"  placeholder=" " value="" />
+                                        @if(session().get("lang")==null||session().get("lang")=="vi"){
+                                            <label>Đăng ký lần đầu</label>
+                                        }else{
+                                            <label>First registration</label>
+                                        }
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <div class="input-group" >
+                                        <input type="date" class="effect-input-info" id="namSanXuat" name="namSanXuat"  placeholder=" " value="" />
+                                        @if(session().get("lang")==null||session().get("lang")=="vi"){
+                                            <label>Năm sản xuất</label>
+                                        }else{
+                                            <label></label>
+                                        }
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-md-6">
+                                    <div class="input-group">
+                                        <input type="hidden" id="typeAuthenticate" name="typeAuthenticate" value="0">
+                                        <input id="token" name="token" type="text" class="effect-input-info" maxlength="6" placeholder=" "/>
+
+                                        @if(session().get("lang")==null||session().get("lang")=="vi"){
+                                            <label>6 số token</label>
+                                        }else{
+                                            <label> Token</label>
+                                        }
+                                        <i class="fa fa-info-circle icon_thongtin" aria-hidden="true"></i>
+                                    </div>
+
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <div class="d-flex justify-content-center align-items-end mt-4 ">
+                                    @if(session().get("lang")==null||session().get("lang")=="vi"){
+                                        <button id="btnDangkyxemay" value="Đăng ký" type="button" class="btn btn-primary form-control pt-3 pb-2 ">Đăng ký xe</button>
+                                    }else{
+                                        <button id="btnDangkyxemay" value="Đăng ký" type="button" class="btn btn-primary form-control pt-3 pb-2 ">
+                                            Vehicle registration</button>
+                                    }
+                                    </div>
+                                </div>
+                                <div style="text-align: center">
+                                    <label style="color: #ff0000" id="error_message_edit"></label>
+                                </div>
+                            </div>
+
+
+                            @*Năm sản xuất*@
+                            <div class="row">
+
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-5 ps-0 ps-md-3 pt-5">
+                            @*Ảnh bằng lái*@
+                            <div class="row">
+                                <div class=" col-12 col-md-12 d-flex flex-column justify-content-start pt-3 pb-3">
+                                    <div class="align-content-center" style="text-align: center">
+                                    @if(session().get("lang")==null||session().get("lang")=="vi"){
+                                        <span class="fw-bold ms-3" >Ảnh bằng lái</span>
+                                    }else{
+                                        <span class="fw-bold ms-3">Driver's license photo</span>
+                                    }
+                                    </div>
+                                    @* <div class=" m-auto" style="max-width: 171px; max-height: 171px ;background: pink; border: 1px solid black; border-radius: 7px;">
+                                    <a href="#">
+                                    @if(info.getAvatar!=null&& !info.getAvatar.equals("")){
+                                    <img class="anhMSCCCD img-thumbnail myImg"  src="" />
+                                    <input type="hidden" name="imgdata2" id="imgdata2" value=""/>
+                                    }else{
+                                    <img class="anhMSCCCD img-thumbnail myImg" src="@routes.Assets.at("images/icon-camnera.png")" style="max-height: 198px" >
+                                    <input type="hidden" name="imgdata2" id="imgdata2" value=""/>
+                                    }
+
+                                    </a>
+                                    </div>*@
+                                    @if(session().get("lang")==null||session().get("lang")=="vi"){
+                                        <label  for="inputImage_anhMSCCCD" class="docs-tooltip h-input-qr d-flex justify-content-center align-items-center mt-4  m-auto form-control pointer " style="border: none">
+                                            <img class="anhMSCCCD img-thumbnail myImg" src="@routes.Assets.at("images/icon-camnera.png")" style="max-height: 170px;margin-top: 20%;" >
+                                            <input type="hidden" name="imgdata2" id="imgdata2" value=""/>
+                                        </label>
+                                    }else{
+                                        <label  for="inputImage_anhMSCCCD" class="docs-tooltip h-input-qr d-flex justify-content-center align-items-center mt-4 m-auto form-control pointer "style="border: none" >
+                                            <img class="anhMSCCCD img-thumbnail myImg" src="@routes.Assets.at("images/icon-camnera.png")" style="max-height: 170px;margin-top: 20%;" >
+                                            <input type="hidden" name="imgdata2" id="imgdata2" value=""/>
+                                        </label>
+                                    }
+                                    <input type="file" class="form-control d-none" id="inputImage_anhMSCCCD" name="file" accept=".jpg,.jpeg,.png,.gif,.bmp,.tiff">
+                                </div>
+                            </div>
+                            @*-------- Ảnh mặt trước, sau xe*@
+                            <div class="row" style="margin-top: 25%">
+                                <div class=" col-12 col-md-6 d-flex flex-column justify-content-start pt-3 pb-3">
+                                    <div class="align-content-center" style="text-align: center">
+                                    @if(session().get("lang")==null||session().get("lang")=="vi"){
+                                        <span class="fw-bold ms-3" >Ảnh phía trước xe</span>
+                                    }else{
+                                        <span class="fw-bold ms-3"> Vehicle registration front</span>
+                                    }
+                                    </div>
+                                    @* <div class=" m-auto" style="max-width: 171px; max-height: 171px ;background: pink; border: 1px solid black; border-radius: 7px;">
+                                    <a href="#">
+                                    @if(info.getAvatar!=null&& !info.getAvatar.equals("")){
+                                    <img class="avartar_account img-thumbnail myImg"  src="" />
+                                    <input type="hidden" name="imgdata3" id="imgdata3" value=""/>
+                                    }else{
+                                    <img class="avartar_account img-thumbnail myImg" src="@routes.Assets.at("images/icon-camnera.png")" style="max-height: 198px" >
+                                    <input type="hidden" name="imgdata3" id="imgdata3" value=""/>
+                                    }
+
+                                    </a>
+                                    </div>*@
+                                    @if(session().get("lang")==null||session().get("lang")=="vi"){
+                                        <label  for="inputImage_avatar-cn" class="docs-tooltip h-input-qr d-flex justify-content-center align-items-center mt-4  m-auto form-control pointer" style="border: none" >
+                                            @*<img class="avartar_account  myImg"  src="" />*@
+                                            <img class="avartar_account img-thumbnail myImg" src="@routes.Assets.at("images/icon-camnera.png")" style="max-height: 170px;margin-top: 40%;" >
+                                            <input type="hidden" name="imgdata3" id="imgdata3" value=""/>
+                                        </label>
+                                    }else{
+                                        <label  for="inputImage_avatar-cn" class="docs-tooltip h-input-qr d-flex justify-content-center align-items-center mt-4 m-auto form-control pointer" style="border: none" >
+                                            @*<img class="avartar_account  myImg"  src="" />*@
+                                            <img class="avartar_account img-thumbnail myImg" src="@routes.Assets.at("images/icon-camnera.png")" style="max-height: 170px;margin-top: 40%;"  >
+                                            <input type="hidden" name="imgdata3" id="imgdata3" value=""/>
+                                        </label>
+                                    }
+                                    <input type="file" class="form-control d-none" id="inputImage_avatar-cn" name="file" accept=".jpg,.jpeg,.png,.gif,.bmp,.tiff">
+                                </div>
+                                <div class=" col-12 col-md-6 d-flex flex-column justify-content-start pt-3 pb-3">
+                                    <div class="align-content-center" style="text-align: center">
+                                    @if(session().get("lang")==null||session().get("lang")=="vi"){
+                                        <span class="fw-bold ms-3">Ảnh phía sau xe</span>
+                                    }else{
+                                        <span class="fw-bold ms-3"> The back of the vehicle registration</span>
+                                    }
+                                    </div>
+                                    <div class=" m-auto" style="max-width: 171px; max-height: 171px ;background: pink; border: 1px solid black; border-radius: 7px;">
+                                        @*  <a href="#">
+                                        @if(info.getAvatar!=null&& !info.getAvatar.equals("")){
+                                        <img class="anhMTCCCD  img-thumbnail myImg"  src="" />
+                                        <input type="hidden" name="imgdata1" id="imgdata1" value=""/>
+                                        }else{
+                                        <img class="anhMTCCCD  img-thumbnail myImg" src="@routes.Assets.at("images/icon-camnera.png")" style="max-height: 198px" >
+                                        <input type="hidden" name="imgdata1" id="imgdata1" value=""/>
+                                        }
+
+                                        </a>*@
+                                    </div>
+                                    @if(session().get("lang")==null||session().get("lang")=="vi"){
+                                        <label  for="inputImage_anhMTCCCD" class="docs-tooltip h-input-qr d-flex justify-content-center align-items-center mt-4 m-auto form-control pointer "style="border: none"  >
+                                            <img class="anhMTCCCD  img-thumbnail myImg" src="@routes.Assets.at("images/icon-camnera.png")" style="max-height: 170px;margin-top: 40%;" >
+                                            <input type="hidden" name="imgdata1" id="imgdata1" value=""/>
+                                        </label>
+                                    }else{
+                                        <label  for="inputImage_anhMTCCCD" class="docs-tooltip h-input-qr d-flex justify-content-center align-items-center mt-4 m-auto form-control pointer " style="border: none" >
+                                            <img class="anhMTCCCD  img-thumbnail myImg" src="@routes.Assets.at("images/icon-camnera.png")" style="max-height: 170px;margin-top: 40%;" >
+                                            <input type="hidden" name="imgdata1" id="imgdata1" value=""/>
+                                        </label>
+                                    }
+                                    <input type="file" class="form-control d-none" id="inputImage_anhMTCCCD" name="file" accept=".jpg,.jpeg,.png,.gif,.bmp,.tiff">
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    @*-------- btn cap nhat lai thong tin-----------*@
+                    <p style="text-align: center">
+                        <label style="color: #ff0000" id="error_message_edit"></label>
+                    </p>
+                    <div class="row pt-3 m-auto justify-content-center ">
+                        @* <div class="col-12 col-md-4">
+                        <div class="input-group">
+                        <input type="hidden" id="typeAuthenticate" name="typeAuthenticate" value="0">
+                        <input id="token" name="token" type="text" class="effect-input-info" placeholder=" "/>
+                        @if(session().get("lang")==null||session().get("lang")=="vi"){
+                        <label>6 số token</label>
+                        }else{
+                        <label> Token</label>
+                        }
+                        </div>
+
+                        </div>
+                        <div class="col-12 col-md-4">
+                        <div class="d-flex justify-content-center align-items-end mt-4 ">
+                        @if(session().get("lang")==null||session().get("lang")=="vi"){
+                        <button id="btnDangky" value="Đăng ký" type="button" class="btn btn-primary form-control pt-3 pb-2 ">Đăng ký xe</button>
+                        }else{
+                        <button id="btnDangky" value="Đăng ký" type="button" class="btn btn-primary form-control pt-3 pb-2 ">
+                        Vehicle registration</button>
+                        }
+                        </div>
+                        </div>
+                        <div style="text-align: center">
+                        <label style="color: #ff0000" id="error_message_edit"></label>
+                        </div>*@
+                    </div>
+                </div>
+            } else{
+                <div>
+                    <p>Vui lòng đăng nhập để thực hiện chức năng này!!!</p>
+                </div>
+            }
+            </form>
+
+        </div>
+        <div id="toast"></div>
+
+        @*<!---------------Crop img ------------------------------>*@
+
+        <div id="modal-crop-img-tt" class="modal-crop-img" style="display: none;z-index: 1000">
+
+                <!-- Modal content -->
+            <div class="container position-relative pt-3 rounded" style="background: white; max-width: 768px;">
+                <div class="position-absolute top-0 end-0">
+                    <span class="close-modal-crop fs-3 text-end pe-1 pointer">&times;</span>
+                </div>
+                <div class="container" style="max-width: 768px;">
+                    <div class="row">
+                        <div class="col-md-12">
+                            @*<!-- <h3>Demo:</h3> -->*@
+                            <div class="docs-demo">
+                                <div class="img-container">
+                                    <img name="img" src="https://vimass.vn/VimassMedia/services/VMBackground/getImageThumnail?id=1655097620043Apl1" alt="Picture">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row" id="actions">
+                        <div class="col-md-12 docs-buttons d-flex flex-wrap justify-content-center ">
+                            @*<!-- <h3>Toolbar:</h3> -->*@
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-primary" data-method="setDragMode" data-option="move" title="Move">
+                                    <span class="docs-tooltip" data-toggle="tooltip" title="cropper.setDragMode(&quot;move&quot;)">
+                                        <span class="fa fa-arrows-alt"></span>
+                                    </span>
+                                </button>
+                                <button type="button" class="btn btn-primary" data-method="setDragMode" data-option="crop" title="Crop">
+                                    <span class="docs-tooltip" data-toggle="tooltip" title="cropper.setDragMode(&quot;crop&quot;)">
+                                        <span class="fas fa-crop-alt"></span>
+                                    </span>
+                                </button>
+                            </div>
+
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-primary" data-method="zoom" data-option="0.1" title="Zoom In">
+                                    <span class="docs-tooltip" data-toggle="tooltip" title="cropper.zoom(0.1)">
+                                        <span class="fa fa-search-plus"></span>
+                                    </span>
+                                </button>
+                                <button type="button" class="btn btn-primary" data-method="zoom" data-option="-0.1" title="Zoom Out">
+                                    <span class="docs-tooltip" data-toggle="tooltip" title="cropper.zoom(-0.1)">
+                                        <span class="fa fa-search-minus"></span>
+                                    </span>
+                                </button>
+                            </div>
+
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-primary" data-method="move" data-option="-10" data-second-option="0" title="Move Left">
+                                    <span class="docs-tooltip" data-toggle="tooltip" title="cropper.move(-10, 0)">
+                                        <span class="fa fa-arrow-left"></span>
+                                    </span>
+                                </button>
+                                <button type="button" class="btn btn-primary" data-method="move" data-option="10" data-second-option="0" title="Move Right">
+                                    <span class="docs-tooltip" data-toggle="tooltip" title="cropper.move(10, 0)">
+                                        <span class="fa fa-arrow-right"></span>
+                                    </span>
+                                </button>
+                                <button type="button" class="btn btn-primary" data-method="move" data-option="0" data-second-option="-10" title="Move Up">
+                                    <span class="docs-tooltip" data-toggle="tooltip" title="cropper.move(0, -10)">
+                                        <span class="fa fa-arrow-up"></span>
+                                    </span>
+                                </button>
+                                <button type="button" class="btn btn-primary" data-method="move" data-option="0" data-second-option="10" title="Move Down">
+                                    <span class="docs-tooltip" data-toggle="tooltip" title="cropper.move(0, 10)">
+                                        <span class="fa fa-arrow-down"></span>
+                                    </span>
+                                </button>
+                            </div>
+
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-primary" data-method="rotate" data-option="-45" title="Rotate Left">
+                                    <span class="docs-tooltip" data-toggle="tooltip" title="cropper.rotate(-45)">
+                                        <span class="fas fa-undo-alt"></span>
+                                    </span>
+                                </button>
+                                <button type="button" class="btn btn-primary" data-method="rotate" data-option="45" title="Rotate Right">
+                                    <span class="docs-tooltip" data-toggle="tooltip" title="cropper.rotate(45)">
+                                        <span class="fas fa-redo-alt"></span>
+                                    </span>
+                                </button>
+                            </div>
+
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-primary" data-method="scaleX" data-option="-1" title="Flip Horizontal">
+                                    <span class="docs-tooltip" data-toggle="tooltip" title="cropper.scaleX(-1)">
+                                        <span class="fas fa-arrows-alt-h"></span>
+                                    </span>
+                                </button>
+                                <button type="button" class="btn btn-primary" data-method="scaleY" data-option="-1" title="Flip Vertical">
+                                    <span class="docs-tooltip" data-toggle="tooltip" title="cropper.scaleY(-1)">
+                                        <span class="fas fa-arrows-alt-v"></span>
+                                    </span>
+                                </button>
+                            </div>
+
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-primary" data-method="crop" title="Crop">
+                                    <span class="docs-tooltip" data-toggle="tooltip" title="cropper.crop()">
+                                        <span class="fa fa-check"></span>
+                                    </span>
+                                </button>
+                                <button type="button" class="btn btn-primary" data-method="clear" title="Clear">
+                                    <span class="docs-tooltip" data-toggle="tooltip" title="cropper.clear()">
+                                        <span class="fa fa-times"></span>
+                                    </span>
+                                </button>
+                            </div>
+
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-primary" data-method="disable" title="Disable">
+                                    <span class="docs-tooltip" data-toggle="tooltip" title="cropper.disable()">
+                                        <span class="fa fa-lock"></span>
+                                    </span>
+                                </button>
+                                <button type="button" class="btn btn-primary" data-method="enable" title="Enable">
+                                    <span class="docs-tooltip" data-toggle="tooltip" title="cropper.enable()">
+                                        <span class="fa fa-unlock"></span>
+                                    </span>
+                                </button>
+                            </div>
+
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-primary" data-method="reset" title="Reset">
+                                    <span class="docs-tooltip" data-toggle="tooltip" title="cropper.reset()">
+                                        <span class="fas fa-sync-alt"></span>
+                                    </span>
+                                </button>
+
+                            </div>
+
+                            <div class="btn-group btn-group-crop">
+                                <button type="button" class="btn btn-success" data-method="getCroppedCanvas" data-option="{ &quot;maxWidth&quot;: 4096, &quot;maxHeight&quot;: 4096 }">
+                                    <span class="docs-tooltip" data-toggle="tooltip" title="cropper.getCroppedCanvas({ maxWidth: 4096, maxHeight: 4096 })">
+                                        Cắt ảnh
+                                    </span>
+                                </button>
+                            </div>
+
+                            @*<!-- Show the cropped image in modal -->*@
+                            <div class="modal pt-5 docs-cropped" id="getCroppedCanvasModal" role="dialog" aria-hidden="true" aria-labelledby="getCroppedCanvasTitle" tabindex="-1">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-body">
+                                            éo có gì cả
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary close-modal-crop-img" >Hủy</button>
+                                            <a class="btn btn-primary" id="apply_info" data-for="" href="javascript:void(0);" data-dismiss="modal" >Áp dụng</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </main>
+      <script>
+          $("#btnDangky" ).on('click', function(){
+              $.ajax({
+                  type: "POST",
+                  data: $("#Form_Dangkyxe").serialize(),
+                  url: "/dangkyxe1",
+
+                  success: function(data1)
+                  {
+
+                  if(data1.indexOf("OK")!=-1)
+                  {
+                      toast({
+                      titleMes: "Thất bại!",
+                      message: "Đăng ký thành công",
+                      type: "error",
+                      duration: 5000
+                      });
+                  }else{
+                      toast({
+                      titleMes: "Thất bại!",
+                      message: "Đã có lỗi xảy ra, vui lòng thử lại!!!",
+                      type: "error",
+                      duration: 5000
+                      });
+                  }
+                  }
+              } );
+          });
+
+          $("#btnDangkyxemay" ).on('click', function(){
+          $.ajax({
+          type: "POST",
+          data: $("#Form_Dangkyxemay").serialize(),
+          url: "/dangkyxe2",
+
+          success: function(data1)
+          {
+
+          if(data1.indexOf("OK")!=-1)
+          {
+          toast({
+          titleMes: "Thất bại!",
+          message: "Đăng ký thành công",
+          type: "error",
+          duration: 5000
+          });
+          }else{
+          toast({
+          titleMes: "Thất bại!",
+          message: "Đã có lỗi xảy ra, vui lòng thử lại!!!",
+          type: "error",
+          duration: 5000
+          });
+          }
+          }
+          } );
+          });
+      </script>
+
+    <script>
+         $(document ).ready(function(){
+         for(var i=1980; i<= 2022; i++){
+         var x = "<option value='"+i+"'>" + i + "</option>";
+         document.getElementById("namSanXuat").innerHTML += x;
+         }
+
+         }) ;
+    </script>
+}
+
+
+

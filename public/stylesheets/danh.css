@@ -1,0 +1,578 @@
+/*Màn thường*/
+.dkdn-info-cqtcc,.dkdn-info-cqt,.dkdn-info-license,.dkdn-info-ghd-select{
+    cursor: pointer;
+}
+.dangkydoanhnghiep-content{
+    background: aliceblue;
+    margin-top: 1%;
+}
+#btn_dangkydoanhnghiep{
+    color: #ffffff;
+    background: #5b9bd5;
+}
+.dkdn-title{
+    text-align: center;
+}
+.dkdn-title-content{
+    text-align: center;
+    color: #5b9bd5;
+    font-family: Google-Sans,sans-serif;
+    font-size: 25px;
+}
+.dkdn-info-mst,.dkdn-info-name-enterprise,.dkdn-info-address,.dkdn-info-dkbq,.dkdn-info-dkttt,.dkdn-title-botton{
+    padding-left: 25%;
+    padding-right: 25%;
+}
+.dkdn-info-address-input,.dkdn-info-tenDoanhNghiep,.dkdn-info-mst-maSoThue{
+    font-size: 25px;
+}
+.dkdn-info-dkttt,.dkdn-info-dkbq{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.dkdn-info-cqtcc-tt,.dkdn-info-cqt-tt,.dkdn-info-ghd,.dkdn-info-license-tt{
+    width: 50%;
+}
+.dkdn-info-cqtcc{
+    min-width: 99%;
+    height: 50px;
+}
+.dkdn-info-cqt{
+    min-width:100% ;
+    height: 50px;
+
+}
+.dkdn-info-ghd-select,.dkdn-info-license{
+    height: 50px;
+
+}
+.dkdn-info-license{
+    min-width: 99%;
+}
+.dkdn-info-ghd-select{
+    min-width: 100%;
+}
+.dkdn-info-mst,.dkdn-info-name-enterprise,.dkdn-info-address,.dkdn-title,.dkdn-info-dkbq,.dkdn-info-dkttt{
+    padding-bottom: 0.5%;
+    padding-top: 0.5%;
+}
+#btn_dangkydoanhnghiep{
+    font-size: 25px;
+    line-height: 25px;
+    margin-bottom: 1%;
+}
+.itemLink{
+    color: red;
+    color: darkblue;
+    font-weight: 600 !important;
+    /*font-family: Google-Sans,sans-serif!important;*/
+}
+.col1_hatang,.col3_hatang{
+    width: 100px;
+}
+.cks-data{
+    display: flex;
+}
+.row_hatang,.row_hatang1,.row_hatang3{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    padding: 1%;
+}
+.dv_hatang{
+    width: 40%;
+}
+.images-cks{
+    max-width: 100%;
+}
+:root{
+    --autowith: auto;
+    --autoheight: auto;
+}
+#tbViewReport input{
+    height: 25px !important;
+}
+a{
+    text-decoration: none !important;
+}
+#tbUser input{
+    height: 25px !important;
+}
+.waplog_title9-bc-mobile{
+    margin-top: 1%;
+}
+.imagesone{
+    height: 280px !important;
+    min-height: 350px !important;
+}
+.upload-resize{
+    height: var(--autowith) !important;
+    width: var(--autowith) !important;
+}
+.autoresize,.boximg1{
+    height: var(--autowith) !important;
+    width: var(--autowith) !important;
+    max-width: 200px !important;
+    max-height: 266.6px !important;
+    min-width: 150px !important;
+    min-height: 200px !important;
+}
+#dsDN{
+    left: 38% !important;
+    width: auto !important;
+}
+.btnXoaCtyCon{
+    cursor: pointer;
+}
+.themdienthoai{
+    display: none;
+}
+.myImg {
+
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#myImg:hover {opacity: 0.7;}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0 !important;
+    top: 0 !important;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgb(45 40 40 / 80%) !important; /* Black w/ opacity */
+}
+
+/* Modal Content (image) */
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 100%;
+    max-width: 700px;
+}
+
+/* Caption of Modal Image */
+#caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    height: 150px;
+}
+
+/* Add Animation */
+.modal-content, #caption {
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.6s;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+
+
+/* The Close Button */
+.closee {
+    position: absolute !important;
+    top: -4% !important;
+    right: 2%;
+    color: #ff0000  !important;
+    font-size: 40px !important;
+    font-weight: bold !important;
+}
+
+.closee:hover,
+.closee:focus {
+    color: red !important;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.dn-ngancach{
+    line-height: 1.8;
+    color: yellow ;
+}
+input{
+    box-shadow: none !important;
+}
+.container-capcha>.inputbox>.error{
+
+
+
+    color: red;
+    margin-top: 170px;
+
+}
+.container-tendn>.inputbox>.error{
+
+
+
+    color: red;
+    margin-top: 55px;
+
+}
+.container-mk>.inputbox>label{
+    color: red;
+    position: absolute;
+    top: 215px;
+}
+.login_content-item p{
+
+         position: relative;
+         top: 265px;
+
+}
+.header-flex-container{
+    position: fixed !important;
+}
+/*.lichChuyenTien
+{
+    width: 24%;float: left;margin-left: 1%; display: flex;
+    justify-content: center;
+}*/
+.lichChuyenTien input[type=checkbox]
+{
+    width: 25px!important;
+}
+.lichChuyenTien label{
+    height: 25px!important;
+    line-height: 40px!important;
+}
+#paym ul li input{
+    height: 32px !important;
+    background:rgb(232, 240, 254) !important ;
+    color: #000000;
+} 
+.danh{
+    width: 90% !important;
+    font-size: 20px;
+    height: 35px;
+}
+#backtotop .visible{visibility:visible; opacity:1 !important;display:block}
+
+
+
+    /*Màn hình laptop 15.6 inch*/
+@media screen and (max-width: 1600px) and (min-width: 1200px){
+    .thanhtoanquaqr-hd-mobile{
+
+        width: 100% !important;
+        margin-left: 1px !important;
+        padding: 5px !important;
+
+    }
+    .closee {
+        position: absolute !important;
+        top: 0% !important;
+        right: 0% !important;
+        color: #f1f1f1 !important;
+        font-size: 40px !important;
+        font-weight: bold !important;
+        transition: 0.3s !important;
+    }
+}
+    /*Màn hình tablet lớn*/
+@media screen and (max-width: 1200px) and (min-width: 768px){
+    .hdmovi-tablet{
+        margin: 10% 3% 0 !important;
+    }
+    .imagesone,.imagestwo{
+        height: 280px !important;
+        min-height: 350px !important;
+        width: 370px;
+    }
+    .container .container-amh{
+        width: inherit !important;
+    }
+    .mainnew-t1 {
+        width: 90%;
+        float:left;
+    }
+    .listcontent-sub1{
+        width: 100%;
+        float: left;
+    }
+    .searchinfo{
+        width: 20% !important;
+    }
+    .imgcmnd{
+        display: flex !important;
+        flex-direction:column !important;
+        align-items: center !important;
+    }
+    .frame-slide{
+        width: 90% !important;
+        margin: auto;
+        height: 151px;
+        padding-bottom: 10px;
+    }
+    .headervideo iframe{
+        height: 480px !important;
+        width: 90% !important;
+    }
+    .image-cancreat{
+        flex-direction:column !important;
+    }
+    .container-lvv .container-lvv-nd{
+        width: 90% !important;
+        text-align: center;
+        margin-top: 0;
+        padding-left: 5% !important;
+    }
+    .container-lvv{
+        position: relative;
+        display: flex;
+        margin-top: 5%;
+        flex-direction:column !important;
+    }
+    .container-lvv .container-lvv-nd2{
+        width: 90% !important;
+        text-align: center;
+        margin-top: 0;
+        margin: auto !important;
+        padding-right: 0 !important;
+    }
+}
+    /*Màn hình tablet*/
+@media screen and (max-width: 768px) and (min-width: 640px){
+    .hdmovi-tablet{
+        margin: 10% 3% 0 !important;
+    }
+    .imagesone,.imagestwo{
+        height: 280px !important;
+        min-height: 350px !important;
+        width: 370px;
+    }
+    .container-lvv .container-lvv-nd2{
+        width: 90% !important;
+        text-align: center;
+        margin: auto !important;
+        padding-right: 0 !important;
+    }
+    .container-lvv .container-lvv-nd{
+        width: 90% !important;
+        text-align: center;
+        margin-top: 0;
+        padding-left: 5% !important;
+    }
+    .container-lvv{
+        position: relative;
+        display: flex;
+        margin-top: 5%;
+        flex-direction:column !important;
+    }
+    .image-cancreat{
+        flex-direction:column !important;
+    }
+    .container .container-amh{
+        width: inherit !important;
+
+    }
+    .headervideo iframe{
+        height: 480px !important;
+        width: 90% !important;
+    }
+    .frame-slide{
+        width: 90% !important;
+        margin: auto;
+        height: 151px;
+        padding-bottom: 10px;
+    }
+    .mainnew-t1 {
+        width: 90%;
+        float:left;
+    }
+    .listcontent-sub1{
+        width: 100%;
+        float: left;
+    }
+    .searchinfo{
+        width: 20% !important;
+    }
+    .tokenDN-mb{
+        font-size: 15px !important;
+    }
+    .imgcmnd{
+        display: flex !important;
+        flex-direction:column !important;
+        align-items: center !important;
+    }
+}
+    /*Màn điện thoại*/
+@media (max-width: 640px) {
+    header{
+        position: absolute;
+        top: 0;
+    }
+    .closee {
+        position: absolute !important;
+        top: -8% !important;
+        right: 2%;
+        color: #ff0000  !important;
+        font-size: 40px !important;
+        font-weight: bold !important;
+    }
+    .modal-content2-mobile{
+        width: 100% !important;
+    }
+    .tokenDN-mb{
+        font-size: 9px !important;
+    }
+    .searchinfo{
+        width: 49% !important; ;
+        height: 40px;
+        border: 1px white;
+    }
+    .quocgia-mobile{
+        width: 95% !important;
+    }
+    .showLap-mobile{
+        width: 99% !important;
+    }
+    .home-mobile{
+        width: 100% !important;
+    }
+    .tab-mobile{
+        margin-top: 20% !important;
+    }
+    .tableulsaoke{
+        display: flex;
+        width: 100%;
+        list-style: none;
+        justify-content: space-around;
+    }
+    .excel-mobile{
+        display: none !important;
+    }
+    .themdienthoai{
+        display: block !important;
+        border: none !important;
+        width: 100% !important;
+        float: right;
+    }
+    .table_header-mobile{
+        display: none !important;
+    }
+    .nhanqr-mobile{
+        width: 100% !important;
+    }
+    .nhantienquaqr-mobile{
+        margin-top: 70px ;
+        font-size: 25px !important;
+    }
+    .nhantienquaqr-mobile-2{
+        width: 100% !important;
+        margin: auto !important;
+
+    }
+    .thanhtoanquaqr-mobile,.thanhtoanquaud-mobile{
+        font-size: 25px !important;
+    }
+    .buyticket-mobile{
+        width: 97% !important;
+        margin: 4px !important;
+    }
+    .login_mobile{
+        width: 100%;
+        margin-top: 15%;
+    }
+    .dn-span-mk-laptop{
+        position: absolute !important;
+        display: inline-block !important;
+        transition:0.5s !important;
+        pointer-events: none !important;
+        top: 230px !important;
+        left: 22px !important ;
+    }
+    #dkqmk{
+       top: 60px;
+    }
+    .capcha_span{
+        top: 373px !important;
+    }
+    .container-capc{
+        top: 363px !important;
+    }
+    .img-vd-dien>img{
+        width: 100%;
+    }
+    .txtTen,.txtSDT{
+        font-size: 14px !important;
+
+    }
+    .txtQuyenLap,.txtQuyenDuyet{
+        width: 15px !important;
+    }
+    .table_header{
+        font-size: 10px !important;
+    }
+    .name-mb{
+        width: 32% !important;
+    }
+    .mobile-mb{
+        width: 15% !important;
+    }
+    .interprise-mb{
+        width: 35% !important;
+    }
+    .location-mb,.locationCn-mb{
+        margin-left: 66% !important;
+    }
+    .dxdsqld-mb, .dxdsbc-mb,.dsqtv{
+        font-size: 15px !important;
+    }
+    .dxn-mb{
+        font-size: 7px  !important;
+        display: none;
+    }
+    .modal-content {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 10px;
+        height: auto;
+        margin-top: 2%;
+        border: 1px solid #888;
+        width: 100% !important;
+
+    }
+    .tendn-mobile{
+        width: 95% !important;
+    }
+
+    #tbViewReport input{
+        height: 25px !important;
+    }
+    #tbUser input{
+        height: 25px !important;
+    }
+    #tbViewReport li{
+        list-style: none;
+        font-size: 12px !important;
+    }
+    #tbUser li{
+        list-style: none;
+        font-size: 12px !important;
+    }
+    ul{
+        padding-left: 0 !important;
+        margin-bottom: 0 !important;
+    }
+    .waplog_title9-bc-mobile{
+        margin-top: 6% !important;
+    }
+    .dv_hatang {
+        width: 50%;
+        font-size: 10px;
+    }
+
+}

@@ -1,0 +1,100 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET         /                               controllers.Application.index()
+
+
+# Map static resources from the /public folder to the /assets URL path
+GET         /assets/*file                   controllers.Assets.at(path="/public", file)
+GET         /changeLangguale                controllers.Application.changeLang()
+GET         /header                         controllers.Application.header_menu()
+GET         /download                       controllers.Application.Url_itemlink()
+GET         /header                         controllers.Application.header_menu()
+
+GET         /gencapt                        controllers.VtaxiController.genCaptcha()
+GET         /reCaptchaQR                    controllers.VtaxiController.reCaptchaQR()
+GET         /taikhoan                       controllers.Application.login_register()
+POST        /taikhoan                       controllers.account.LoginController.login()
+GET         /logout                         controllers.account.LoginController.logout()
+
+GET         /thaydoithongtin                controllers.thaydoi.ThayDoiController.getAccountInfo
+
+GET         /gencapt                        controllers.VtaxiController.genCaptcha()
+GET         /reCaptchaQR                    controllers.VtaxiController.reCaptchaQR()
+GET         /taikhoan                       controllers.Application.login_register()
+POST        /taikhoan                       controllers.account.LoginController.login()
+GET         /logout                         controllers.account.LoginController.logout()
+GET         /gencapt                        controllers.VtaxiController.genCaptcha()
+GET         /reCaptchaQR                    controllers.VtaxiController.reCaptchaQR()
+GET         /taikhoan                       controllers.Application.login_register()
+POST        /taikhoan                       controllers.account.LoginController.login()
+GET         /logout                         controllers.account.LoginController.logout()
+GET         /xacthuckhuonmat                controllers.Application.xacthukhuonmat()
+
+GET         /goixengay                      controllers.Application.Datxe()
+POST        /goixengay                      controllers.Application.Datxengay_Post()
+
+
+GET         /hopdong                        controllers.Application.HopdongVtaxi()
+GET         /phaply                         controllers.Application.Phaply()
+GET         /huongdan                       controllers.Application.Khachang()
+GET         /bansggia                       controllers.Application.Banggia()
+POST        /dangkylaixe1                   controllers.Application.DangKyLaiXePost()
+GET         /dangkyxe                       controllers.Application.Dangkyxe()
+POST        /dangkyxe1                      controllers.Application.Dangkyxe_Post()
+GET         /hopdong                        controllers.Application.HopdongVtaxi()
+GET         /dangkylaixe                    controllers.Application.dangKyLaiXe()
+
+GET         /hopdong                        controllers.Application.HopdongVtaxi()
+GET         /phaply                         controllers.Application.Phaply()
+GET         /huongdan                       controllers.Application.Khachang()
+GET         /bansggia                       controllers.Application.Banggia()
+POST        /dangkylaixe1                   controllers.Application.DangKyLaiXePost()
+GET         /dangkyxe                       controllers.Application.Dangkyxe()
+POST        /dangkyxe1                      controllers.Application.Dangkyxe_Post()
+GET         /hopdong                        controllers.Application.HopdongVtaxi()
+GET         /dangkylaixe                    controllers.Application.dangKyLaiXe()
+
+GET         /hopdong                        controllers.Application.HopdongVtaxi()
+GET         /phaply                         controllers.Application.Phaply()
+GET         /huongdan                       controllers.Application.Khachang()
+GET         /banggia                        controllers.Application.Banggia()
+
+GET         /testcode                       controllers.Application.Testcode()
+POST        /checkCamera                    controllers.Application.POSTRequest()
+
+
+#Đăng ký xe
+GET         /dangkyxe                       controllers.Application.Dangkyxe()
+POST        /dangkyxe1                      controllers.Application.Dangkyxe_Post()
+POST        /dangkyxe2                      controllers.Application.Dangkyxemay_Post()
+
+#Đăng ký lái xe
+GET         /dangkylaixe                    controllers.Application.dangKyLaiXe()
+POST        /dangkylaixe1                   controllers.Application.DangKyLaiXePost()
+
+GET         /dangkykinhdoanh                controllers.Application.dangkykinhdoanh()
+
+#Bài viết
+
+#Thông tin cá nhân
+GET         /thongtinCNVi                   entity.DichVuGoiChung.layThongTinCnVi()
+
+
+GET         /huongdan/dichvugoixe           controllers.Application.huongdandvgoixe()
+
+GET         /huongdan/dichvugoixe           controllers.Application.huongdandvgoixe()
+
+GET         /huongdan/dangkyxe              controllers.Application.huongdandangkyxe()
+GET         /huongdan/dangkylaixe           controllers.Application.huongdandangkylaixe()
+GET         /huongdan/dangkytaikhoan        controllers.Application.huongdandangkytaikhoan()
+
+GET         /getdanhmucbaiviet              controllers.baiVietController.loadBaiBaoTrangChu()
+
+
+
+#Audio
+
+GET         /getAudio                       controllers.Application.getAudio()

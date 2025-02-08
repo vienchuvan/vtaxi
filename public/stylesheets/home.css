@@ -1,0 +1,280 @@
+.frame_home-huongdan {
+    justify-content: space-around;
+    height: 600px;
+
+}
+.card_banggia{
+       min-height: 110px;
+}
+.t-c_blue {
+    color: #279CEB;
+}
+
+.background_home{
+    background:#279CEB;
+}
+.choose_huongdan {
+    background: white;
+    border-radius: 10px;
+    margin-top: 2%
+}
+
+/*.choose_huongdan:hover {
+    background: #279CEB !important;
+    color: white;
+}*/
+
+.t-c_white{
+     color: #ffffff;
+}
+
+.active_choose-add {
+    background: #daeeff !important;
+    color: white;
+}
+.img_huongdan{
+    z-index: 4;
+    position: absolute;
+    width: 300px;
+}
+.sub-title {
+    font-weight: bold;
+    line-height: 125%;
+    text-align: left;
+    letter-spacing: -0.01em;
+    color: #fff;
+    font-size: 3.28571em;
+}
+
+.note-title {
+    font-weight: bold;
+    font-size: 1.25rem;
+    line-height: 140%;
+    letter-spacing: 0.01em;
+    color: #fff;
+}
+
+
+/*tab*/
+.tab {
+    overflow: hidden;
+   color: #ffffff;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    color: #ffffff;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+/*.tab button:hover {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    background-color: #ffffff;
+    color: #279CEB;
+}*/
+
+/* Create an active/current tablink class */
+.tab button.active {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    background-color: #ffffff;
+    color: #279CEB;
+}
+
+.tab button.active_xe {
+    width: 150px;
+    height: 30px;
+    background: #279CEB;
+    border-radius: 50%;
+}
+.active_xe1 {
+    width: 150px;
+    height: 30px;
+    background: #279CEB;
+    top: 50px;
+    z-index: 0;
+    border-radius: 50%;
+}
+
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+}
+
+
+/*bannner xe*/
+
+.icon_banner2{
+    z-index: 2;
+    width: 200px;
+    position: absolute;
+    left: 25%;
+}
+.icon_banner3{
+    z-index: 3;
+    position: absolute;
+    bottom: 30px;
+    left: 20%;
+}
+.icon_road{
+    position: absolute;
+    bottom: 0;
+
+}
+.icon_road2{
+    position: absolute;
+    bottom: 40px;
+    left: 30px;
+}
+.card_frame_1{
+    height: 300px;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+}
+.card_tab-choose_car{
+    display: flex;
+    justify-content: space-around;
+    width: 50%;
+    margin: auto;
+}
+
+
+.blob-effect {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.blob-effect span:nth-child(1) {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    border: 2px solid #a9ff68;
+    border-radius: 38% 62% 63% 37% / 41% 44% 56% 59%;
+    transition: 0.5s;
+    animation: rotate-blob 5s linear infinite;
+}
+
+
+
+.blob-effect span:nth-child(2) {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    border: 2px solid #a9ff68;
+    border-radius: 38% 62% 63% 37% / 41% 44% 56% 59%;
+    transition: 0.5s;
+    animation: rotate-blob 4s linear infinite;
+}
+
+
+.blob-effect span:nth-child(3) {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    border: 2px solid #a9ff68;
+    border-radius: 38% 62% 63% 37% / 41% 44% 56% 59%;
+    transition: 0.5s;
+    animation: rotate-blob2 10s linear infinite;
+}
+
+
+
+@keyframes rotate-blob {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes rotate-blob2 {
+    0% {
+        transform: rotate(360deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+#customers {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#customers td, #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #279CEB;
+    color: white;
+}
+@media screen and (max-width: 500px) {
+    .card_tab-choose_car {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+        margin: auto;
+    }
+
+    .icon_banner2{
+        z-index: 2;
+        top: 25%;
+        width: 100px;
+        position: absolute;
+        left: 40%;
+    }
+    .icon_banner3{
+        z-index: 3;
+        position: absolute;
+        width: 160px;
+        bottom: 1px;
+        left: 35%;
+    }
+    .icon_road{
+        position: absolute;
+        bottom: 0;
+
+    }
+    .icon_road2{
+        position: absolute;
+        bottom: 8px;
+    }
+
+}

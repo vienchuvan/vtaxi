@@ -1,0 +1,744 @@
+@(message: String,info:controllers.account.ThongTinCaNhan,province: String,date:String)
+@main(message) {
+    <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/thaydoithongtin.css")">
+    <script src="@routes.Assets.at("javascripts/update_info_account/update_info_account.js")" type="text/javascript"></script>
+    <script src="@routes.Assets.at("javascripts/Crop/cropper_account.js")" type="text/javascript"></script>
+    <script src="@routes.Assets.at("javascripts/Crop/cropper.js")" type="text/javascript"></script>
+    <script src="@routes.Assets.at("javascripts/jquery.lightbox.js")" type="text/javascript"></script>
+    <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/danh.css")">
+
+    <main class="main-top">
+        <div class="container bg-gradient"  >
+            <form  method ="POST" id="DangKyLX_acc" action="#">
+                <div>
+                    @*-------- thong tin vi -----------*@
+                    @if(session().get("lang")==null||session().get("lang")=="vi"){
+                        <h2 class="m-auto fw-bold pt-5 pb-3"> Đăng ký lái xe</h2>
+                    }else{
+                        <h2 class="m-auto fw-bold pt-5 pb-3"></h2>
+                    }
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            @*------ So vi, ten hien thi ------*@
+                            <div class="row">
+                              @*  *@@*------ Sdt*@@*
+                                <div class="col-12 col-md-6">
+                                    <div class="input-group">
+                                        <input type="text" class="effect-input-info bg_transparent" name="sobanglai" id="sobanglai" placeholder=" "  />
+                                        @if(session().get("lang")==null||session().get("lang")=="vi"){
+                                            <label>Số bằng lái</label>
+                                        }else{
+                                            <label></label>
+                                        }
+                                    </div>
+                                </div>*@
+
+
+                            </div>
+                            @*------ Ten tren CMND/ CCCD, ngay sinh ------*@
+                            <div class="row">
+                                <div class="col-12 col-md-12">
+                                    <div class="input-group">
+                                        <input type="text" class="effect-input-info" id="acc_name" name="acc_name"  placeholder=" " value="@info.getAcc_name" />
+                                        @if(session().get("lang")==null||session().get("lang")=="vi"){
+                                            <label>Tên trên CMND/CCCD/Hộ Chiếu</label>
+                                        }else{
+                                            <label>
+                                                Name on CMND/CCCD/Passport
+                                            </label>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                            @*------  ngay cap ------*@
+                            <div class="col-12 col-md-12">
+                                <td class="header-select-saoke-from " style="width: auto;display: inline-block;margin-right: 10px;">
+                                    @if(session().get("lang") ==null || session().get("lang")=="vi"){
+                                        <span class="Label_Right">Ngày sinh</span>
+                                    }else{
+                                        <span class="Label_Right"></span>
+                                    }
+                                    <span class="dateEntry_wrap">
+                                        <input style="text-align: center;line-height: 2;border-radius: 5px;border-color:  #000000 ; border: 1px solid" class="from" type="text" id="datepicker1" name="datepicker1" class="hasDatepicker input-group" value="@date">
+                                    </span>
+                                </td>
+                            </div>
+                            @*------ Gioi tinh, quoc tich ------*@
+                            <div class="row">
+                                <div class="input-group">
+                                    <div class="col-12 col-md-6">
+                                        <div class="col-5 col-md-12">
+                                        @if(session().get("lang")==null||session().get("lang")=="vi"){
+                                            <label style="color: #0056cb;" class="fw-bold">Giới tính</label>
+                                        }else{
+                                            <label style="color: #0056cb;" class="fw-bold">Sex</label>
+                                        }
+                                        </div>
+                                        @if(session().get("lang")==null||session().get("lang")=="vi"){
+                                            <div class="col-7 col-md-12 d-flex flex-row justify-content-start">
+                                            @if(info.getGioiTinh==1){
+                                                <div class="form-check  d-flex align-items-center" style="min-height: 50px;">
+                                                    <input name="gioiTinh" class="form-check-input" type="radio" value="0" id="gioiTinhNam" >
+                                                    <label class="form-check-label ms-1" for="gioiTinhNam">
+                                                        Nam
+                                                    </label>
+                                                </div>
+                                                <div class="form-check d-flex align-items-center ms-5" style="height: 50px;">
+                                                    <input name="gioiTinh" class="form-check-input" type="radio" value="1" id="gioiTinhNu" checked>
+                                                    <label class="form-check-label ms-1" for="gioiTinhNu">
+                                                        Nữ
+                                                    </label>
+                                                </div>
+                                            }else{
+                                                <div class="form-check  d-flex align-items-center" style="min-height: 50px;">
+                                                    <input name="gioiTinh" class="form-check-input" type="radio" value="0" id="gioiTinhNam" checked>
+                                                    <label class="form-check-label ms-1" for="gioiTinhNam">
+                                                        Nam
+                                                    </label>
+                                                </div>
+                                                <div class="form-check d-flex align-items-center ms-5" style="height: 50px;">
+                                                    <input name="gioiTinh" class="form-check-input" type="radio" value="1" id="gioiTinhNu"  >
+                                                    <label class="form-check-label ms-1" for="gioiTinhNu">
+                                                        Nữ
+                                                    </label>
+                                                </div>
+                                            }
+                                            </div>
+                                        }else{
+                                            <div class="col-7 col-md-12 d-flex flex-row justify-content-start">
+                                            @if(info.getGioiTinh==1){
+                                                <div class="form-check  d-flex align-items-center" style="min-height: 50px;">
+                                                    <input name="gioiTinh" class="form-check-input" type="radio" value="0" id="gioiTinhNam" checked>
+                                                    <label class="form-check-label ms-1" for="gioiTinhNam">
+                                                        Male
+                                                    </label>
+                                                </div>
+                                                <div class="form-check d-flex align-items-center ms-5" style="height: 50px;">
+                                                    <input name="gioiTinh" class="form-check-input" type="radio" value="1" id="gioiTinhNu"  >
+                                                    <label class="form-check-label ms-1" for="gioiTinhNu">
+                                                        Female
+                                                    </label>
+                                                </div>
+                                            }else{
+                                                <div class="form-check  d-flex align-items-center" style="min-height: 50px;">
+                                                    <input name="gioiTinh" class="form-check-input" type="radio" value="0" id="gioiTinhNam" >
+                                                    <label class="form-check-label ms-1" for="gioiTinhNam">
+                                                        Male
+                                                    </label>
+                                                </div>
+                                                <div class="form-check d-flex align-items-center ms-5" style="height: 50px;">
+                                                    <input name="gioiTinh" class="form-check-input" type="radio" value="1" id="gioiTinhNu" checked>
+                                                    <label class="form-check-label ms-1" for="gioiTinhNu">
+                                                        Female
+                                                    </label>
+                                                </div>
+
+                                            }
+                                            </div>
+                                        }
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            @*------ So CMND/ CCCD ------*@
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="input-group">
+                                        <input name="soCMND" type="text" id="soCMND" class="effect-input-info" placeholder=" " value="@info.getIdCard"/>
+                                        @if(session().get("lang")==null||session().get("lang")=="vi"){
+                                            <label>Số CMND/CCCD/Hộ Chiếu</label>
+                                        }else{
+                                            <label>ID CMND/CCCD/Passport</label>
+                                        }
+                                    </div>
+                                </div>
+
+                            </div>
+                            @*------ Noi thuong tru ------*@
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="input-group">
+                                        <input type="text" id="noithuongtru" name="noithuongtru" class="effect-input-info" placeholder=" " value="@info.getHome"/>
+                                        @if(session().get("lang")==null||session().get("lang")=="vi"){
+                                            <label>Nơi thường trú</label>
+                                        }else{
+                                            <label>
+                                                Place of residence
+                                            </label>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            @*------ Sdt, email ------*@
+                            <div class="row">
+                                @*------ Sdt*@
+
+                                <div class="col-12 col-md-6">
+                                    <div class="input-group">
+                                        <input name="soDt" maxlength="11" type="text" class="effect-input-info" id="soDt" placeholder=" " value="@session().get(controllers.account.Service.KEY_PHONE_ID)"/>
+                                        @if(session().get("lang")==null||session().get("lang")=="vi"){
+                                            <label>Số điện thoại</label>
+                                        }else{
+                                            <label>Phone number</label>
+                                        }
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    @*------ So tai khoan ------*@
+                                    <div class="input-group">
+                                        <input type="text" class="effect-input-info" placeholder=" "name="soViTT" id="soViTT" />
+                                        @if(session().get("lang")==null||session().get("lang")=="vi"){
+                                            <label>Số ví thanh toán</label>
+                                        }else{
+                                            <label>
+                                            </label>
+                                        }
+                                    </div>
+                                    <input id="tenchuvi" type="hidden" value=""/>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-12 col-md-12">
+                                    @*------ Email*@
+                                        <div class="input-group">
+                                            <input name="email" type="text" class="effect-input-info" placeholder=" " id="email" value="@info.getEmail()"/>
+                                            <label>Email</label>
+                                        </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="col-12 col-md-6 ps-0 ps-md-6 pt-3">
+                            @*-------- Anh dai dien, mat truoc, sau cmnd/cccd*@
+                            <div class="row">
+                                <div class=" col-12 col-md-12 d-flex flex-column justify-content-start pt-3 pb-3">
+                                    <div class="m-auto">
+                                    @if(session().get("lang")==null||session().get("lang")=="vi"){
+                                        <span class="fw-bold ms-3"> Ảnh đại diện</span>
+                                    }else{
+                                        <span class="fw-bold ms-3"> Avatar</span>
+                                    }
+                                    </div>
+                                    <div class=" m-auto" style="max-width: 225px; border: 1px solid black; border-radius: 7px;">
+                                        <a href="#">
+                                        @if(info.getAvatar!=null&& !info.getAvatar.equals("")){
+                                            <img class="avartar_account img-thumbnail myImg"  src="https://vimass.vn/vmbank/services/media/getImage?id=@info.getAvatar" alt="Ảnh đại diện"/>
+                                            <input type="hidden" name="imgdata3" id="imgdata3" value="https://vimass.vn/vmbank/services/media/getImage?id=@info.getAvatar"/>
+                                        }else{
+                                            <img class="avartar_account img-thumbnail myImg" src="@routes.Assets.at("images/icon-camnera.png")" style="max-height: 198px" >
+                                            <input type="hidden" name="imgdata3" id="imgdata3" value="https://vimass.vn/vmbank/services/media/getImage?id=@info.getAvatar"/>
+                                        }
+
+                                        </a>
+                                    </div>
+                                    @if(info.getId.length>0){
+                                        @if(session().get("lang")==null||session().get("lang")=="vi"){
+                                            <label  for="inputImage_avatar-cn" class="docs-tooltip h-input-qr d-flex justify-content-center align-items-center mt-4 m-auto form-control pointer w-50 btn-primary" >Thay ảnh  <i class="fa fa-upload ms-1" style="font-size:24px;color:red"></i></label>
+                                        }else{
+                                            <label  for="inputImage_avatar-cn" class="docs-tooltip h-input-qr d-flex justify-content-center align-items-center mt-4 m-auto form-control pointer w-50 btn-primary" >
+                                                Change photo  <i class="fa fa-upload ms-1" style="font-size:24px;color:red"></i></label>
+                                        }
+                                        <input type="file" class="form-control d-none" id="inputImage_avatar-cn" name="file" accept=".jpg,.jpeg,.png,.gif,.bmp,.tiff">
+                                    }else{
+
+                                    }
+                                </div>
+                                <div class="d-flex row">
+                                    <div class=" col-6 col-md-6 d-flex flex-column justify-content-start pt-3 pb-3">
+                                        <div  class="align-items-start">
+                                        @if(session().get("lang")==null||session().get("lang")=="vi"){
+                                            <span class="fw-bold ms-3 myImg">Mặt trước CMND/CCCD/Hộ Chiếu</span>
+                                        }else{
+                                            <span class="fw-bold ms-3 myImg">Front side of ID card/CCCD/Passport</span>
+                                        }
+                                        </div>
+                                        <div class=" m-auto" style="width: 318px; background: pink; border: 1px solid black; border-radius: 7px;">
+                                            <a href="#">
+                                            @if(info.getLinkFrontIdCard!=null&& !info.getLinkFrontIdCard.equals("")){
+                                                <img class="anhMTCCCD img-thumbnail myImg" src="https://vimass.vn/vmbank/services/media/getImage?id=@info.getLinkFrontIdCard" alt="Ảnh mặt trước CCCD"/>
+                                                <input type="hidden" name="imgdata1" id="imgdata1" value="https://vimass.vn/vmbank/services/media/getImage?id=@info.getLinkFrontIdCard"/>
+                                            }else{
+                                                <img class="anhMTCCCD img-thumbnail myImg" src="@routes.Assets.at("images/icon-camnera.png")" style="max-height: 198px; width:318px;" >
+                                                <input type="hidden" name="imgdata1" id="imgdata1" value="https://vimass.vn/vmbank/services/media/getImage?id=@info.getLinkFrontIdCard"/>
+                                            }
+                                            </a>
+                                        </div>
+                                        @if(info.getId.length>0){
+                                            @if(session().get("lang")==null||session().get("lang")=="vi"){
+                                                <label  for="inputImage_anhMTCCCD" class="docs-tooltip h-input-qr d-flex justify-content-center align-items-center mt-4 m-auto  form-control pointer w-75 btn-primary"  >Thay ảnh  <i class="fa fa-upload ms-1" style="font-size:24px;color:red"></i></label>
+                                            }else{
+                                                <label  for="inputImage_anhMTCCCD" class="docs-tooltip h-input-qr d-flex justify-content-center align-items-center mt-4 m-auto  form-control pointer w-75 btn-primary"  >
+                                                    Change photo <i class="fa fa-upload ms-1" style="font-size:24px;color:red"></i></label>
+
+                                            }
+                                            <input type="file" class="form-control d-none" id="inputImage_anhMTCCCD" name="file" accept=".jpg,.jpeg,.png,.gif,.bmp,.tiff">
+                                        } else{
+
+                                        }
+                                    </div>
+
+                                    <div class="col-6 col-md-6 d-flex flex-column justify-content-start  pt-3 pb-3">
+                                        <div  class="align-items-start">
+                                        @if(session().get("lang")==null||session().get("lang")=="vi"){
+                                            <span class="fw-bold ms-3 myImg">Mặt sau CMND/CCCD/Hộ Chiếu</span>
+                                        }else{
+                                            <span class="fw-bold ms-3 myImg">Back side of ID card/CCCD/Passport</span>
+                                        }
+                                        </div>
+                                        <div class=" m-auto" style="width: 318px; background: pink; border: 1px solid black; border-radius: 7px;">
+                                            <a href="#">
+                                            @if(info.getLinkBackIdCard!=null&& !info.getLinkBackIdCard.equals("")){
+
+                                                <img class="anhMSCCCD img-thumbnail myImg" src="https://vimass.vn/vmbank/services/media/getImage?id=@info.getLinkBackIdCard" alt="Ảnh mặt sau CCCD"/>
+                                                <input type="hidden" name="imgdata1" id="imgdata2" value=""/>
+                                            }else{
+                                                <img class="anhMSCCCD img-thumbnail myImg" src="@routes.Assets.at("images/icon-camnera.png")" style="max-height: 198px; width:318px;" >
+                                                <input type="hidden" name="imgdata1" id="imgdata2" value="https://vimass.vn/vmbank/services/media/getImage?id=@info.getLinkBackIdCard"/>
+                                            }
+                                            </a>
+
+                                        </div>
+                                        @if(info.getId.length>0){
+                                            @if(session().get("lang")==null||session().get("lang")=="vi"){
+                                                <label  for="inputImage_anhMSCCCD" class="docs-tooltip h-input-qr d-flex justify-content-center align-items-center mt-4 w-75 m-auto form-control pointer btn-primary" >Thay ảnh  <i class="fa fa-upload ms-1" style="font-size:24px;color:red"></i></label>
+                                            }else{
+                                                <label  for="inputImage_anhMSCCCD" class="docs-tooltip h-input-qr d-flex justify-content-center align-items-center mt-4 w-75 m-auto form-control pointer btn-primary" >
+                                                    Change photo<i class="fa fa-upload ms-1" style="font-size:24px;color:red"></i></label>
+
+                                            }
+                                            <input type="file" class="form-control d-none" id="inputImage_anhMSCCCD" name="file" accept=".jpg,.jpeg,.png,.gif,.bmp,.tiff">
+                                            }else{
+
+                                        }
+
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                    @*-------- btn cap nhat lai thong tin-----------*@
+                    <p style="text-align: center">
+                        <label style="color: #ff0000" id="error_message_edit"></label>
+                    </p>
+                    @if(info.getId.length>0){
+                        <div class="row pt-3 m-auto justify-content-center ">
+                            <div class="col-12 col-md-4">
+                                <div class="input-group">
+                                    <input type="hidden" id="typeAuthenticate" name="typeAuthenticate" value="0">
+                                    <input id="token" name="token" type="text" class="effect-input-info" placeholder=" "/>
+                                    @if(session().get("lang")==null||session().get("lang")=="vi"){
+                                        <label>6 số token</label>
+                                    }else{
+                                        <label> Token</label>
+                                    }
+                                </div>
+
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <div class="d-flex justify-content-center align-items-end mt-4 ">
+                                @if(session().get("lang")==null||session().get("lang")=="vi"){
+                                    <input id="btnDangKyLaiXe" value="Đăng ký" type="button" class="btn btn-primary form-control pt-3 pb-2 "/>
+                                }else{
+                                    <button id="btnDangKyLaiXe" value="Đăng ký" type="button" class="btn btn-primary form-control pt-3 pb-2 "></button>
+                                }
+                                </div>
+                            </div>
+                            <div style="text-align: center">
+                                <label style="color: #ff0000" id="error_message_edit"></label>
+                            </div>
+                        </div>
+                    }  else{
+
+                    }
+                </div>
+            </form>
+        </div>
+
+
+        @*<!---------------Crop img ------------------------------>*@
+
+        <div id="modal-crop-img-tt" class="modal-crop-img" style="display: none;">
+
+                <!-- Modal content -->
+            <div class="container position-relative pt-3 rounded" style="background: white; max-width: 768px;">
+                <div class="position-absolute top-0 end-0">
+                    <span class="close-modal-crop fs-3 text-end pe-1 pointer">&times;</span>
+                </div>
+                <div class="container" style="max-width: 768px;">
+                    <div class="row">
+                        <div class="col-md-12">
+                            @*<!-- <h3>Demo:</h3> -->*@
+                            <div class="docs-demo">
+                                <div class="img-container">
+                                    <img name="img" src="https://vimass.vn/VimassMedia/services/VMBackground/getImageThumnail?id=1655097620043Apl1" alt="Picture">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row" id="actions">
+                        <div class="col-md-12 docs-buttons d-flex flex-wrap justify-content-center ">
+                            @*<!-- <h3>Toolbar:</h3> -->*@
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-primary" data-method="setDragMode" data-option="move" title="Move">
+                                    <span class="docs-tooltip" data-toggle="tooltip" title="cropper.setDragMode(&quot;move&quot;)">
+                                        <span class="fa fa-arrows-alt"></span>
+                                    </span>
+                                </button>
+                                <button type="button" class="btn btn-primary" data-method="setDragMode" data-option="crop" title="Crop">
+                                    <span class="docs-tooltip" data-toggle="tooltip" title="cropper.setDragMode(&quot;crop&quot;)">
+                                        <span class="fas fa-crop-alt"></span>
+                                    </span>
+                                </button>
+                            </div>
+
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-primary" data-method="zoom" data-option="0.1" title="Zoom In">
+                                    <span class="docs-tooltip" data-toggle="tooltip" title="cropper.zoom(0.1)">
+                                        <span class="fa fa-search-plus"></span>
+                                    </span>
+                                </button>
+                                <button type="button" class="btn btn-primary" data-method="zoom" data-option="-0.1" title="Zoom Out">
+                                    <span class="docs-tooltip" data-toggle="tooltip" title="cropper.zoom(-0.1)">
+                                        <span class="fa fa-search-minus"></span>
+                                    </span>
+                                </button>
+                            </div>
+
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-primary" data-method="move" data-option="-10" data-second-option="0" title="Move Left">
+                                    <span class="docs-tooltip" data-toggle="tooltip" title="cropper.move(-10, 0)">
+                                        <span class="fa fa-arrow-left"></span>
+                                    </span>
+                                </button>
+                                <button type="button" class="btn btn-primary" data-method="move" data-option="10" data-second-option="0" title="Move Right">
+                                    <span class="docs-tooltip" data-toggle="tooltip" title="cropper.move(10, 0)">
+                                        <span class="fa fa-arrow-right"></span>
+                                    </span>
+                                </button>
+                                <button type="button" class="btn btn-primary" data-method="move" data-option="0" data-second-option="-10" title="Move Up">
+                                    <span class="docs-tooltip" data-toggle="tooltip" title="cropper.move(0, -10)">
+                                        <span class="fa fa-arrow-up"></span>
+                                    </span>
+                                </button>
+                                <button type="button" class="btn btn-primary" data-method="move" data-option="0" data-second-option="10" title="Move Down">
+                                    <span class="docs-tooltip" data-toggle="tooltip" title="cropper.move(0, 10)">
+                                        <span class="fa fa-arrow-down"></span>
+                                    </span>
+                                </button>
+                            </div>
+
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-primary" data-method="rotate" data-option="-45" title="Rotate Left">
+                                    <span class="docs-tooltip" data-toggle="tooltip" title="cropper.rotate(-45)">
+                                        <span class="fas fa-undo-alt"></span>
+                                    </span>
+                                </button>
+                                <button type="button" class="btn btn-primary" data-method="rotate" data-option="45" title="Rotate Right">
+                                    <span class="docs-tooltip" data-toggle="tooltip" title="cropper.rotate(45)">
+                                        <span class="fas fa-redo-alt"></span>
+                                    </span>
+                                </button>
+                            </div>
+
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-primary" data-method="scaleX" data-option="-1" title="Flip Horizontal">
+                                    <span class="docs-tooltip" data-toggle="tooltip" title="cropper.scaleX(-1)">
+                                        <span class="fas fa-arrows-alt-h"></span>
+                                    </span>
+                                </button>
+                                <button type="button" class="btn btn-primary" data-method="scaleY" data-option="-1" title="Flip Vertical">
+                                    <span class="docs-tooltip" data-toggle="tooltip" title="cropper.scaleY(-1)">
+                                        <span class="fas fa-arrows-alt-v"></span>
+                                    </span>
+                                </button>
+                            </div>
+
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-primary" data-method="crop" title="Crop">
+                                    <span class="docs-tooltip" data-toggle="tooltip" title="cropper.crop()">
+                                        <span class="fa fa-check"></span>
+                                    </span>
+                                </button>
+                                <button type="button" class="btn btn-primary" data-method="clear" title="Clear">
+                                    <span class="docs-tooltip" data-toggle="tooltip" title="cropper.clear()">
+                                        <span class="fa fa-times"></span>
+                                    </span>
+                                </button>
+                            </div>
+
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-primary" data-method="disable" title="Disable">
+                                    <span class="docs-tooltip" data-toggle="tooltip" title="cropper.disable()">
+                                        <span class="fa fa-lock"></span>
+                                    </span>
+                                </button>
+                                <button type="button" class="btn btn-primary" data-method="enable" title="Enable">
+                                    <span class="docs-tooltip" data-toggle="tooltip" title="cropper.enable()">
+                                        <span class="fa fa-unlock"></span>
+                                    </span>
+                                </button>
+                            </div>
+
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-primary" data-method="reset" title="Reset">
+                                    <span class="docs-tooltip" data-toggle="tooltip" title="cropper.reset()">
+                                        <span class="fas fa-sync-alt"></span>
+                                    </span>
+                                </button>
+
+                            </div>
+
+                            <div class="btn-group btn-group-crop">
+                                <button type="button" class="btn btn-success" data-method="getCroppedCanvas" data-option="{ &quot;maxWidth&quot;: 4096, &quot;maxHeight&quot;: 4096 }">
+                                    <span class="docs-tooltip" data-toggle="tooltip" title="cropper.getCroppedCanvas({ maxWidth: 4096, maxHeight: 4096 })">
+                                        Cắt ảnh
+                                    </span>
+                                </button>
+                            </div>
+
+                            @*<!-- Show the cropped image in modal -->*@
+                            <div class="modal pt-5 docs-cropped" id="getCroppedCanvasModal" role="dialog" aria-hidden="true" aria-labelledby="getCroppedCanvasTitle" tabindex="-1">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-body">
+                                            éo có gì cả
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary close-modal-crop-img" >Hủy</button>
+                                            <a class="btn btn-primary" id="apply_info" data-for="" href="javascript:void(0);" data-dismiss="modal" >Áp dụng</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="toast"></div>
+    </main>
+
+    <script>
+        $("body" ).on("click",".myImg",function(){
+            var a = $(this).attr('src');
+            $("#myModal" ).show();
+            $("#myModal>div>img" ).attr("src",a);
+        });
+
+        var modal = document.getElementById("myModal");
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("closee")[0];
+    </script>
+    <script>
+        $("body" ).on("click",".closee",function(){
+            $(this ).parent( ).parent( ).hide();
+        })
+        $("body" ).on("click",".closeee",function(){
+            $(this ).parent( ).hide();
+        })
+    </script>
+
+
+
+    <script type="text/javascript">
+        $(document ).ready(function(){
+            $("#btnDangKyLaiXe" ).on('click', function(e){
+                $.ajax({
+                    type: "POST",
+                    url: "/dangkylaixe1",
+                    data: $("#DangKyLX_acc").serialize(),
+                    success: function(data)
+                    {
+                        $('.loading' ).hide();
+                        if(data.indexOf("SUCCESS:") != -1)
+                        {
+                            toast({
+                            titleMes: "Thất bại!",
+                            message: "Đăng ký thành công",
+                            type: "error",
+                            duration: 5000
+                            });
+                            window.location.reload();
+                        }
+                        else if(data == "NotLogin")
+                        {
+                            window.location = ' /dangnhap';
+                        }
+                        else if(data == "FAIL")
+                        {
+                            toast({
+                                titleMes: "Thất bại!",
+                                message: "Đã có lỗi xảy ra khi kết nối đến sever",
+                                type: "error",
+                                duration: 5000
+                            });
+
+                        }
+                        else
+                        {
+                            toast({
+                                titleMes: "Thất bại!",
+                                message: data,
+                                type: "error",
+                                duration: 5000
+                            });
+
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+
+
+    <script>
+        $(document).ready(function(){
+            var block_img = document.getElementById("modal-crop-img-tt");
+            $(window).click(function(event) {
+                if (event.target == block_img) {
+            block_img.style.display = "none";
+            }
+            });
+        });
+    </script>
+
+    <script>
+        $(document ).ready(function(){
+            var resizeAndConvertBase64 = function(input){
+                var file = input.files[0];
+                $.canvasResize(file, {
+                    width: 800,
+                    height: 0,
+                    crop: false,
+                    quality: 80,
+                    callback: function(data, width, height) {
+                        $('#imagedk1').attr( "src", data );
+                        $('#imagedk1').show();
+                        $('#imgdata1').val( data );
+                    }
+                });
+            };
+            $('#filePicker').on('change', function(e){
+                $('.imagesone>.boximg1' ).addClass('autoresize');
+                resizeAndConvertBase64(this);
+                e.preventDefault();
+            });
+
+            var resizeAndConvertBase642 = function(input){
+                var file = input.files[0];
+                $.canvasResize(file, {
+                    width: 800,
+                    height: 0,
+                    crop: false,
+                    quality: 80,
+                    callback: function(data, width, height) {
+                        $('#imagedk2').attr( "src", data );
+                        $('#imagedk2').show();
+                        $('#imgdata2').val( data );
+                    }
+                });
+            };
+
+            $('#filePicker1').on('change', function(e){
+                $('.imagestwo>.boximg1' ).addClass('autoresize');
+                resizeAndConvertBase642(this);
+                e.preventDefault();
+            });
+            $(".addimg" ).on('click', function(event){
+                var rel = $(this).attr("rel");
+                var img = $("#imgdata"+rel).val();
+                $ ( "#root" ).show ( ) ;
+                $ ( "#root" ).attr ( "rel", $ ( this ).attr ( 'rel' ) )
+                $ ( "#maincanvas" ).hide ( ) ;
+            });
+        });
+    </script>
+
+    <script>
+        $(document ).ready(function(){
+            $("body" ).on("blur","input#soViTT",function(){
+                var element = $(this );
+                $("#tenchuvi" ).val("");
+                var tkn = element.val().toLowerCase();
+                var regExpSdt = new RegExp(/^\d{10,}/);
+                if( regExpSdt.test(tkn)){
+                $.ajax({
+                    type: "GET",
+                    url: "/thongtinCNVi",
+                    data: {
+                        idVi:tkn
+                    },
+                    success: function(data) {
+                    if(data!="")
+                    {
+                        var json = JSON.parse(data.replace(/\'/g,'"'));
+                        element.parent().parent().parent().find("input#tenchuvi" ).val(json.acc_name);
+                        var nameCN = $("input#tenchuvi" ).val();
+                            if(nameCN == ""){
+                                toast({
+                                titleMes: "Thất bại!",
+                                message: "Số ví không tồn tại",
+                                type: "error",
+                                duration: 5000
+                                });
+                            }
+                        }
+                    }
+                });
+                }
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        function commaSeparateNumber(val){
+            while (/(\d+)(\d{3})/.test(val.toString())){
+            val = val.toString().replace(/(\d+)(\d{3})/, '$1'+'.'+'$2');
+            }
+            return val;
+        }
+
+        $(function() {
+            $( "#datepicker" ).datepicker({ dateFormat: 'dd/mm/yy',dayNamesMin: ['CN', 'Hai', 'Ba', 'Tư', 'Năm', 'Sáu', 'Bảy'],
+            monthNames: [ "Tháng Một", "Tháng Hai", "Tháng Ba", "Tháng Tư",
+            "Tháng Năm", "Tháng Sáu", "Tháng Bảy", "Tháng Tám", "Tháng Chín",
+            "Tháng Mười", "Tháng Mười Một", "Tháng Mười Hai" ],
+            monthNames: [ "Tháng Một", "Tháng Hai", "Tháng Ba", "Tháng Tư",
+            "Tháng Năm", "Tháng Sáu", "Tháng Bảy", "Tháng Tám", "Tháng Chín",
+            "Tháng Mười", "Tháng Mười Một", "Tháng Mười Hai" ] });
+            $( "#datepicker1" ).datepicker({ dateFormat: 'dd/mm/yy',dayNamesMin: ['CN', 'Hai', 'Ba', 'Tư', 'Năm', 'Sáu', 'Bảy'],
+            monthNames: [ "Tháng Một", "Tháng Hai", "Tháng Ba", "Tháng Tư",
+            "Tháng Năm", "Tháng Sáu", "Tháng Bảy", "Tháng Tám", "Tháng Chín",
+            "Tháng Mười", "Tháng Mười Một", "Tháng Mười Hai" ],
+            monthNames: [ "Tháng Một", "Tháng Hai", "Tháng Ba", "Tháng Tư",
+            "Tháng Năm", "Tháng Sáu", "Tháng Bảy", "Tháng Tám", "Tháng Chín",
+            "Tháng Mười", "Tháng Mười Một", "Tháng Mười Hai" ] });
+
+            $( "#datepicker_qt" ).datepicker({ dateFormat: 'dd/mm/yy',dayNamesMin: ['CN', 'Hai', 'Ba', 'Tư', 'Năm', 'Sáu', 'Bảy'],
+            monthNames: [ "Tháng Một", "Tháng Hai", "Tháng Ba", "Tháng Tư",
+            "Tháng Năm", "Tháng Sáu", "Tháng Bảy", "Tháng Tám", "Tháng Chín",
+            "Tháng Mười", "Tháng Mười Một", "Tháng Mười Hai" ],
+            monthNames: [ "Tháng Một", "Tháng Hai", "Tháng Ba", "Tháng Tư",
+            "Tháng Năm", "Tháng Sáu", "Tháng Bảy", "Tháng Tám", "Tháng Chín",
+            "Tháng Mười", "Tháng Mười Một", "Tháng Mười Hai" ] });
+            $( "#datepicker1_qt" ).datepicker({ dateFormat: 'dd/mm/yy',dayNamesMin: ['CN', 'Hai', 'Ba', 'Tư', 'Năm', 'Sáu', 'Bảy'],
+            monthNames: [ "Tháng Một", "Tháng Hai", "Tháng Ba", "Tháng Tư",
+            "Tháng Năm", "Tháng Sáu", "Tháng Bảy", "Tháng Tám", "Tháng Chín",
+            "Tháng Mười", "Tháng Mười Một", "Tháng Mười Hai" ],
+            monthNames: [ "Tháng Một", "Tháng Hai", "Tháng Ba", "Tháng Tư",
+            "Tháng Năm", "Tháng Sáu", "Tháng Bảy", "Tháng Tám", "Tháng Chín",
+            "Tháng Mười", "Tháng Mười Một", "Tháng Mười Hai" ] });
+        });
+    </script>
+
+}
+

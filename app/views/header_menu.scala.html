@@ -1,0 +1,409 @@
+@(message: String,info:controllers.account.ThongTinCaNhan)
+@import controllers.account.Service
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/nam/toast.css")">
+    <script src="@routes.Assets.at("javascripts/toast.js")" type="text/javascript"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+
+    <script>
+$(document ).ready(function(){
+$(".vi" ).on('click',function(){
+$(".lang-item" ).removeClass("active");
+$(".tiengviet" ).show();
+$(".tienganh" ).hide();
+$(this ).addClass("active");
+$.ajax({
+type: 'GET',
+data: {
+lang:"vi"
+},
+url: '/changeLangguale',
+success: function(data)
+{
+var url= document.location.href;
+window.history.pushState({}, "", url.split("?")[0]);
+window.location.reload();
+
+}
+});
+});
+$(".en" ).on('click',function(){
+$(".lang-item" ).removeClass("active");
+$(this ).addClass("active");
+$(".tiengviet" ).hide();
+$(".tienganh" ).show();
+$.ajax({
+type: 'GET',
+data: {
+lang:"en"
+},
+url: '/changeLangguale',
+success: function(data)
+{
+var url= document.location.href;
+window.history.pushState({}, "", url.split("?")[0]);
+window.location.reload();
+}
+});
+});
+
+});
+
+/*$(".list-group-menu" ).on('click',function(){
+$('.choose_menu' ).removeClass("active_choose-menu") ;
+$(this).addClass( "active_choose-menu") ;
+});*/
+</script>
+<div  style="background-color: #279CEB" class="header header--padding d-flex align-items-center container-fluid menu-mobile">
+    @*-----------------lohgo-------------------*@
+    <div class="header-mobile">
+        <div class="align-items-center">
+           @* <h2 class="fw-bold fs-1">VTaxi</h2>*@
+            <a  href="/">
+            <img style="height: 50px; width : 90px ; " src="@routes.Assets.at("images/logo_icon/Logo_Vtaxi.svg")" >
+            </a>
+        </div>
+        <div class="icon-phone" id="icon-phone">
+
+            <div class="d-flex align-items-center justify-content-center h-menu-phone">
+                <a href="#">
+                    <img id="open_menu" src="@routes.Assets.at("images/img-icon/menu.svg")" style="width : 35px; height: 35px">
+                    <img id="close_menu" src="@routes.Assets.at("images/img-icon/close.svg")" style="display: none; width : 35px; height: 35px">
+                </a>
+            </div>
+        </div>
+    </div>
+    @*-----------------title, account, lang-------------*@
+    <div class="block-item-phone menu-phone flex-fill ">
+        <div class="d-flex flex-grow-1 menu-mobile list-item-phone" id="tabPhone">
+            <div class="d-flex flex-fill-mobile  justify-content-center align-items-center  menu-mobile" >
+            @if(session().get("lang")==null||session().get("lang")=="vi"){
+                <div class="d-flex item-title order-1  order-lg-0 dropdown ">
+                    <a href="/goixengay" class="list-group-menu ps-2  me-md-1 text-color-white dropbtn choose_menu "> Dịch vụ </a>
+
+                </div>
+            }else{
+                <div class = "d-flex item-title order-1 order-lg-0 dropdown">
+                    <a href="/goixengay" class="list-group-menu ps-2 me-md-1 text-color-white dropbtn select_menu "> Services </a>
+
+                </div>
+            }
+                @if(session().get("lang")==null||session().get("lang")=="vi"){
+                <div class="d-flex item-title order-2 order-lg-1 link-item dropdown">
+                    <a href="#"  class="list-group-menu ps-2  me-md-1 text-color-white choose_menu dropbtn">HTX Vận tải </a>
+                    <div class="dropdown-content">
+                        <a href="/hopdong">Hợp đồng</a>
+                    </div>
+                </div>
+            }else{
+                    <div class="d-flex item-title order-2 order-lg-1 link-item dropdown">
+                        <a href="#" class="list-group-menu ps-2 me-md-1 text-color-white choose_menu dropbtn">Transport cooperative </a>
+                        <div class="dropdown-content">
+                            <a href="/hopdong">Contract</a>
+                        </div>
+                    </div>
+            }
+                @if(session().get("lang")==null||session().get("lang")=="vi"){
+                <div class="d-flex item-title order-3 order-lg-2 link-item dropdown">
+                    <a href="#"  class="list-group-menu ps-2  me-md-1 text-color-white choose_menu dropbtn">Lái xe</a>
+                    <div class="dropdown-content" style="min-width: max-content">
+                        <a href="/hopdong">Hợp đồng</a>
+                        <a href="#">Hướng dẫn nộp thuế</a>
+                        <a href="/dangkylaixe">Đăng ký lái xe</a>
+                        <a href="/dangkyxe">Đăng ký xe</a>
+                    </div>
+                </div>
+                }else{
+                    <div class="d-flex item-title order-3 order-lg-2 link-item dropdown">
+                        <a href="#" class="list-group-menu ps-2 me-md-1 text-color-white choose_menu dropbtn">Drive</a>
+                        <div class="dropdown-content" style="min-width: max-content">
+                            <a href="/hopdong">Contract</a>
+                            <a href="#">Instructions to pay taxes</a>
+                            <a href="/dangkylaixe">Register to drive</a>
+                            <a href="/dangkyxe">Register vehicle</a>
+                        </div>
+                    </div>
+                }
+                @if(session().get("lang")==null||session().get("lang")=="vi"){
+                <div class="d-flex item-title order-4 order-lg-3  link-item dropdown">
+                    <a href="#"  class="list-group-menu ps-2  me-md-1 text-color-white choose_menu dropbtn">Công ty Taxi </a>
+                    <div class="dropdown-content">
+                        <a href="/hopdong">Hợp đồng </a>
+                        <a href="/phaply">Quy định</a>
+                    </div>
+
+                </div>
+                }else{
+                    <div class="d-flex item-title order-4 order-lg-3 link-item dropdown">
+                        <a href="#" class="list-group-menu ps-2 me-md-1 text-color-white choose_menu dropbtn">Taxi Company </a>
+                        <div class="dropdown-content">
+                            <a href="/hopdong">Contract </a>
+                            <a href="/phaply">Regulations</a>
+                        </div>
+
+                    </div>
+                }
+                @if(session().get("lang")==null||session().get("lang")=="vi"){
+                <div class="d-flex item-title order-4 order-lg-3  link-item dropdown">
+                    <a href="#"  class="list-group-menu ps-2  me-md-1 text-color-white choose_menu dropbtn">Thanh toán </a>
+                    <div class="dropdown-content">
+                        <a href="#">Thanh toán QR</a>
+                        <a href="#">Ví Vimass </a>
+                        <a href="#">Thẻ đa năng </a>
+                    </div>
+
+                </div>
+                }else{
+                    <div class="d-flex item-title order-4 order-lg-3 link-item dropdown">
+                        <a href="#" class="list-group-menu ps-2 me-md-1 text-color-white choose_menu dropbtn">Checkout </a>
+                        <div class="dropdown-content">
+                            <a href="#">QR Payment</a>
+                            <a href="#">Vimass Wallet </a>
+                            <a href="#">Multipurpose Card </a>
+                        </div>
+
+                    </div>
+                }
+
+                @if(session().get("lang")==null||session().get("lang")=="vi"){
+                <div class="d-flex item-title order-5 order-lg-4 link-item dropdown">
+                    <a href="/huongdan" class="list-group-menu ps-2  me-md-1 text-color-white choose_menu dropbtn">Hướng dẫn </a>
+                    <div class="dropdown-content">
+                        <a href="# ">Hợp đồng </a>
+                        <a href="/huongdan/dangkytaikhoan">Đăng ký tài khoản</a>
+
+                        <a href="/huongdan/dangkylaixe ">Đăng ký lái xe </a>
+                        <a href="/huongdan/dangkyxe">Đăng ký xe </a>
+                        <a href="/huongdan/dichvugoixe">Dịch vụ gọi xe </a>
+
+                    </div>
+                </div>
+                }else{
+                    <div class="d-flex item-title order-5 order-lg-4 link-item dropdown">
+                        <a href="/huongdan" class="list-group-menu ps-2 me-md-1 text-color-white choose_menu dropbtn">Instructions </a>
+                        <div class="dropdown-content">
+                            <a href="# ">Contract </a>
+                            <a href="/huongdan/dangkytaikhoan">Register an account</a>
+
+                            <a href="/huongdan/dangkylaixe ">Register to drive </a>
+                            <a href="/huongdan/dangkyxe">Vehicle registration </a>
+                            <a href="/huongdan/dichvugoixe">Car hailing service </a>
+
+                        </div>
+                    </div>
+                }
+                <div class="d-flex item-title order-5 order-lg-4 dropdown">
+               @* @if(session().get(Service.KEY_PHONE_ID)!=null&&session().get(Service.KEY_PHONE_ID)!=""){
+                    <a href="#"  class="list-group-menu ps-2  me-md-1 text-color-white choose_menu dropbtn">
+                        <i class="fa fa-user-circle text-color-white" aria-hidden="true">
+                            <span >Tài khoản</span></i>
+
+                    </a>
+                }else{
+                    <a href="#"  class="list-group-menu ps-2  me-md-1 text-color-white choose_menu dropbtn">
+                        <i class="fa fa-user-circle text-color-white" aria-hidden="true">
+                            <span >Tài khoản</span></i>
+
+                    </a>
+                }*@
+                </div>
+                <div class="d-flex item-title ps-2  ps-md-5 me-md-1 order-0 order-lg-5  order-account">
+
+                    @if(session().get(Service.KEY_PHONE_ID)!=null&&session().get(Service.KEY_PHONE_ID)!=""){
+                        <div class="d-flex item-title order-2 order-lg-1 link-item dropdown">
+                            @if(session().get(Service.KEY_LINK_ANH_DAI_DIEN)!=null&&session().get(Service.KEY_LINK_ANH_DAI_DIEN)!=""){
+                                <div class="d-flex align-items-center dropdown">
+                                    <div class=" text-color-white choose_menu dropbtn">
+                                        <img class="rounded-circle" src="@session().get(Service.KEY_LINK_ANH_DAI_DIEN)" style="width: 30px;height: 30px;">
+                                        <span class="ms-md-1  fs-Acc_name max-text ">@session().get(Service.KEY_TEN_DAI_DIEN)</span>
+                                    </div>
+                                    <div class="dropdown-content" style="margin-top: 130px">
+                                    @if(session().get("lang")==null||session().get("lang")=="vi"){
+                                        <a href="/thaydoithongtin" >Thông tin</a>
+                                    }else{
+                                        <a href="/thaydoithongtin" >Information</a>
+                                    }
+                                        @if(session().get("lang")==null||session().get("lang")=="vi"){
+                                            <a href="#"  class="dangxuat">Đăng xuất</a>
+                                        }else{
+                                            <a href="#" class="dangxuat">Log out</a>
+                                        }
+                                    </div>
+                                </div>
+
+                            }else{
+                                <div class="d-flex align-items-center dropdown">
+                                    <div>
+                                        <img class="rounded-circle" src="@routes.Assets.at("images/img-demo/face-img.png")" style="width: 50px;height: 50px;">
+                                        <span class="ms-md-1  fs-Acc_name  max-text " >@session().get(Service.KEY_TEN_DAI_DIEN)</span>
+                                    </div>
+                                    <div class="dropdown-content" style="margin-top: 130px">
+
+                                    @if(session().get("lang")==null||session().get("lang")=="vi"){
+                                        <a href="#"  class="dangxuat">Đăng xuất</a>
+                                    }else{
+                                        <a href="#" class="dangxuat">Log out</a>
+                                    }
+                                    </div>
+                                </div>
+                            }
+
+
+                        </div>
+
+                    }else{
+                        <div class="d-flex item-title order-5 order-lg-4 dropdown">
+                        @if(session().get("lang")==null||session().get("lang")=="vi"){
+                            <a href="/taikhoan"  class="list-group-menu ps-2  me-md-1 text-color-white choose_menu dropbtn">
+                            <i class="fa fa-user-circle " aria-hidden="true">    </i>
+
+                                <span >Tài khoản</span>
+                            </a>
+                            }else{
+                            <a href="/taikhoan"  class="list-group-menu ps-2  me-md-1 text-color-white choose_menu dropbtn">
+                            <i class="fa fa-user-circle" aria-hidden="true"></i>
+                            <span >Account</span>
+
+                            </a>
+                            }
+                        </div>
+                    }
+                </div>
+            </div>
+
+
+            <div class="d-flex ms-md-0   order-lang">
+                <div class="d-flex align-items-center menu-phone link-item dropdown-lang-new ">
+                    <div class="langPhone">
+                        <div class="d-flex align-items-center">
+                            @if(session().get("lang")==null||session().get("lang")=="vi"){
+                                <span class="me-1 itemLink">Ngôn ngữ: </span>
+                            }else{
+                                <span class="me-1 itemLink">Language: </span>
+                            }
+                        <div class="d-flex flex-row me-2 vi">
+                            <img  src="@routes.Assets.at("images/img-icon/vietnam.png")" style="width: 30px; height: 30px;">
+                        </div>
+                        <div class="d-flex flex-row en">
+                            <img src="@routes.Assets.at("images/img-icon/united-kingdom.png")" style="width: 30px; height: 30px;">
+                        </div>
+                        </div>
+
+                    </div>
+                    <div class="langPC">
+                        <div class="d-flex flex-row align-items-center">
+                            <span class="me-1 text-lang itemLink">Ngôn ngữ</span>
+                            @if(session().get("lang")==null||session().get("lang")=="vi"){
+                                <img class ="lang-type tiengviet" data-for="1"  src="@routes.Assets.at("images/img-icon/vietnam.png")" >
+                            }else{
+                                <img class ="lang-type tienganh" data-for="2"  src="@routes.Assets.at("images/img-icon/united-kingdom.png")" >
+                            }
+                            <img src="@routes.Assets.at("images/img-icon/down.svg")" >
+                        </div>
+
+                        <div class="dropdown-content-lang-new">
+                            <div class="d-flex flex-row vi">
+                                <img  src="@routes.Assets.at("images/img-icon/vietnam.png")" style="width: 30px; height: 30px;"><span style="margin: 3px; ">VN</span>
+                            </div>
+                            <div class="d-flex flex-row en">
+                                <img src="@routes.Assets.at("images/img-icon/united-kingdom.png")" style="width: 30px; height: 30px;"> <span style="margin: 3px;">EN</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+    <script>
+
+    $(".dangxuat" ).on("click",function(){
+    window.location = "/logout";
+    });
+    </script>
+    <script>
+
+(function() {
+'use strict';
+
+// Might was well save this in case you need it later
+var oldConfirm = window.confirm;
+window.confirm = function (e) {
+// TODO: could put additional logic in here if necessary
+return true;
+};
+
+} ());
+
+var txt= $(".max-text").text();
+if(txt.length > 10){
+$(".max-text").text(txt.substring(0,10) + '...');
+
+}
+
+$(function(){
+$('#close_menu').on('click',function(){
+$('.block-item-phone').hide();
+$('#open_menu').show();
+$('#close_menu').hide();
+$('body').css("overflow","auto");
+});
+$('#open_menu').on('click',function(){
+$('.block-item-phone').show();
+$('#close_menu').show();
+$('#open_menu').hide();
+$('body').css("overflow","hidden");
+});
+
+});
+var modal = document.getElementById("block-item-phone");
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+if (event.target == modal) {
+modal.style.display = "none";
+$('.block-item-phone').hide();
+$('#open_menu').show();
+$('#close_menu').hide();
+$('body').css("overflow","auto");
+}
+}
+
+$(".check_login_tt" ).on("click",function(){
+var user = $("#user_login_tt" ).val();
+var lang = '@session().get("lang")';
+if( user != null){
+$(".check_login_tt" ).attr("href","/thongbao");
+}
+else
+{
+/* alert("Vui lòng đăng nhập để xem thông báo!");*/
+if(lang=="vi"){
+alert("Vui lòng đăng nhập để xem thông báo!");
+}else{
+alert("Please login to view notifications!");
+}
+var url_return = "/thongbao";
+window.localStorage.setItem("url_return",url_return);
+window.location.href = "/taikhoan";
+}
+});
+
+
+
+</script>
+    <script type="text/javascript">
+        var check = document.getElementById("tabPhone");
+            $("#icon-phone" ).on('click',function(){
+            if(check.style.display=="none"){
+                check.style.display="block";
+            }else{
+                check.style.display="none";
+            }
+        });
+    </script>

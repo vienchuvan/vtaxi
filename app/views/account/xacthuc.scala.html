@@ -1,0 +1,340 @@
+@(message: String)
+<link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/xacthuckhuonmat.css")">
+@main(message) {
+
+
+    <main class="main-top">
+    @if(session().get("lang")=="vi"){
+        <div class="container min-h-face">
+            <h2 class="text-center m-auto pt-3 pt-md-5 pb-2 text_notify color-title fw-bold">Để thực hiện xác thực khuôn mặt vui lòng thực hiện theo hướng dẫn sau: </h2>
+            <div class="container-lg pt-5 pb-5">
+                <div class="row">
+                    <div class="col-12 col-md-6 order-2 order-md-1">
+                        <div class="row ">
+                            <ul class="list-group">
+
+                                <li class="list-group-item border-0 ">
+                                    <strong>Bước 1:</strong><span class="ms-1">Tải phần mềm VimassFVA (Bấm vào <a href="https://vimass.vn/vmbank/services/media/getFile?id=VimassFVA-Setup.zip">[Tải về]</a> để tải về phần mềm, hoặc tải về phía dưới)</span>
+                                    <div class="d-flex justify-content-center align-items-center text-center">
+                                        <a href="https://vimass.vn/vmbank/services/media/getFile?id=VimassFVA-Setup.zip" class="fs-3">
+                                            <img src="@routes.Assets.at("images/faceDetection/icon-down.gif")" style="width : 35px;"><br>
+                                            [Tải về]
+                                        </a>
+
+                                    </div>
+
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 order-1 order-md-2">
+                        <img src="@routes.Assets.at("images/faceDetection/faceDetection.png")" class="img-fluid">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 order-2 order-md-1 mt-3">
+                        <div class="row ">
+                            <div class="col-12 col-md-12">
+                                <h3 class="color-title">Cài đặt phần mềm VimassFVA cho máy tính </h3>
+                            </div>
+                            <ul class="list-group">
+
+                                <li class="list-group-item border-0 ">
+                                     <strong>Bước 1:</strong><span class="ms-1">Giải nén file Zip vừa tải về (VimassFVA-Setup.zip).</span>
+                                    <div class="d-flex justify-content-center">
+                                        <img src="@routes.Assets.at("images/faceDetection/setup_zip.png")" class="border-1 img-fluid">
+                                    </div>
+
+                                </li>
+                                <li class="list-group-item border-0">
+                                    <strong>Bước 2:</strong><span class="ms-1">Click đúp chuột trái vào file setup.exe,  click vào Next để mở trình cài đặt.</span>
+                                    <div class="d-flex justify-content-center ">
+                                        <img src="@routes.Assets.at("images/faceDetection/setup1.png")" class="border-1 img-fluid">
+                                    </div>
+                                </li>
+                                <li class="list-group-item border-0">
+                                    <strong>Bước 3:</strong><span class="ms-1">Chọn thư mục mà người dùng muốn cài phần mềm trên máy tính, vị trí mặc định nằm trong ổ C:\Program Files (x86)\Vimass\ VimassFVA hoặc có thể click vào Browse để đổi vị trí mong muốn. Click Next để sang bước tiếp theo.</span>
+                                    <div class="d-flex justify-content-center">
+                                        <img src="@routes.Assets.at("images/faceDetection/setup2.png")" class="border-1 img-fluid">
+                                    </div>
+
+                                </li>
+                                <li class="list-group-item border-0">
+                                    <strong>Bước 4:</strong><span class="ms-1">Nhấn Next để bắt đầu quá trình cài đặt. </span>
+                                    <div class="d-flex justify-content-center">
+                                        <img src="@routes.Assets.at("images/faceDetection/setup3.png")" class="border-1 img-fluid">
+                                    </div>
+
+                                </li>
+                                <li class="list-group-item border-0">
+                                    <strong>Bước 5:</strong><span class="ms-1">Click vào Close để kết thúc quá trình cài đặt ứng dụng.</span>
+                                    <div class="d-flex justify-content-center">
+                                        <img src="@routes.Assets.at("images/faceDetection/setup5.png")" class="border-1 img-fluid">
+                                    </div>
+
+                                </li>
+
+                                <li class="list-group-item border-0">
+                                    <strong>Bước 6:</strong><span class="ms-1">Cuối cùng click vào file "Write-Register-VimassFVA" để cài thêm. Nhằm mục đích đăng kí phần mềm với máy tính. </span>
+                                    <div class="d-flex justify-content-center">
+                                        <img src="@routes.Assets.at("images/faceDetection/setup6.png")" class="border-1 img-fluid">
+                                    </div>
+
+                                </li>
+                            </ul>
+                            <p>Sau khi cài đặt xong, quay lại giao diện đăng nhập => thực hiện đăng kí, đăng nhập bằng khuôn mặt theo hướng dẫn dưới:</p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-12 order-2 order-md-1">
+                        <div class="row ">
+                            <div class="col-12 col-md-12">
+                                <h3 class="color-title">Đăng kí xác thực khuôn mặt trên website </h3>
+                            </div>
+                            <ul class="list-group">
+                                <li class="list-group-item border-0 ">
+                                    <strong>Bước 1:</strong><span class="ms-1">Mở phần mềm VimassFAV, đăng nhập bằng tài khoản: nhập số điện thoại, mật khẩu, chọn Đăng nhập.</span>
+                                    <div class="d-flex justify-content-center">
+                                        <img src="@routes.Assets.at("images/faceDetection/login.png")" class="border-1 img-fluid ">
+                                    </div>
+                                </li>
+
+                                <li class="list-group-item border-0 ">
+                                    <strong>Bước 2:</strong><span class="ms-1">Đăng kí khuôn mặt vào phần mềm.</span>
+                                    <div class="d-flex justify-content-center">
+                                        <img src="@routes.Assets.at("images/faceDetection/face.png")" class="border-1 img-fluid ">
+                                    </div>
+                                </li>
+                                <li class="list-group-item border-0 ">
+                                    <strong>Bước 3:</strong><span class="ms-1">Nhấn đăng ký để lưu khuôn mặt trên thiết bị máy tính, thông báo “Đăng kí khuôn mặt thành công” => Nhấn ok để lưu khuôn mặt trên máy tính.</span>
+                                </li>
+
+                            </ul>
+                            <p>Sau khi đăng ký khuôn mặt thành công, quay trở lại giao diện đăng nhập => thực hiện đăng nhập theo hướng dẫn dưới:</p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-12 order-2 order-md-1">
+                        <div class="row ">
+                            <div class="col-12 col-md-12">
+                                <h3 class="color-title">Hướng dẫn đăng nhập tài khoản VTaxi bằng khuôn mặt.</h3>
+                            </div>
+                            <ul class="list-group">
+                                <li class="list-group-item border-0 ">
+                                    <strong>Bước 1:</strong><span class="ms-1"> Truy cập vào website: vtaxi.com.vn, chọn Tài khoản.</span>
+                                    <ul>
+                                        <li class="list-group-item border-0 ">
+                                            <span class="ms-1">- Nhập số ví đăng kí tài khoản.</span>
+                                        </li>
+                                        <li class="list-group-item border-0 ">
+                                            <span class="ms-1">- Chọn biểu tượng khuôn mặt để xác thực đăng nhập.</span>
+                                        </li>
+
+                                    </ul>
+                                    <div class="d-flex justify-content-center">
+                                        <img src="@routes.Assets.at("images/faceDetection/Screenshot_6.png")" class="border-1 img-fluid ">
+                                    </div>
+                                </li>
+                                <li class="list-group-item border-0">
+                                    <strong>Bước 2:</strong><span class="ms-1"> Sau khi chọn hình thức xác thực, thông báo mở ứng dụng VimassFVA được hiện ra:</span>
+                                    <ul class="list-group mt-2">
+                                        <li class="list-group-item border-0 ">
+                                            <span class="ms-1">- Chọn “mở VimassFVA”.</span>
+                                            <div class="d-flex justify-content-center">
+                                                <img src="@routes.Assets.at("images/faceDetection/kn2.png")" class="border-1 img-fluid ">
+                                            </div>
+                                            <span class="ms-1">-  Đưa khuôn mặt vào khung camera để thực hiện nhận diện khuôn mặt.</span>
+                                        </li>
+                                        <li class="list-group-item border-0 ">
+                                           <strong>Nếu nhận diện khuôn mặt đúng:</strong><span class="ms-1">Đăng nhập tài khoản thành công. </span>
+                                        </li>
+                                        <li class=" list-group-item border-0">
+                                            <strong>Nếu nhận diện khuôn mặt không đúng:</strong><span class="ms-1">Hệ thống sẽ thông báo “Xác thực khuôn mặt không thành công” và tiến hành xác thực lại khuôn mặt lần nữa. Sau 3 lần đăng nhập không thành công hệ thống sẽ dừng và yêu cầu thực hiện lại từ đầu.
+                                        </span>
+
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    }else{
+        <div class="container min-h-face">
+            <h2 class="text-center m-auto pt-3 pt-md-5 pb-2 text_notify color-title fw-bold">To perform facial authentication please follow the instructions below: </h2>
+            <div class="container-lg pt-5 pb-5">
+                <div class="row">
+                    <div class="col-12 col-md-6 order-2 order-md-1">
+                        <div class="row ">
+                            <ul class="list-group">
+                                <li class="list-group-item border-0 ">
+                                    <strong>Step 1:</strong><span class="ms-1">To use the face login function on the web, please log in to the website "<a href=" https://vtaxi.com.vn/"> https://vtaxi.com.vn/taikhoan</a>" click Click on "Face login instructions" to download the application.</span>
+                                </li>
+                                <li class="list-group-item border-0 ">
+                                    <strong>Step 2:</strong><span class="ms-1">Download software VimassFVA(Click <a href="https://vimass.vn/vmbank/services/media/getFile?id=VimassFVA-Setup.zip">[Download]</a> to download the software, or download below)</span>
+                                    <div class="d-flex justify-content-center align-items-center text-center">
+                                        <a href="https://vimass.vn/vmbank/services/media/getFile?id=VimassFVA-Setup.zip" class="fs-3">
+                                            <img src="@routes.Assets.at("images/faceDetection/icon-down.gif")" style="width : 35px;"><br>
+                                            [Download]
+                                        </a>
+
+                                    </div>
+
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 order-1 order-md-2">
+                        <img src="@routes.Assets.at("images/faceDetection/faceDetection.png")" class="img-fluid">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 order-2 order-md-1 mt-3">
+                        <div class="row ">
+                            <div class="col-12 col-md-12">
+                                <h3 class="color-title">Install VimassFVA software for computers </h3>
+                            </div>
+                            <ul class="list-group">
+
+                                <li class="list-group-item border-0 ">
+                                    <strong>Step 1:</strong><span class="ms-1">Extract the downloaded Zip file (VimassFVA-Setup.zip).</span>
+                                    <div class="d-flex justify-content-center">
+                                        <img src="@routes.Assets.at("images/faceDetection/setup_zip.png")" class="border-1 img-fluid">
+                                    </div>
+
+                                </li>
+                                <li class="list-group-item border-0">
+                                    <strong>Step 2:</strong><span class="ms-1">After the download is complete, extract and double-click the setup.exe file, click Next to open the installer.</span>
+                                    <div class="d-flex justify-content-center ">
+                                        <img src="@routes.Assets.at("images/faceDetection/setup1.png")" class="border-1 img-fluid">
+                                    </div>
+                                </li>
+                                <li class="list-group-item border-0">
+                                    <strong>Step 3:</strong><span class="ms-1">Select the folder where the user wants to install the software on the computer, the default location is in the C program (x86) drive > VimassFVA or you can click Browse to change the desired location. Click Next to go to the next step.</span>
+                                    <div class="d-flex justify-content-center">
+                                        <img src="@routes.Assets.at("images/faceDetection/setup2.png")" class="border-1 img-fluid">
+                                    </div>
+
+                                </li>
+                                <li class="list-group-item border-0">
+                                    <strong>Step 4:</strong><span class="ms-1">Click Next to begin the installation process. </span>
+                                    <div class="d-flex justify-content-center">
+                                        <img src="@routes.Assets.at("images/faceDetection/setup3.png")" class="border-1 img-fluid">
+                                    </div>
+
+                                </li>
+                                <li class="list-group-item border-0">
+                                    <strong>Step 5:</strong><span class="ms-1">Click Close to finish installing the application.</span>
+                                    <div class="d-flex justify-content-center">
+                                        <img src="@routes.Assets.at("images/faceDetection/setup5.png")" class="border-1 img-fluid">
+                                    </div>
+
+                                </li>
+
+                                <li class="list-group-item border-0">
+                                    <strong>Step 6:</strong><span class="ms-1">Finally click on the file "Write-Register-VimassFVA" to install more. For the purpose of starting the facial authentication software on the computer from the website. </span>
+                                    <div class="d-flex justify-content-center">
+                                        <img src="@routes.Assets.at("images/faceDetection/setup6.png")" class="border-1 img-fluid">
+                                    </div>
+
+                                </li>
+                            </ul>
+                            <p>So you have just watched the tutorial to install VimassFVA software for your computer. After the installation is complete, return to the login interface and perform face login according to the instructions:</p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-12 order-2 order-md-1">
+                        <div class="row ">
+                            <div class="col-12 col-md-12">
+                                <h3 class="color-title">Register for face authentication on the website</h3>
+                            </div>
+                            <ul class="list-group">
+                                <li class="list-group-item border-0 ">
+                                    <strong>Step 1:</strong><span class="ms-1">Open VimassFAV software, log in with your VTaxi account: enter your phone number, password, select Login.</span>
+                                    <div class="d-flex justify-content-center">
+                                        <img src="@routes.Assets.at("images/faceDetection/login-1.png")" class="border-1 img-fluid ">
+                                    </div>
+                                </li>
+
+                                <li class="list-group-item border-0 ">
+                                    <strong>Step 2:</strong><span class="ms-1">Record faces in software.</span>
+                                    <div class="d-flex justify-content-center">
+                                        <img src="@routes.Assets.at("images/faceDetection/face.png")" class="border-1 img-fluid ">
+                                    </div>
+                                </li>
+                                <li class="list-group-item border-0 ">
+                                    <strong>Step 3:</strong><span class="ms-1">Click register to save the face on the computer device, Notice “face authentication successful”.</span>
+                                </li>
+
+                            </ul>
+                            <p>After successful face registration, go back to the login interface and start logging in to your VTaxi account with your face. Instructions for logging in to your VTaxi account with your face on the Website.</p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-12 order-2 order-md-1">
+                        <div class="row ">
+                            <div class="col-12 col-md-12">
+                                <h3 class="color-title">Instructions to log in to your VTaxi account with your face.</h3>
+                            </div>
+                            <ul class="list-group">
+                                <li class="list-group-item border-0 ">
+                                    <strong>Step 1:</strong><span class="ms-1"> Go to website: vtaxi.com.vn, select Account.</span>
+                                    <ul>
+                                        <li class="list-group-item border-0 ">
+                                            <span class="ms-1">- Enter the wallet number to register for the account.</span>
+                                        </li>
+                                        <li class="list-group-item border-0 ">
+                                            <span class="ms-1">- Select the face icon for login authentication.</span>
+                                        </li>
+
+                                    </ul>
+                                    <div class="d-flex justify-content-center">
+                                        <img src="@routes.Assets.at("images/faceDetection/Screenshot_6.png")" class="border-1 img-fluid ">
+                                    </div>
+                                </li>
+                                <li class="list-group-item border-0">
+                                    <strong>Step 2:</strong><span class="ms-1"> After choosing the authentication method, the message to open VimassFVA application is displayed:</span>
+                                    <ul class="list-group mt-2">
+                                        <li class="list-group-item border-0 ">
+                                            <span class="ms-1">- Choose “open VimassFVA”</span>
+                                            <div class="d-flex justify-content-center">
+                                                <img src="@routes.Assets.at("images/faceDetection/kn2.png")" class="border-1 img-fluid ">
+                                            </div>
+                                            <span class="ms-1">-  Put the face in the camera frame to perform face recognition.</span>
+                                        </li>
+                                        <li class="list-group-item border-0 ">
+                                            <strong>If facial recognition is correct:</strong><span class="ms-1">Login account successfully. </span>
+                                        </li>
+                                        <li class=" list-group-item border-0">
+                                            <strong>If face recognition is not correct:</strong><span class="ms-1">The system will notify "Facial authentication failed" and proceed with face authentication again.
+                                        </span>
+
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    }
+
+    </main>
+
+}

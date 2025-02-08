@@ -1,0 +1,1661 @@
+ @(message: String,captcha:String,textCaptcha:String,info:controllers.account.ThongTinCaNhan)
+@main(message){
+    @*<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>*@
+    <main class="main-top">
+    <section class=" pt-0 pt-md-5 min-height">
+     <input type="hidden" id ="input_check_login" value="0">
+
+     <div class="container-md">
+
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-12 col-lg-7 col-xl-6 order-1 order-md-0 ">
+                    <img src="@routes.Assets.at("images/Banner/IC_bg_vtaxi.svg")"
+                    class="img-fluid" alt="Sample image">
+                </div>
+                <div id="login-all" class=" login_all col-md-12 col-lg-5 col-xl-5 order-0 order-md-1">
+                    <div class="d-flex flex-nowrap">
+                        <div class="w-75">
+                            <h2 class="pt-2 pb-2 fw-bold">
+                            @if(session().get("lang")=="vi"){
+                                Đăng nhập với
+                            }else{
+                                Login with
+                            }
+                            </h2>
+                        </div>
+                        <div class="w-25 back_login" style="display : none ;">
+                            <div class="d-flex justify-content-end">
+                                <div id="back_pass" data-for="0" class=" d-flex align-items-center justify-content-center pointer ">
+                                    <i class="fa fa-reply mt-2" style="font-size: 35px; color: darkblue"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between login-item">
+                       <div class="login_vicanhan d-flex justify-content-center align-items-center active-login " >
+                       @if(session().get("lang")=="vi"){
+                           Cá nhân
+                       }else{
+                           Personal
+                       }
+                       </div>
+                       <div class="login_vidoanhnghiep d-flex justify-content-center align-items-center ">
+                       @if(session().get("lang")=="vi"){
+                           Doanh nghiệp
+                       }else{
+                           Business
+                       }
+                       </div>
+                       <div class="login_thedanang d-flex justify-content-center align-items-center ">
+                       @if(session().get("lang")=="vi"){
+                           Thẻ đa năng
+                       }else{
+                           Multifunction card
+                       }
+                       </div>
+                    </div>
+                        @*Login ví cá nhân*@
+                    <div id="login_vicanhan">
+                       <form id="login_form_cn" method="post" action="#">
+
+                                <input type="hidden" id="ipLogin" name="ipLogin" value="">
+                                <input type="hidden" id="value" name="value" value="">
+                                <div class="input-group pt-2">
+                                    <input type="text" name="username_login" id="username_login_cn"  class="effect-input bg-input" placeholder=" "   />
+                                    <label for="effect-input">
+                                    @if(session().get("lang")=="vi"){
+                                        Số ví
+                                    }else{
+                                        Wallet number
+                                    }
+                                    </label>
+                                </div>
+
+                               <div id="pass_cn">
+                                   <div class="input-group pt-2 d-flex justify-content-center align-content-center">
+                                       <div id="password_cn" class="me-3 ms-3 pointer">
+                                           <img src="@routes.Assets.at("images/logo_icon/icon_login/lock.svg")" style="width : 35px ;">
+                                       </div>
+                                       <div  id="face_cn" class="me-3 ms-3 pointer">
+                                           <a href="vimassfva://arg-here">
+                                               <img src="@routes.Assets.at("images/logo_icon/icon_login/face.svg")" style="width : 35px ;">
+                                           </a>
+                                       </div>
+                                       <div id="voice_cn" href="#" class="me-3 ms-3 pointer">
+                                           <a href="vimassfva://arg-here">
+                                                <img src="@routes.Assets.at("images/logo_icon/icon_login/voice.svg")" style="width : 35px ;">
+                                           </a>
+                                       </div>
+
+                                   </div>
+                                   <div class="d-flex justify-content-center">
+                                       <span class="error_face1 pt-2 pb-3"  style="color: #ff0000"></span>
+                                   </div>
+                               </div>
+
+                                <div id="login_pass_cn" style="display : none ;">
+
+                                    <div class="input-group pt-2">
+                                        <input name="pass_login" type="password" maxlength="40"  class="effect-input password-cn" placeholder=" " />
+                                        <label>
+                                        @if(session().get("lang")=="vi"){
+                                            Mật khẩu
+                                        }else{
+                                            Password
+                                        }
+                                        </label>
+                                        <div class="fa-eye-show-hide">
+                                            <i class="fa fa-eye-slash eye"></i>
+                                        </div>
+                                    </div>
+                                    <div class="input-group pt-2 d-flex justify-content-center align-items-center w-auto">
+                                        <input type="text" class="effect-input w-50" name="captcha" type="text" maxlength="5" placeholder=" "/>
+                                        <label>
+                                        @if(session().get("lang")=="vi"){
+                                            Nhập mã xác nhận
+                                        }else{
+                                            Verification code
+                                        }
+                                        </label>
+
+                                        <div class="d-flex justify-content-center align-items-center w-50 ">
+                                            <div class="d-flex justify-content-center align-items-center ms-2 ms-md-5" style="border: 1px solid #333; border-radius: 6px; height: 50px">
+                                                <input class="w-75 text-center p-0 imgCapt_text bg_transparent" disabled placeholder="mã xác nhận">
+                                                <div class="w-25">
+                                                    <img class="refresh reCapt"  src="@routes.Assets.at("images/refresh.png")">
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                <div class="d-flex justify-content-center">
+                                    <span id="login_error" style="color: #ff0000;"></span>
+                                </div>
+
+                                <button type="button" class="btn btn-primary btn-lg btn-block w-100 mt-3 mb-3" id="btn-login-cn">
+                                @if(session().get("lang")=="vi"){
+                                    Đăng nhập
+                                }else{
+                                    Login
+                                }
+                                </button>
+                                <input type="hidden" name="datalog" class="datalog" value="">
+                                <input type="hidden" name="typeLogin"  value="0">
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-12 col-md-8 col-lg-8 order-1 order-md-0">
+                                        <div class="d-flex flex-row" >
+                                            <span class="m-0" style="color: #393f81;">
+                                            @if(session().get("lang")=="vi"){
+                                                Bạn chưa có tài khoản?
+                                            }else{
+                                                You don't have an account yet?
+                                            }
+                                            </span>
+                                            <a class="dangky-canhan ms-1 " href="#" style="color: #393f81;">
+                                            @if(session().get("lang")=="vi"){
+                                                Đăng ký tại đây
+                                            }else{
+                                                Register here
+                                            }
+                                            </a>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-12 col-md-4 col-lg-4  order-0 order-md-1 text-start text-md-end">
+                                        <a class="retrieval_pass" href="#" style="color: #393f81">
+                                        @if(session().get("lang")=="vi"){
+                                            Quên mật khẩu
+                                        }else{
+                                            Forgot password
+                                        }</a>
+                                    </div>
+
+                                </div>
+                               <div class="row pt-3">
+                                   <div class="col-md-12">
+                                       <a  href="/xacthuckhuonmat" target="_blank" class="fw-bold" style="color: #393f81">
+                                       @if(session().get("lang")=="vi"){
+                                          - Hướng dẫn đăng nhập bằng khuôn mặt trên website VTaxi
+                                       }else{
+                                          - Instructions to login with your face on the website VTaxi
+                                       }</a>
+                                   </div>
+                               </div>
+
+
+                            </form>
+                    </div>
+                        @*Login thẻ đa năng*@
+                    <div id="login_thedanang" style="display : none ;">
+                            <form id="login_form_tdn" method="post" action="#">
+                                <div class="input-group pt-2">
+                                    <input type="text" name="username_login_vid" class="effect-input" placeholder=" "/>
+                                    <label>
+                                    @if(session().get("lang")=="vi"){
+                                        Số thẻ
+                                    }else{
+                                        Card number
+                                    }
+                                    </label>
+                                </div>
+                                <div id="pass_tdn">
+                                    <div class="input-group pt-2 d-flex justify-content-center align-content-center">
+                                        <div id="password_tdn" class="me-3 ms-3 pointer">
+                                            <img src="@routes.Assets.at("images/logo_icon/icon_login/lock.svg")" style="width : 35px ;">
+                                        </div>
+                                        <div  id="face_tdn" class="me-3 ms-3 pointer">
+                                            <img src="@routes.Assets.at("images/logo_icon/icon_login/face.svg")" style="width : 35px ;">
+                                        </div>
+                                        <div id="voice_tdn" href="#" class="me-3 ms-3 pointer">
+                                            <img src="@routes.Assets.at("images/logo_icon/icon_login/voice.svg")" style="width : 35px ;">
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div id="login_pass_tdn" style="display : none;">
+                                    <div class="input-group pt-2">
+                                        <input type="password" name="pass_login_vid" class="effect-input password-tdn" placeholder=" "/>
+                                        <label >
+                                        @if(session().get("lang")=="vi"){
+                                            Mật khẩu
+                                        }else{
+                                            Password
+                                        }
+                                        </label>
+                                        <div class="fa-eye-show-hide">
+                                            <i class="fa fa-eye-slash eye-tdn"></i>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        <span id="login_error_tdn"></span>
+
+                                    </div>
+                                    <button type="button" id="btn-login-tdn" class="btn btn-primary btn-lg btn-block w-100 mt-3 mb-3"  >
+                                    @if(session().get("lang")=="vi"){
+                                        Đăng nhập
+                                    }else{
+                                        Login
+                                    }
+                                    </button>
+                                    <input type="hidden" name="datalog" class="datalog" value="">
+                                    <input type="hidden" name="typeLogin" value="2">
+                                </div>
+
+                            </form>
+                        </div>
+                        @*login ví doanh nghiệp*@
+                    <div id="login_vidoanhnghiep" style="display : none ;">
+                            <form id="login_form_dn" method="post" action="#">
+                                <div class="input-group pt-2">
+                                    <input type="text" name="companyCode_login" id="companyCode_login"  class="effect-input" placeholder=" "   />
+                                    <label>
+                                    @if(session().get("lang")=="vi"){
+                                        Mã doanh nghiệp
+                                    }else{
+                                        Company code
+                                    }
+                                    </label>
+                                </div>
+                                <div class="input-group pt-2">
+                                    <input type="text" name="username_login" id="username_login_dn" class="effect-input" placeholder=" "   />
+                                    <label>
+                                    @if(session().get("lang")=="vi"){
+                                        Số ví
+                                    }else{
+                                        Wallet number
+                                    }
+                                    </label>
+                                </div>
+
+                                <div id="pass_dn">
+                                    <div class="input-group pt-2 d-flex justify-content-center align-content-center">
+                                        <div id="password_dn" class="me-3 ms-3 pointer">
+                                            <img src="@routes.Assets.at("images/logo_icon/icon_login/lock.svg")" style="width : 35px ;">
+                                        </div>
+                                        <div  id="face_dn" class="me-3 ms-3 pointer">
+                                            <a href="vimassfva://arg-here">
+                                                <img src="@routes.Assets.at("images/logo_icon/icon_login/face.svg")" style="width : 35px ;">
+                                            </a>
+                                        </div>
+                                        <div id="voice_dn" href="#" class="me-3 ms-3 pointer">
+                                            <a href="vimassfva://arg-here">
+                                                <img src="@routes.Assets.at("images/logo_icon/icon_login/voice.svg")" style="width : 35px ;">
+                                            </a>
+                                        </div>
+
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        <span class="error_face2 pt-2 pb-3" style="color: #ff0000"></span>
+                                    </div>
+                                </div>
+
+
+                                <div id="login_pass_dn" style="display: none">
+                                    <div class="input-group pt-2">
+                                        <input name="pass_login" type="password" maxlength="40"  class="effect-input password-dn" placeholder=" " />
+                                        <label for="effect-input">
+                                        @if(session().get("lang")=="vi"){
+                                            Mật khẩu
+                                        }else{
+                                            Password
+                                        }
+                                        </label>
+                                        <div class="fa-eye-show-hide">
+                                            <i class="fa fa-eye-slash eye-dn" ></i>
+                                        </div>
+                                    </div>
+                                    <div class="input-group pt-2 d-flex justify-content-center align-items-center w-auto">
+                                        <input type="text" class="effect-input w-50" name="captcha" type="text" maxlength="5" placeholder=" "   />
+                                        <label >
+                                        @if(session().get("lang")=="vi"){
+                                            Nhập mã xác nhận
+                                        }else{
+                                            Verification code
+                                        }
+                                        </label>
+
+                                        <div class="d-flex justify-content-center align-items-center flex-grow-1 w-50">
+                                            <div class="d-flex justify-content-center align-items-center ms-2 ms-md-5" style="border: 1px solid #333; border-radius: 6px; height: 50px">
+                                                <input class="w-75 text-center p-0 imgCapt_text bg_transparent" disabled placeholder="mã xác nhận">
+                                                <div class="w-25">
+                                                    <img class="refresh reCapt"  src="@routes.Assets.at("images/refresh.png")">
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        <span id="login_error_dn" style="color: #ff0000"></span>
+                                    </div>
+                                    <button type="button" class="btn btn-primary btn-lg btn-block w-100 mt-3 mb-3" id="btn-login-dn">
+                                    @if(session().get("lang")=="vi"){
+                                        Đăng nhập
+                                    }else{
+                                        Login
+                                    }
+                                    </button>
+                                    <input type="hidden" name="datalog" class="datalog" value="">
+                                    <input type="hidden" name="typeLogin" value="1">
+                                </div>
+
+
+
+                                <div class="row">
+                                    <div class="col-12 col-md-8 order-1 order-md-0">
+                                        <div class="d-flex flex-row" >
+                                            <span class="m-0" style="color: #393f81;">
+                                            @if(session().get("lang")=="vi"){
+                                                Bạn chưa có tài khoản?
+                                            }else{
+                                                You don't have an account yet?
+                                            }
+                                            </span>
+                                            <a class="dangky-vidoanhnghiep ms-1 " href="#" style="color: #393f81;">
+                                            @if(session().get("lang")=="vi"){
+                                                Đăng ký tại đây
+                                            }else{
+                                                Register here
+                                            }</a>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-12 col-md-4 order-0 order-md-1 text-start text-md-end">
+                                        <a class="retrieval_pass" href="#" style="color: #393f81">
+                                        @if(session().get("lang")=="vi"){
+                                            Quên mật khẩu
+                                        }else{
+                                            Forgot password
+                                        }</a>
+                                    </div>
+                                </div>
+                                <div class="row pt-3">
+                                    <div class="col-md-12">
+                                        <a  href="/xacthuckhuonmat" target="_blank" class="fw-bold" style="color: #393f81">
+                                        @if(session().get("lang")=="vi"){
+                                            - Hướng dẫn đăng nhập bằng khuôn mặt trên website VTaxi
+                                        }else{
+                                            - Instructions to login with your face on the website VTaxi
+                                        }</a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                </div>
+                @*Đăng ký cá nhân*@
+                <div id="dangky-canhan" class="col-md-12 col-lg-5 col-xl-5 order-0 order-md-1" style="display : none ;">
+                    <form id="ducnt_register_form" method="POST" action="#" >
+                          <div>
+
+                            <h2 class="pt-4 fw-bold">
+                            @if(session().get("lang")=="vi"){
+                                Đăng ký ví cá nhân
+                            }else{
+                                Register for a personal wallet
+                            }
+                            </h2>
+
+                                <div class="input-group pt-2">
+                                    <input name="username_register" type="text"  class="effect-input dkcn-sdt-post " placeholder=" "   />
+                                    <label >
+                                    @if(session().get("lang")=="vi"){
+                                        Số điện thoại
+                                    }else{
+                                        Phone number
+                                    }
+                                    </label>
+                                </div>
+                                <div class="input-group pt-2">
+                                    <input name="password_register" type="password" class="effect-input password-dk-cn dkcn-mk-post" placeholder=" " />
+                                    <label >
+                                    @if(session().get("lang")=="vi"){
+                                        Mật khẩu
+                                    }else{
+                                        Password
+                                    }
+                                    </label>
+                                    <div class="fa-eye-show-hide">
+                                        <i class="fa fa-eye-slash eye-dk"></i>
+                                    </div>
+                                </div>
+                                <div class="input-group pt-2">
+                                    <input name="repassword_register" id="repassword_register" required type="password" class="effect-input password-dk-nhaplai" placeholder=" " />
+                                    <label>
+                                    @if(session().get("lang")=="vi"){
+                                        Nhập lại mật khẩu
+                                    }else{
+                                        Enter the password
+                                    }
+                                    </label>
+                                    <div class="fa-eye-show-hide">
+                                        <i class="fa fa-eye-slash eye-nl"></i>
+                                    </div>
+                                </div>
+
+                                <button type="button" class="btn btn-primary btn-lg btn-block w-100 mt-3 mb-3" id="btn_register">
+                                @if(session().get("lang")=="vi"){
+                                    Đăng ký tài khoản
+                                }else{
+                                    Register an account
+                                }
+                                </button>
+                                <div class="row">
+                                    <div class="col-12 col-md-12 order-1 order-md-0">
+                                        <div class="d-flex flex-row" >
+                                            <span class="m-0" style="color: #393f81;">
+                                            @if(session().get("lang")=="vi"){
+                                                Bạn đã có tài khoản?
+                                            }else{
+                                                Do you already have an account?
+                                            }
+                                            </span>
+                                            <a class="login-all ms-1" href="#" style="color: #393f81;">
+                                            @if(session().get("lang")=="vi"){
+                                                Đăng nhập tại đây
+                                            }else{
+                                                Sign in here
+                                            }
+                                            </a>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <div style="float: left;width: 100%;color: red;" id="ducnt_register_error_msg">&nbsp;</div>
+                        </div>
+                    </form>
+                </div>
+                <div id="ducnt_confirmOTP_popup" class="popup" style="display: none; position: fixed; z-index: 10; width : 400px;">
+                    <form id="ducnt_confirmOTP_form" method="post" action="#" >
+                        <a class="close_popup" id="ducnt_confirmOTP_close" href="javascript:void(0)"><img src="@routes.Assets.at("images/col111.png")" /></a>
+                        <div style="color: #000000;background: chartreuse" class="popup-header">
+                        @if(session().get("lang")=="vi"){
+                            Nhập mã OTP
+                        }else{
+                            Enter OTP code
+                        }
+                        </div>
+                        <div class="errormsg" id="ducnt_confirm_otp_error" style="color : #ff0000 ; text-align : center; font-weight: bold"></div>
+                        <div class="loginnew">
+                            <p>
+                                @*<label>Nhập mã OTP </label>*@
+                                <input name="username" maxlength="6" class="confirm-otp" title="Mã xác thực từ tin nhắn" />
+                            </p>
+                            <p >
+                                <input id="btn-confirmOTP" type="button" class="cpl-bt1"  value="Xác thực"/>
+                            </p>
+                        </div>
+                    </form>
+                </div>
+               @*Đăng ký doanh nghiệp*@
+                <div id="dangky-doanhnghiep" class="col-md-12 col-lg-5 col-xl-5 order-0 order-md-1" style="display : none ;">
+
+                        <h2 class="pt-4 fw-bold">
+                        @if(session().get("lang")=="vi"){
+                            Đăng ký ví doanh nghiệp
+                        }else{
+                            Register for a business wallet
+                        }
+                        </h2>
+
+                        <div class="input-group pt-2">
+                            <input type="text" name="maDoanhNghiep" id="maDoanhNghiep" required class="effect-input" placeholder=" "   />
+                            <label >
+                            @if(session().get("lang")=="vi"){
+                                Mã số doanh nghiệp
+                            }else{
+                                Enterprise code
+                            }
+                            </label>
+                        </div>
+                        <div class="input-group pt-2">
+                            <input autocomplete="off" required="required"  id="tenDoanhNghiep" name="tenDoanhNghiep" type="text"  class="effect-input" placeholder=" " />
+                            <label >
+                            @if(session().get("lang")=="vi"){
+                                Tên doanh nghiệp trong Đăng ký kinh doanh
+                            }else{
+                                Business name in the Business Registration
+                            }
+                            </label>
+                        </div>
+                        <div class="input-group pt-2">
+                            <input name="tenDaiDien" id="tenDaiDien" required type="text" id="effect-input" class="effect-input" placeholder=" " />
+                            <label for="effect-input">
+                            @if(session().get("lang")=="vi"){
+                                Họ tên người đại diện pháp luật
+                            }else{
+                                Legal representative's name
+                            }
+                            </label>
+                        </div>
+                        <div class="input-group pt-2">
+                            <input name="soDienThoai" id="soDienThoai" required type="text"  class="effect-input" placeholder=" " />
+                            <label>
+                            @if(session().get("lang")=="vi"){
+                                Số điện thoại người đại diện
+                            }else{
+                                Representative's phone number
+                            }
+                            </label>
+                        </div>
+                        <div class="input-group pt-2">
+                            <input name="emaildangky" id="emaildangky" autocomplete="off" type="text"  class="effect-input" placeholder=" " />
+                            <label >
+                            @if(session().get("lang")=="vi"){
+                                Email (có thể bỏ qua)
+                            }else{
+                                Email (can be ignored)
+                            }
+                            </label>
+                        </div>
+
+                        <div class=" pt-2 flex-column">
+                            <span>
+                            @if(session().get("lang")=="vi"){
+                                Ảnh đăng ký kinh doanh (trang đầu)
+                            }else{
+                                Photo of business registration (front page)
+                            }
+                            </span>
+                           @* <input type="file" class="custom-file-input" id="customFile">*@
+                            <input type="file" class="upload" id="filePicker" accept="image/gif, image/jpeg, image/png"/>
+                            <input type="hidden" id="fileData1" name="fileData1" >
+                            <input type="hidden" id="fileName1" name="fileName1">
+                            <img src="" id="imagedk1" style="display: none">
+
+                        </div>
+                        <div class="pt-2 flex-column">
+                            <span>
+                            @if(session().get("lang")=="vi"){
+                                Ảnh đăng ký kinh doanh (trang nghi người đại diện pháp luật)
+                            }else{
+                                Photo of business registration (legal representative page)
+                            }
+                            </span>
+                            @*<input type="file" class="custom-file-input" id="customFile">*@
+                            <input type="file" class="upload" id="filePicker1" accept="image/gif, image/jpeg, image/png"/>
+                            <input type="hidden" id="fileData2" name="fileData2" >
+                            <input type="hidden" id="fileName2" name="fileName2">
+                            <img src="" id="imagedk2" style="display: none">
+                        </div>
+                        <button id="btnRegDN" type="button" class="btn btn-primary btn-lg btn-block w-100 mt-3 mb-3" >
+                        @if(session().get("lang")=="vi"){
+                            Đăng ký tài khoản
+                        }else{
+                            Register an account
+                        }
+                        </button>
+                        <div class="row">
+                            <div class="col-12 col-md-12 pb-3">
+                                <div class="d-flex flex-row" >
+                                    <span class="m-0" style="color: #393f81;">
+                                    @if(session().get("lang")=="vi"){
+                                        Bạn đã có tài khoản?
+                                    }else{
+                                        Do you already have an account?
+                                    }
+                                    </span>
+                                    <a class="login-all ms-1" href="#" style="color: #393f81;">
+                                    @if(session().get("lang")=="vi"){
+                                        Đăng nhập tại đây
+                                    }else{
+                                       Sign in here
+                                    }
+                                    </a>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="login_register_errormsg" id="ducnt_register_error_msg_dn" style="color: #ff0000;text-align: center;"> </div>
+                </div>
+                @*Quên pass*@
+                <form id="ducnt_forgot_password_form" class="col-md-12 col-lg-5 col-xl-5 order-0 order-md-1"  method="post" action="#">
+                    <div id="password_retrieval"  style="display : none ;">
+                            <h2 class="pt-2 pb-2 justify-content-center fw-bold">
+                            @if(session().get("lang")=="vi"){
+                                Quên mật khẩu
+                            }else{
+                                Forgot password
+                            }
+                            </h2>
+                            <div class="input-group pt-2">
+                                <input type="text" name="phone" required="required"  type="text"  class="effect-input" placeholder=" "   />
+                                <label>
+                                @if(session().get("lang")=="vi"){
+                                    Số điện thoại
+                                }else{
+                                    Phone number
+                                }
+                                </label>
+                            </div>
+                            <div class="input-group pt-2">
+                                <input autocomplete="off" required="required"  id="ducnt_forgotpass_password" name="newpass" type="password" maxlength="40"  class="effect-input password-dn" placeholder=" " />
+                                <label >
+                                @if(session().get("lang")=="vi"){
+                                    Mật khẩu mới
+                                }else{
+                                    New password
+                                }
+                                </label>
+                                <div class="fa-eye-show-hide">
+                                    <i class="fa fa-eye-slash eye-dk"></i>
+                                </div>
+                            </div>
+                            <button id="ducnt_btn_forgotpassword" type="button" class="btn btn-primary btn-lg btn-block w-100 mt-3 mb-3" >
+                            @if(session().get("lang")=="vi"){
+                                Xác nhận
+                            }else{
+                                Confirm
+                            }
+                            </button>
+                            <div style="float: left;width: 100%;color: red;" id="ducnt_forgot_password_error">&nbsp;</div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div style="display: none">
+            <a class="auto-openlinkvifi" href="vifi://arg-here"></a>
+        </div>
+
+    </section>
+
+            @*<!-----------------------------------loading---------------------------------------------->*@
+        <div class="loading" style="display: none;">
+            <div class="modal-loading">
+                <div class="loading-block">
+                    <img src="@routes.Assets.at("images/icon-1/loading-gif-4.gif")" style="width :50px;">
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+    <script>
+        $("#password_cn" ).on("click", function(){
+            $("#back_pass" ).attr("data-for",0);
+            $(this ).attr("data-for",100);
+            $("#login_pass_cn").show();
+            $("#pass_cn" ).hide();
+            $(".back_login" ).show();
+        });
+        $("#password_dn" ).on("click", function(){
+            $("#back_pass" ).attr("data-for",1);
+            $(this ).attr("data-for",101);
+            $("#login_pass_dn").show();
+            $("#pass_dn" ).hide();
+            $(".back_login" ).show();
+        });
+        $("#password_tdn" ).on("click", function(){
+           $("#back_pass" ).attr("data-for",2);
+            $("#login_pass_tdn").show();
+            $("#pass_tdn" ).hide();
+           $(".back_login" ).show();
+        });
+
+        $("#back_pass").on("click", function(){
+            var check_login = $(this ).attr("data-for");
+            if( check_login == 0){
+                $("#login_pass_cn").hide();
+                $("#login_pass_dn").hide();
+                $("#login_pass_tdn").hide();
+                $("#pass_cn" ).show();
+
+            }else if(check_login == 1){
+
+                $("#login_pass_cn").hide();
+                $("#login_pass_dn").hide();
+                $("#login_pass_tdn").hide();
+                $("#pass_dn").show();
+
+            }else if(check_login == 2){
+                $("#login_pass_cn").hide();
+                $("#login_pass_dn").hide();
+                $("#login_pass_tdn").hide();
+                $("#pass_tdn" ).show();
+            }
+            $("#password_cn" ).removeAttr("data-for");
+            $("#password_dn" ).removeAttr("data-for");
+            $(".back_login" ).hide();
+
+
+        });
+
+
+        $(".login_vicanhan" ).on("click",function(){
+            $(".active-login" ).removeClass("active-login");
+            $(this ).addClass("active-login");
+            $("#input_check_login" ).val(0);
+            $("#password_dn" ).removeAttr("data-for");
+            var pass = $("#password_cn" ).attr("data-for");
+            if(pass == 100){
+                $("#pass_cn").hide();
+            }else{
+                $("#pass_cn").show();
+            }
+            $("#login_vicanhan" ).show();
+            $("#login_vidoanhnghiep" ).hide();
+            $("#login_thedanang" ).hide();
+            $("#dangky-canhan" ).hide();
+            $("#dangky-doanhnghiep" ).hide();
+            $("#password_retrieval" ).hide()
+            if(pass == 100){
+                $(".back_login" ).show();
+            }else{
+                $(".back_login" ).hide();
+            }
+            $("#login_pass_dn").hide();
+            $("#login_pass_tdn").hide();
+
+        });
+        $(".login_vidoanhnghiep" ).on("click",function(){
+            $(".active-login" ).removeClass("active-login");
+            $(this ).addClass("active-login");
+            $("#input_check_login" ).val(1);
+
+            $("#password_cn" ).removeAttr("data-for");
+            var pass = $("#password_dn" ).attr("data-for");
+            if(pass == 101){
+                $("#pass_dn").hide();
+            }else{
+                $("#pass_dn").show();
+            }
+
+            $("#login_vicanhan" ).hide();
+            $("#login_vidoanhnghiep" ).show();
+            $("#login_thedanang" ).hide();
+            $("#dangky-canhan" ).hide();
+            $("#dangky-doanhnghiep" ).hide();
+            $("#password_retrieval" ).hide()
+
+            if(pass == 101){
+                $(".back_login" ).show();
+            }else{
+                $(".back_login" ).hide();
+            }
+            $("#login_pass_cn").hide();
+            $("#login_pass_tdn").hide();
+
+        });
+        $(".login_thedanang" ).on("click",function(){
+            $(".active-login" ).removeClass("active-login");
+            $(this ).addClass("active-login");
+            $("#input_check_login" ).val(2);
+            $("#login_vicanhan" ).hide();
+            $("#login_vidoanhnghiep" ).hide();
+            $("#login_thedanang" ).show();
+            $("#dangky-canhan" ).hide();
+            $("#dangky-doanhnghiep" ).hide();
+            $("#password_retrieval" ).hide()
+
+            $(".back_login" ).hide();
+            $("#login_pass_cn").hide();
+            $("#login_pass_dn").hide();
+            $("#pass_tdn").show();
+
+            $("#password_cn" ).removeAttr("data-for");
+            $("#password_dn" ).removeAttr("data-for");
+        });
+
+        $(".retrieval_pass").on("click",function(){
+            $(".active-login" ).removeClass("active-login");
+            $(this ).addClass("active-login");
+            $("#login_vicanhan" ).hide();
+            $("#login_vidoanhnghiep" ).hide();
+            $("#login_thedanang" ).hide();
+            $("#dangky-canhan" ).hide();
+            $("#dangky-doanhnghiep" ).hide();
+            $("#password_retrieval" ).show()
+
+        });
+
+        $(".dangky-canhan" ).on("click",function(){
+            $("#login-all" ).hide();
+            $("#input_check_login" ).val(3);
+            $("#dangky-canhan" ).show();
+            $("#dangky-doanhnghiep" ).hide();
+            $("#password_retrieval" ).hide();
+        });
+
+        $(".dangky-vidoanhnghiep" ).on("click",function(){
+            $("#login-all" ).hide();
+            $("#dangky-canhan" ).hide();
+            $("#input_check_login" ).val(4);
+            $("#dangky-doanhnghiep" ).show();
+            $("#password_retrieval" ).hide();
+        });
+
+
+        $(".login-all" ).on("click",function(){
+            $("#login-all" ).show();
+            $("#input_check_login" ).val(0);
+            $("#dangky-canhan" ).hide();
+            $("#dangky-doanhnghiep" ).hide();
+            $("#password_retrieval" ).hide();
+        });
+        $(".retrieval_pass" ).on("click",function(){
+            $("#login-all" ).hide();
+            $("#input_check_login" ).val(5);
+            $("#dangky-canhan" ).hide();
+            $("#dangky-doanhnghiep" ).hide();
+            $("#password_retrieval" ).show();
+
+        });
+
+
+        $('.eye').click(function(){
+
+            if($(this).hasClass('fa-eye-slash')){
+
+                $(this).removeClass('fa-eye-slash');
+
+                $(this).addClass('fa-eye');
+
+                $('.password-cn').attr('type','text');
+                $('.password-dn').attr('type','text');
+                $('.password-tdn').attr('type','text');
+                $('.password-dk-cn').attr('type','text');
+                $('.password-dk-nhaplai').attr('type','text');
+
+            }else{
+
+                $(this).removeClass('fa-eye');
+
+                $(this).addClass('fa-eye-slash');
+
+                $('.password-cn').attr('type','password');
+                $('.password-dn').attr('type','password');
+                $('.password-tdn').attr('type','password');
+                $('.password-dk-cn').attr('type','password');
+                $('.password-dk-nhaplai').attr('type','password');
+            }
+
+
+        });
+        $('.eye-dn').click(function(){
+
+        if($(this).hasClass('fa-eye-slash')){
+
+        $(this).removeClass('fa-eye-slash');
+
+        $(this).addClass('fa-eye');
+
+        $('.password-dn').attr('type','text');
+        }else{
+
+        $(this).removeClass('fa-eye');
+
+        $(this).addClass('fa-eye-slash');
+
+        $('.password-dn').attr('type','password');
+
+        }
+
+
+        });
+        $('.eye-tdn').click(function(){
+
+        if($(this).hasClass('fa-eye-slash')){
+
+        $(this).removeClass('fa-eye-slash');
+
+        $(this).addClass('fa-eye');
+        $('.password-tdn').attr('type','text');
+
+        }else{
+
+        $(this).removeClass('fa-eye');
+
+        $(this).addClass('fa-eye-slash');
+
+        $('.password-tdn').attr('type','password');
+
+        }
+
+
+        });
+        $('.eye-dk').click(function(){
+
+        if($(this).hasClass('fa-eye-slash')){
+
+        $(this).removeClass('fa-eye-slash');
+
+        $(this).addClass('fa-eye');
+        $('.password-dk-cn').attr('type','text');
+
+        }else{
+
+        $(this).removeClass('fa-eye');
+
+        $(this).addClass('fa-eye-slash');
+        $('.password-dk-cn').attr('type','password');
+        }
+
+        });
+        $('.eye-nl').click(function(){
+
+        if($(this).hasClass('fa-eye-slash')){
+
+        $(this).removeClass('fa-eye-slash');
+
+        $(this).addClass('fa-eye');
+        $('.password-dk-nhaplai').attr('type','text');
+
+        }else{
+
+        $(this).removeClass('fa-eye');
+
+        $(this).addClass('fa-eye-slash');
+        $('.password-dk-nhaplai').attr('type','password');
+        }
+        });
+    </script>
+
+    <script>
+        $('.captcha').bind("cut copy paste",function(e) {
+        e.preventDefault();
+        });
+            setTimeout(() => {
+                $.ajax({
+                    type: 'GET',
+                    data:
+                    {},
+                    url: '/gencapt',
+                    success: function(data)
+                    {
+                        if(data!="")
+                        {
+                            $(".imgCapt_text" ).val(data.split("/")[0]);
+                            $(".datalog" ).val(data.split("/")[1]);
+                        }
+                    }
+                });
+            }, 2000);
+        $(".reCapt" ).on("click",function(){
+            $.ajax({
+                type: 'GET',
+                data:
+                {},
+                url: '/gencapt ',
+                success: function(data)
+                    {
+                        if(data!="")
+                        {
+                            $(".imgCapt_text" ).val(data.split("/")[0]);
+                            $(".datalog" ).val(data.split("/")[1]);
+                        }
+                    }
+                });
+            });
+
+        $("#btn-login-cn" ).on("click", function(e){
+
+            $(".loading" ).show();
+                $.ajax({
+                    type: "POST",
+                    data:$("#login_form_cn").serialize(),
+                    url:"/taikhoan",
+                    success: function(data){
+                        if(data.indexOf("SUCCESS:") != -1)
+                        {
+                            var url_return = window.localStorage.getItem("url_return");
+                            if(url_return!=null&&url_return!="")
+                            {
+                                window.location = url_return;
+                            }
+                            else
+                            {
+                                window.location = '/';
+                            }
+                        }
+                        else if(data == "FAIL")
+                        {
+                            $("#login_error").empty ();
+                            $("#login_error").append("Nhập sai tên đăng nhập hoặc mật khẩu.");
+                            $("#login_error").show ();
+                        }
+                        else if(data == "FAILDN")
+                        {
+                            $("#login_error").empty ();
+                            $("#login_error").append("Vui lòng đăng xuất ví doanh nghiệp.") ;
+                            $("#login_error").show ();
+                        }
+                        else if(data == "FAILCN")
+                        {
+                            $("#login_error").empty ();
+                            $("#login_error").append("Vui lòng đăng xuất ví cá nhân.");
+                            $("#login_error").show ();
+                        }
+                        else
+                        {
+                            $("#login_error").empty ();
+                            $("#login_error").append(data);
+                            $("#login_error").show ();
+                        }
+                    $(".loading" ).hide();
+
+                    }
+
+                });
+            });
+
+
+        $("#btn-login-dn" ).on("click", function(e){
+        $(".loading" ).show();
+            $.ajax({
+                type: "POST",
+                data:$("#login_form_dn").serialize(),
+                url:"/taikhoan",
+                success: function(data){
+                    if(data.indexOf("SUCCESS:") != -1)
+                    {
+                        var url_return = window.localStorage.getItem("url_return");
+                        if(url_return!=null&&url_return!="")
+                        {
+                            window.location = url_return;
+                        }
+                            else
+                        {
+                            window.location = '/';
+                        }
+
+                    }
+                    else if(data == "FAIL")
+                    {
+                        $("#login_error_dn").empty();
+                        $("#login_error_dn").append("Nhập sai tên đăng nhập hoặc mật khẩu.");
+                        $("#login_error_dn").show();
+                    }
+                    else if(data == "FAILDN")
+                    {
+                        $("#login_error_dn").empty();
+                        $("#login_error_dn").append("Vui lòng đăng xuất ví doanh nghiệp.");
+                        $("#login_error_dn").show();
+                    }
+                    else if(data == "FAILCN")
+                    {
+                        $("#login_error_dn").empty();
+                        $("#login_error_dn").append("Vui lòng đăng xuất ví cá nhân.");
+                        $("#login_error_dn").show();
+                    }
+                    else{
+                        $("#login_error_dn").empty();
+                        $("#login_error_dn").append(data);
+                        $("#login_error_dn").show();
+                    }
+
+                $(".loading" ).hide();
+
+                }
+
+            });
+        });
+
+
+
+        $("#btn-login-tdn" ).on("click", function(e){
+            alert("Hệ thống đang cập nhật !");
+           /* $.ajax({
+                type: "POST",
+                data:$("#login_form_tdn").serialize(),
+                url:"/dangnhapvid",
+                success: function(data){
+                    if(data.indexOf("SUCCESS:") != -1)
+                    {
+                        var url_return = window.localStorage.getItem("url_return");
+                        alert(url_return);
+                        if(url_return!=null&&url_return!="")
+                        {
+                            window.location = url_return;
+                        }
+                        else
+                        {
+                         window.location = '/';
+                        }
+
+                        }
+                        else if(data == "FAIL")
+                        {
+                            $("#login_error_tdn").empty();
+                            $("#login_error_tdn").append("Nhập sai tên đăng nhập hoặc mật khẩu.");
+                            $("#login_error_tdn").show();
+                        }
+                        else if(data == "FAILDN")
+                        {
+                            $("#login_error_tdn").empty();
+                            $("#login_error_tdn").append("Vui lòng đăng xuất ví doanh nghiệp.");
+                            $("#login_error_tdn").show();
+                        }
+                        else if(data == "FAILCN")
+                        {
+                            $("#login_error_tdn").empty();
+                            $("#login_error_tdn").append("Vui lòng đăng xuất ví cá nhân.");
+                            $("#login_error_tdn").show();
+                        }
+                        else
+                        {
+                            $("#login_error_tdn").empty();
+                            $("#login_error_tdn").append(data);
+                            $("#login_error_tdn").show();
+                        }
+
+                }
+
+            });*/
+        });
+
+
+        $(document).keypress(function (e) {
+            var input_check_login =  $("#input_check_login").val();
+            if (e.which == 13 && input_check_login == 0) {
+                $("#btn-login-cn" ).click();
+
+            }
+            if (e.which == 13 && input_check_login == 1) {
+                $("#btn-login-dn" ).click();
+
+            }
+            if (e.which == 13 && input_check_login == 2) {
+                $("#btn-login-tdn" ).click();
+
+            }
+
+            if (e.which == 13 && input_check_login == 3) {
+                $("#btn_register" ).click();
+
+            }
+            if (e.which == 13 && input_check_login == 4) {
+                $("#btnRegDN" ).click();
+
+            }
+            if (e.which == 13 && input_check_login == 5) {
+                $("#ducnt_btn_forgotpassword" ).click();
+            }
+        });
+
+    </script>
+
+    <script>
+        $(document ).ready(function(){
+            $("body").on("click", "#btn_register", function () {
+                var sdt = $(".dkcn-sdt-post" ).val();
+                var mk = $(".dkcn-mk-post" ).val();
+            $('.loadingpopup' ).show();
+                $("#ducnt_register_error_msg").empty ();
+                $.ajax({
+                    type:'POST',
+                    data: {
+                    sdt:sdt,
+                    mk:mk
+                    },
+                    url: '/register',
+                    success: function(data)
+                        {
+                            $('.loadingpopup' ).hide();
+                            if(data == "SUCCESS")
+                                {
+                                    $("#lean_overlay").show();
+                                    $("#ducnt_confirmOTP_popup" ).show();
+                                }else if(data == "OTP"){
+                                    $("#ducnt_register_error_msg").empty ( ) ;
+                                    $("#ducnt_register_error_msg").append ("OTP vừa được gửi đi!") ;
+                                    $("#ducnt_register_error_msg").show ( ) ;
+                                    $("#lean_overlay").show();
+                                    $("#ducnt_confirmOTP_popup" ).show();
+                                }
+                            else if(data == "FAIL")
+                                {
+                                    $("#ducnt_register_error_msg").empty ( ) ;
+                                    $("#ducnt_register_error_msg").append ("Có lỗi trong quá trình kết nối với server") ;
+                                    $("#ducnt_register_error_msg").show ( ) ;
+                                }
+                            else
+                                {
+                                    $("#ducnt_register_error_msg").empty ( ) ;
+                                    $("#ducnt_register_error_msg").append (data) ;
+                                    $("#ducnt_register_error_msg").show ( ) ;
+                                }
+                        }
+                    });
+
+
+            });
+        })
+    </script>
+    <script>
+    $("body").on("click", "#btn-confirmOTP", function () {
+        var otp =  $(".confirm-otp" ).val();
+    $.ajax({
+        type:'POST',
+        data: {
+        otp:otp
+        },
+        url: '/confirmOTP',
+        success: function(data)
+        {
+            $('.loadingpopup' ).hide();
+            if(data == "SUCCESS")
+            {
+                alert("Xác thực OTP thành công!");
+                $("#ducnt_confirmOTP_popup" ).hide();
+                window.location.reload();
+            }
+            else if(data == "FAIL")
+            {
+                $("#ducnt_confirm_otp_error").empty ( ) ;
+                $("#ducnt_confirm_otp_error").append ("Có lỗi trong quá trình kết nối với server") ;
+                $("#ducnt_confirm_otp_error").show ( ) ;
+            }
+            else
+            {
+                $("#ducnt_confirm_otp_error").empty ( ) ;
+                $("#ducnt_confirm_otp_error").append (data) ;
+                $("#ducnt_confirm_otp_error").show ( ) ;
+            }
+        }
+    });
+    });
+
+    </script>
+    <script>
+        $("#btnRegDN" ).on('click', function(e){
+            var dulieuanh1 = $("#fileData1" ).val();
+            var tenanh1 = $("#fileName1" ).val();
+            var dulieuanh2 = $("#fileData2" ).val();
+            var tenanh2 = $("#fileName2" ).val();
+            var maDN = $("#maDoanhNghiep" ).val();
+            var tenDN = $("#tenDoanhNghiep" ).val();
+            var tenDaiDien = $("#tenDaiDien" ).val();
+            var sdt = $("#soDienThoai" ).val();
+            var email = $("#emaildangky" ).val();
+            if(dulieuanh1!=""&&dulieuanh2!="")
+            {
+                $('.loadingpopup' ).show();
+                $("#ducnt_register_error_msg_dn").empty();
+                $.ajax({
+                type: 'POST',
+                data:{
+                    'dulieuanh1':dulieuanh1,
+                    'tenanh1':tenanh1,
+                    'dulieuanh2':dulieuanh2,
+                    'tenanh2':tenanh2,
+                    'maDN':maDN,
+                    'tenDN':tenDN,
+                    'tenDaiDien':tenDaiDien,
+                    'sdt':sdt,
+                    'emaildangky':email
+                },
+                url: '/dangkyviDN',
+                success: function(data)
+                {
+                   console.log("cái lol m? nó: "+data)
+                        $('.loadingpopup' ).hide();
+                        if(data.indexOf("OK")!=-1)
+                    {
+                        alert(data.split(":")[1]);
+                        window.location = '/';
+                    }
+                else
+                    {
+                        $("#ducnt_register_error_msg_dn").empty ( ) ;
+                        $("#ducnt_register_error_msg_dn").append (data) ;
+                        $("#ducnt_register_error_msg_dn").show ( ) ;
+                    }
+
+                }
+                });
+            }
+            else
+                {
+                    $("#ducnt_register_error_msg_dn").empty ( ) ;
+                    $("#ducnt_register_error_msg_dn").append ("Vui lòng ảnh đăng ký kinh doanh") ;
+                    $("#ducnt_register_error_msg_dn").show ( ) ;
+                }
+        });
+    </script>
+    <script>
+    $(document ).ready(function(){
+    var resizeAndConvertBase64 = function(input){
+    var file = input.files[0];
+    $.canvasResize(file, {
+    width: 800,
+    height: 0,
+    crop: false,
+    quality: 80,
+    callback: function(data, width, height) {
+    $('#imagedk1').attr( "src", data );
+    $('#imagedk1').hide();
+    $('#fileData1').val( data );
+    }
+    });
+    };
+
+
+    $('#filePicker').on('change', function(e){
+    //convertToBase64(this);
+    resizeAndConvertBase64(this);
+    e.preventDefault();
+    });
+
+    var resizeAndConvertBase642 = function(input){
+    var file = input.files[0];
+    $.canvasResize(file, {
+    width: 800,
+    height: 0,
+    crop: false,
+    quality: 80,
+    callback: function(data, width, height) {
+    $('#imagedk2').attr( "src", data );
+    $('#imagedk2').hide();
+    $('#fileData2').val( data );
+    }
+    });
+    };
+    $('#filePicker1').on('change', function(e){
+    //convertToBase64(this);
+    resizeAndConvertBase642(this);
+    e.preventDefault();
+    });
+    });
+    </script>
+
+@*Get Pass*@
+    <script>
+        $("#ducnt_btn_forgotpassword").on('click', function (){
+                $(".ducnt_forgot_password_error").empty ( ) ;
+                    $.ajax({
+                        type:'POST',
+                        data: $("#ducnt_forgot_password_form").serialize(),
+                        url: '/forgotPassword',
+                        success: function(data)
+                        {
+                            $('.loadingpopup' ).hide();
+                            if(data == "SUCCESS")
+                            {
+                                $("#lean_overlay").show();
+                                $("#ducnt_confirmOTP_popup").show();
+                            }
+                            else if(data == "FAIL")
+                            {
+                                $(".ducnt_forgot_password_error").empty ( ) ;
+                                $(".ducnt_forgot_password_error").append ("Có lỗi trong quá trình kết nối với server") ;
+                                $(".ducnt_forgot_password_error").show ( ) ;
+                            }
+                            else
+                            {
+                                $("#ducnt_forgot_password_error" ).empty();
+                                $("#ducnt_forgot_password_error" ).append(data);
+                                $("#ducnt_forgot_password_error" ).show();
+                            }
+                        }
+                    });
+        });
+
+    </script>
+    <script type="text/javascript">
+    $('#ducnt_confirmOTP_close' ).on('click', function(event) {
+            $("#ducnt_confirmOTP_popup" ).hide()
+            $("#lean_overlay" ).hide();
+        });
+    </script>
+     <script>
+         @*---------face login click--------------*@
+     $.getJSON("https://api.ipify.org/?format=json", function(e) {
+         var ip =   $("#ipLogin" ).val( e.ip);
+     });
+         $("#face_cn" ).on("click", function(){
+
+             var sovi = $("#username_login_cn" ).val();
+             if(sovi ==""){
+                 $(".error_face1" ).text("Vui lòng nhập số ví!");
+                 return false;
+             }
+                 $.ajax({
+                     type:"GET",
+                     data:{
+                         'param2': sovi,
+                         'param3':'1'
+                     },
+                     url:"/type_login",
+                     success: function(data){
+                         if(data == "ok"){
+                             var count = 1;
+                             var timer = setInterval(function(){
+                             $.ajax({
+                                 type:"GET",
+                                 data:{
+                                     'param2': sovi
+                                 },
+                                 url:"/login_results",
+                                 success: function(response){
+                            /*     if(response=="1")
+                                 {
+
+                                     $("#value").val(response);
+                                     faceLogin();
+                                 }*/
+                                     if(response != null){
+                                         if(response!="1")
+                                         {
+                                            if(response=="3")
+                                            {
+                                            $('.loadingpopup' ).hide();
+                                            $("#value").val(response);
+                                            faceLogin();
+                                            }
+                                             else{
+                                                alert("Xác thực khuôn mặt không thành công!");
+                                                count++;
+                                                if(count==5)
+                                                {
+                                                clearInterval(timer);
+                                                    alert("xác thực khuôn mặt sai quá 3 lần. Vui lòng xác thực lại!")
+                                                }
+
+                                            }
+                                         }
+                                         }else{
+                                             console.log("Xác thực khuôn mặt không thành công. Vui lòng xác thực lại!");
+                                            clearInterval(timer);
+                                         }
+                                     }
+                                 });
+                             },5000);
+                         }else{
+                             alert("Không kết nối được đến server! Vui lòng thử lại sau ít phút.");
+                         }
+                     }
+                 });
+              });
+     $("#voice_cn" ).on("click", function(){
+        $('.auto-openlinkvifi')[0].click();
+         var sovi = $("#username_login_cn" ).val();
+         if(sovi ==""){
+             $(".error_face1" ).text("Vui lòng nhập số ví!");
+             return false;
+         }
+         $.ajax({
+             type:"GET",
+             data:{
+             'param2': sovi,
+             'param3':'2'
+             },
+             url:"/type_login",
+             success: function(data){
+                 if(data == "ok"){
+                     var count = 1;
+                     var timer = setInterval(function(){
+                         $.ajax({
+                             type:"GET",
+                             data:{
+                             'param2': sovi
+                             },
+                             url:"/login_results",
+                             success: function(response){
+                                 if(response != null){
+                                     if(response!="2")
+                                     {
+                                         if(response=="5")
+                                         {
+                                             $('.loadingpopup' ).hide();
+                                             $("#value").val(response);
+                                             faceLogin()
+                                         }
+                                         else{
+                                             alert("Xác thực tiếng nói không thành công. Vui lòng xác thực lại!");
+                                             clearInterval(timer);
+                                         }
+                                     }
+                                 }else{
+                                     console.log("Xác thực tiếng nói không thành công. Vui lòng xác thực lại!");
+                                     clearInterval(timer);
+                                 }
+                             }
+                         });
+                     },5000);
+                 }else{
+                    alert("Không kết nối được đến server! Vui lòng thử lại sau ít phút.");
+                 }
+             }
+         });
+     });
+     $("#face_dn" ).on("click", function(e){
+
+         var sovi = $("#username_login_dn" ).val();
+         var companyCode = $("#companyCode_login" ).val();
+         if(sovi =="" || companyCode =="" ){
+         $(".error_face2" ).text("Vui lòng nhập số ví!");
+            return false;
+         }
+         $.ajax({
+         type:"GET",
+         data:{
+         'param2': sovi,
+         'param3':'1'
+         },
+         url:"/type_login",
+         success: function(data){
+             if(data == "ok"){
+                 var count = 1;
+                 var timer = setInterval(function(){
+                     $.ajax({
+                     type:"GET",
+                     data:{
+                     'param2': sovi
+                     },
+                     url:"/login_results",
+                     success: function(response){
+                         if(response != null){
+                             if(response!="1")
+                             {
+                                if(response=="3")
+                                 {
+                                     $('.loadingpopup' ).hide();
+                                     $("#value").val(response);
+                                     faceLogin_dn();
+                                 }
+                             else{
+                                 alert("Xác thực khuôn mặt không thành công!");
+                                 count++;
+                                 if(count==5)
+                                 {
+                                     clearInterval(timer);
+                                     alert("xác thực khuôn mặt sai quá 3 lần. Vui lòng xác thực lại!")
+                                 }
+                                 }
+                             }
+                         }else{
+                             console.log("Xác thực khuôn mặt không thành công. Vui lòng xác thực lại!");
+                             clearInterval(timer);
+                             }
+                         }
+                     });
+                 },5000);
+                 }else{
+                 alert("Không kết nối được đến server! Vui lòng thử lại sau ít phút.");
+                 }
+             }
+         });
+     });
+     $("#voice_dn" ).on("click", function(e){
+         var sovi = $("#username_login_dn" ).val();
+         var companyCode = $("#companyCode_login" ).val();
+         if(sovi =="" || companyCode =="" ){
+             $(".error_face2" ).text("Vui lòng nhập số ví!");
+             return false;
+         }
+         $.ajax({
+             type:"GET",
+             data:{
+             'param2': sovi,
+             'param3':'2'
+             },
+             url:"/type_login",
+             success: function(data){
+                 if(data == "ok"){
+                     var count = 1;
+                     var timer = setInterval(function(){
+                         $.ajax({
+                             type:"GET",
+                             data:{
+                             'param2': sovi
+                             },
+                             url:"/login_results",
+                             success: function(response){
+                                 if(response != null){
+                                     if(response!="2")
+                                     {
+                                         if(response=="5")
+                                         {
+                                             $('.loadingpopup' ).hide();
+                                             $("#value").val(response);
+                                             faceLogin()
+                                         }
+                                         else{
+                                             alert("Xác thực tiếng nói không thành công. Vui lòng xác thực lại!");
+                                             clearInterval(timer);
+                                         }
+                                     }
+                                 }else{
+                                     console.log("Xác thực tiếng nói không thành công. Vui lòng xác thực lại!");
+                                     clearInterval(timer);
+                                 }
+                             }
+                         });
+                     },5000);
+                 }else{
+                    alert("Không kết nối được đến server! Vui lòng thử lại sau ít phút.");
+                 }
+             }
+         });
+     });
+             function faceLogin(){
+             $('.loadingpopup' ).hide();
+                 $.ajax({
+                   type:"POST",
+                    data:$("#login_form_cn").serialize(),
+                     url:"/faceLogin",
+                     success: function(response){
+                     $('.loadingpopup' ).hide();
+                         console.log("Dang nhap thanh cong!");
+                      window.location ='/';
+                 }
+                 });
+             }
+     function faceLogin_dn(){
+     $('.loadingpopup' ).hide();
+     $.ajax({
+     type:"POST",
+     data:$("#login_form_dn").serialize(),
+     url:"/faceLogin",
+     success: function(response){
+     $('.loadingpopup' ).hide();
+     console.log("Dang nhap thanh cong!");
+     window.location ='/';
+     }
+     });
+     }
+     </script>
+}
